@@ -1,111 +1,205 @@
-import { NextRequest, NextResponse } from "next/server";
+import {
+  NextRequest,
+  NextResponse,
+} from "next/server";
 
 import {
   createSession,
   getSession,
-  updateSession,
-} from "@/features/interview-mode/logic/session";
+} from "@/features/interview-mode/state/session";
 
-import { getQuestion } from "@/features/interview-mode/logic/prompts";
+import {
+  processCandidateEvent,
+} from "@/features/interview-mode/engine/orchestrator";
 
-import { getNextStage } from "@/features/interview-mode/logic/flow";
-
-import { validateAnswer } from "@/features/interview-mode/logic/evaluate";
+import {
+  generateInterviewerMessage,
+} from "@/features/interview-mode/engine/interviewer";
 
 import {
   InterviewRequest,
-  InterviewSession,
 } from "@/features/interview-mode/types";
 
-export async function POST(req: NextRequest) {
+/*
+  POST
+*/
+
+export async function POST(
+  req: NextRequest
+) {
   try {
-    const body: InterviewRequest =
+    const body:
+      InterviewRequest =
       await req.json();
 
-    let session = getSession(body.sessionId);
+    /*
+      START SESSION
+    */
+
+    if (
+      body.action === "start"
+    ) {
+      const session =
+        createSession(
+          body.sessionId,
+          body.sessionType ??
+            "practice"
+        );
+
+      const intro =
+        generateInterviewerMessage(
+          session,
+          "stage_transition",
+          "problem_understanding"
+        );
+
+      return NextResponse.json({
+        success: true,
+
+        session,
+
+        message:
+          intro.message,
+      });
+    }
 
     /*
-      CREATE SESSION IF NOT EXISTS
+      GET SESSION
     */
+
+    const session =
+      getSession(
+        body.sessionId
+      );
 
     if (!session) {
-      session = createSession(body.sessionId);
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            "Session not found",
+        },
+        {
+          status: 404,
+        }
+      );
+    }
 
+    /*
+      GET STATE
+    */
+
+    if (
+      body.action ===
+      "state"
+    ) {
       return NextResponse.json({
+        success: true,
         session,
-        question: getQuestion(
-          session.currentStage
-        ),
-        canProceed: true,
       });
     }
 
     /*
-      VALIDATE USER ANSWER
+      PROCESS EVENT
     */
 
-    const isValid = validateAnswer(
-      session.currentStage,
-      body.answer
-    );
+    if (
+      body.action ===
+      "event"
+    ) {
+      if (!body.event) {
+        return NextResponse.json(
+          {
+            success: false,
+            error:
+              "Event required",
+          },
+          {
+            status: 400,
+          }
+        );
+      }
 
-    /*
-      IF INVALID
-    */
+      /*
+        RUN ORCHESTRATOR
+      */
 
-    if (!isValid) {
+      const result =
+        processCandidateEvent(
+          session,
+          body.event
+        );
+
+      /*
+        INTERVIEWER RESPONSE
+      */
+
+      const interviewer =
+        generateInterviewerMessage(
+          session,
+
+          result
+            .triggeredIntervention
+            ? "reflection"
+            : result
+                .shouldAdvanceStage
+            ? "stage_transition"
+            : "challenge",
+
+          result.nextStage
+        );
+
       return NextResponse.json({
+        success: true,
+
+        message:
+          result.message ||
+          interviewer.message,
+
+        stage:
+          session.technicalStage,
+
+        nextStage:
+          result.nextStage,
+
+        score:
+          result.score,
+
+        completed:
+          result.completed,
+
+        interventionTriggered:
+          result.triggeredIntervention,
+
+        transitionToLearning:
+          result.shouldTransitionToLearning,
+
         session,
-        question:
-          "Your answer is too weak. Try again.",
-        canProceed: false,
       });
     }
 
     /*
-      SAVE USER ANSWER
+      INVALID ACTION
     */
 
-    session.answers[session.currentStage] =
-      body.answer;
-
-    /*
-      MOVE TO NEXT STAGE
-    */
-
-    const nextStage = getNextStage(
-      session.currentStage
-    );
-
-    session.currentStage = nextStage;
-
-    /*
-      CHECK COMPLETION
-    */
-
-    if (nextStage === "review") {
-      session.completed = true;
-    }
-
-    /*
-      SAVE UPDATED SESSION
-    */
-
-    updateSession(session);
-
-    /*
-      RETURN RESPONSE
-    */
-
-    return NextResponse.json({
-      session,
-      question: getQuestion(nextStage),
-      canProceed: true,
-    });
-  } catch (error) {
     return NextResponse.json(
       {
-        error: "Internal Server Error",
+        success: false,
+        error:
+          "Invalid action",
+      },
+      {
+        status: 400,
+      }
+    );
+  } catch (error) {
+    console.error(error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        error:
+          "Internal Server Error",
       },
       {
         status: 500,
