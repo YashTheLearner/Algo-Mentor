@@ -27,7 +27,7 @@ export default function HomePage() {
             <Button variant="secondary">Secondary</Button>
             <Button variant="outline">Outline</Button>
             <Button variant="ghost">Ghost</Button>
-            <Button loading>Loading</Button>
+            <Button >Loading</Button>
           </div>
         </Card>
 

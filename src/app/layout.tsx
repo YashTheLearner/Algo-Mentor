@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/navbar";
+import { cn } from "@/lib/utils";
+import AuthProvider from "@/components/providers/session-provider";
 
-const geistSans = Geist({
-  variable: "--font-sans",
-  subsets: ["latin"],
-});
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const geistMono = Geist_Mono({
   variable: "--font-mono",
@@ -26,16 +24,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={cn(geistMono.variable, "font-sans", geist.variable)}
+      data-scroll="smooth"
     >
       <body className="bg-[--bg] text-[--text] font-sans">
 
         {/* Navbar */}
-        <Navbar />
+        {/* <Navbar /> */}
 
         {/* Main Content */}
         <main className="h-[calc(100vh-56px)]">
-          {children}
+          <AuthProvider>
+  {children}
+</AuthProvider>
         </main>
 
       </body>
