@@ -23,7 +23,6 @@ export interface StartInterviewRequest {
   topic: InterviewTopic;
   difficulty: InterviewDifficulty;
   duration: number;
-  questionCount: number;
   mode: InterviewMode;
 }
 

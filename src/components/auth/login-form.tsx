@@ -8,7 +8,7 @@ import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { loginSchema, LoginInput } from "@/lib/validations/auth";
+import { loginSchema, LoginInput } from "@/lib/validators/auth";
 
 import {
   Card,

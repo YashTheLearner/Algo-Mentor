@@ -2,7 +2,7 @@
 
 import bcrypt from "bcrypt";
 import { prisma } from "@/lib/prisma/prisma";
-import { registerSchema } from "@/lib/validations/auth";
+import { registerSchema } from "@/lib/validators/auth";
 
 export async function registerUser(data: unknown) {
   try {

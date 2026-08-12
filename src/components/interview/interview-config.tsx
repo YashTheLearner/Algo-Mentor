@@ -21,8 +21,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
+// import { Slider } from "@/components/ui/slider";
+import { useRouter } from "next/navigation";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { array } from "zod";
 
 const TOPICS = [
   "Arrays",
@@ -44,10 +46,10 @@ const DIFFICULTIES = [
 ] as const;
 
 const DURATIONS = [
-  { value: "15", label: "15 min", description: "Quick practice" },
-  { value: "30", label: "30 min", description: "Standard round" },
-  { value: "45", label: "45 min", description: "Full problem" },
-  { value: "60", label: "60 min", description: "Extended session" },
+  { value: 15, label: "15 min", description: "Quick practice" },
+  { value: 30, label: "30 min", description: "Standard round" },
+  { value: 45, label: "45 min", description: "Full problem" },
+  { value: 60, label: "60 min", description: "Extended session" },
 ] as const;
 
 type Duration = (typeof DURATIONS)[number]["value"];
@@ -73,7 +75,7 @@ type Mode = (typeof MODES)[number]["value"];
 export interface InterviewConfig {
   topic: string;
   difficulty: Difficulty;
-  duration: string;
+  duration: number;
   mode: Mode;
 }
 
@@ -84,18 +86,40 @@ interface InterviewConfigProps {
 export function InterviewConfig({ onStart }: InterviewConfigProps) {
   const [topic, setTopic] = useState<string>(TOPICS[0]);
   const [difficulty, setDifficulty] = useState<Difficulty>("medium");
-  const [duration, setDuration] = useState<Duration>("30");
+  const [duration, setDuration] = useState<Duration>(30);
   const [mode, setMode] = useState<Mode>("guided");
 
-  const handleStartInterview = () => {
-    onStart?.({
-      topic,
-      difficulty,
-      duration: duration[0],
-      mode,
-    });
-    // TODO: POST this configuration to /api/interview/start
+  const router = useRouter();
+
+const handleStartInterview = async () => {
+  const payload = {
+    topic,
+    difficulty,
+    duration,
+    mode,
   };
+
+  try {
+    const response = await fetch("/api/interview/start", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      console.error(result);
+      return;
+    }
+
+    router.push(`/interview/${result.data.interviewId}`);
+  } catch (error) {
+    console.error("Failed to start interview:", error);
+  }
+};
 
   return (
     <Card className="w-full max-w-3xl border-border/70 bg-card shadow-lg">
@@ -121,7 +145,14 @@ export function InterviewConfig({ onStart }: InterviewConfigProps) {
             <Label>Topic</Label>
           </div>
 
-          <Select value={topic} onValueChange={setTopic}>
+          <Select
+  value={difficulty}
+  onValueChange={(value) => {
+    if (value !== null) {
+      setDifficulty(value);
+    }
+  }}
+>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select a topic" />
             </SelectTrigger>
@@ -150,9 +181,8 @@ export function InterviewConfig({ onStart }: InterviewConfigProps) {
             {DIFFICULTIES.map((item) => (
               <Label key={item.value} htmlFor={`difficulty-${item.value}`} className="cursor-pointer">
                 <div
-                  className={`flex items-start gap-3 rounded-lg border p-4 transition-colors ${
-                    difficulty === item.value ? "border-primary bg-primary/5" : "hover:bg-muted/50"
-                  }`}
+                  className={`flex items-start gap-3 rounded-lg border p-4 transition-colors ${difficulty === item.value ? "border-primary bg-primary/5" : "hover:bg-muted/50"
+                    }`}
                 >
                   <RadioGroupItem id={`difficulty-${item.value}`} value={item.value} />
                   <div>
@@ -166,34 +196,33 @@ export function InterviewConfig({ onStart }: InterviewConfigProps) {
         </div>
 
         {/* Duration */}
-<div className="space-y-4">
-  <div className="flex items-center gap-2">
-    <Clock3 className="size-4 text-muted-foreground" />
-    <Label>Duration</Label>
-  </div>
-
-  <RadioGroup
-    value={duration}
-    onValueChange={(v) => setDuration(v as Duration)}
-    className="grid gap-3 md:grid-cols-4"
-  >
-    {DURATIONS.map((item) => (
-      <Label key={item.value} htmlFor={`duration-${item.value}`} className="cursor-pointer">
-        <div
-          className={`flex items-start gap-3 rounded-lg border p-4 transition-colors ${
-            duration === item.value ? "border-primary bg-primary/5" : "hover:bg-muted/50"
-          }`}
-        >
-          <RadioGroupItem id={`duration-${item.value}`} value={item.value} />
-          <div>
-            <p className="font-medium">{item.label}</p>
-            <p className="mt-1 text-xs text-muted-foreground">{item.description}</p>
+        <div className="space-y-4">
+          <div className="flex items-center gap-2">
+            <Clock3 className="size-4 text-muted-foreground" />
+            <Label>Duration</Label>
           </div>
+
+          <RadioGroup
+            value={duration}
+            onValueChange={(v) => setDuration(Number(v) as Duration)}
+            className="grid gap-3 md:grid-cols-4"
+          >
+            {DURATIONS.map((item) => (
+              <Label key={item.value} htmlFor={`duration-${item.value}`} className="cursor-pointer">
+                <div
+                  className={`flex items-start gap-3 rounded-lg border p-4 transition-colors ${duration === item.value ? "border-primary bg-primary/5" : "hover:bg-muted/50"
+                    }`}
+                >
+                  <RadioGroupItem id={`duration-${item.value}`} value={item.value} />
+                  <div>
+                    <p className="font-medium">{item.label}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">{item.description}</p>
+                  </div>
+                </div>
+              </Label>
+            ))}
+          </RadioGroup>
         </div>
-      </Label>
-    ))}
-  </RadioGroup>
-</div>
 
         {/* Interview Mode */}
         <div className="space-y-4">
@@ -217,9 +246,8 @@ export function InterviewConfig({ onStart }: InterviewConfigProps) {
               return (
                 <Label key={item.value} htmlFor={`mode-${item.value}`} className="cursor-pointer">
                   <div
-                    className={`flex gap-4 rounded-lg border p-4 transition-colors ${
-                      mode === item.value ? "border-primary bg-primary/5" : "hover:bg-muted/50"
-                    }`}
+                    className={`flex gap-4 rounded-lg border p-4 transition-colors ${mode === item.value ? "border-primary bg-primary/5" : "hover:bg-muted/50"
+                      }`}
                   >
                     <RadioGroupItem id={`mode-${item.value}`} value={item.value} />
                     <div className="flex gap-3">
