@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getQuestions } from "@/lib/interview/questions";
+import { getQuestions } from "@/lib/interview/question";
 
 export async function GET() {
     const questions = await getQuestions("Arrays", "Easy");

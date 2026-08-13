@@ -7,6 +7,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// =========================================
+// AUTHENTICATION
+// =========================================
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -15,31 +19,35 @@ model User {
   image         String?
   password      String?
 
-  accounts      Account[]
-  sessions      Session[]
+  accounts   Account[]
+  sessions   Session[]
+  interviews Interview[]
+  reports    Report[]
 
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
+  id     String @id @default(cuid())
+  userId String
 
-  refresh_token      String? @db.Text
-  access_token       String? @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String? @db.Text
-  session_state      String?
+  type              String
+  provider          String
+  providerAccountId String
+
+  refresh_token String? @db.Text
+  access_token  String? @db.Text
+  expires_at    Int?
+  token_type    String?
+  scope         String?
+  id_token      String? @db.Text
+  session_state String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model Session {
@@ -49,6 +57,8 @@ model Session {
   expires      DateTime
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model VerificationToken {
@@ -57,4 +67,91 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+// =========================================
+// INTERVIEW
+// =========================================
+
+model Interview {
+  id     String @id @default(cuid())
+  userId String
+
+  topic         String
+  difficulty    String
+  mode          String
+  duration      Int
+  questionCount Int
+
+  status String @default("ACTIVE")
+
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  questions InterviewQuestion[]
+  report    Report?
+
+  @@index([userId])
+  @@index([userId, startedAt])
+  @@index([status])
+}
+
+// =========================================
+// QUESTIONS IN AN INTERVIEW
+// =========================================
+
+model InterviewQuestion {
+  id          String @id @default(cuid())
+  interviewId String
+
+  questionId String
+  questionNo Int
+
+  status String @default("NOT_STARTED")
+
+  startedAt   DateTime?
+  completedAt DateTime?
+
+  hintsUsed Int @default(0)
+
+  interview Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+
+  @@unique([interviewId, questionNo])
+  @@index([interviewId])
+  @@index([questionId])
+}
+
+// =========================================
+// FINAL REPORT
+// =========================================
+
+model Report {
+  id          String @id @default(cuid())
+  interviewId String @unique
+  userId      String
+
+  overallScore Int?
+
+  communicationScore        Int?
+  problemUnderstandingScore Int?
+  algorithmChoiceScore      Int?
+  codingScore               Int?
+  debuggingScore            Int?
+
+  strengths       String[] @default([])
+  weaknesses      String[] @default([])
+  recommendations String[] @default([])
+
+  summary String? @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  interview Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, createdAt])
 }

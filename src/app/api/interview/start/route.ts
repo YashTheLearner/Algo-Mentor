@@ -50,7 +50,7 @@ export async function POST(request: Request) {
 
     const interviewId = randomUUID();
 
-    startInterview(body, interviewId);
+    await startInterview(body, interviewId , session.user.id);
 
 
     const response: StartInterviewResponse = {

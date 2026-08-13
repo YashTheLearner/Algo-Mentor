@@ -1,9 +1,16 @@
 import { StartInterviewRequest, StartInterviewResponse } from "@/types/interview";
-import { getQuestions } from "./questions";
+import { getQuestions } from "./question";
 import { storeInterviewSession } from "./redis";
+import { createInterview } from "@/services/interview/create-interview";
+import type { Question } from "@/types/question";
 
+interface CreateInterviewParams {
+  userId: string;
+  data: StartInterviewRequest;
+  questions: Question[];
+}
 
-export async function startInterview(data: StartInterviewRequest, interviewId: string) {
+export async function startInterview(data: StartInterviewRequest, interviewId: string, userId: string) {
 
     const questionNo = Math.floor(Math.random() * (5));
 
@@ -43,7 +50,12 @@ export async function startInterview(data: StartInterviewRequest, interviewId: s
     console.log(interviewSession);
 
     await storeInterviewSession(interviewId, interviewSession, data);
-
+    const interview = await createInterview({
+      interviewId: interviewId,
+  userId: userId,
+  data,
+  questions: questions[questionNo].id ? [{ id: questions[questionNo].id }] : [],
+});
 
 }
 
