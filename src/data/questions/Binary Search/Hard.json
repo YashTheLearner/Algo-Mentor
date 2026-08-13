@@ -1,0 +1,432 @@
+[
+{
+"id": "binarysearch_hard_001",
+"title": "Median of Two Sorted Arrays",
+"topic": "Binary Search",
+"difficulty": "Hard",
+"description": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays combined. The overall run time complexity should be O(log(m+n)). Return the result as a string representing a floating point number rounded to 5 decimal places.",
+"constraints": [
+"0 <= m, n <= 10^6",
+"1 <= m + n <= 2 * 10^6",
+"-10^6 <= nums1[i], nums2[i] <= 10^6",
+"The algorithm must achieve O(log(min(m,n))) time complexity"
+],
+"examples": [
+{
+"input": "nums1 = [1, 3], nums2 = [2]",
+"output": "2.00000",
+"explanation": "The merged array is [1,2,3], and its median is 2."
+},
+{
+"input": "nums1 = [1, 2], nums2 = [3, 4]",
+"output": "2.50000",
+"explanation": "The merged array is [1,2,3,4], and its median is (2+3)/2 = 2.5."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n double solve(vector<int>& nums1, vector<int>& nums2) {\n \n }\n};",
+"java": "class Solution {\n public double solve(int[] nums1, int[] nums2) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, nums1, nums2):\n pass",
+"javascript": "class Solution {\n solve(nums1, nums2) {\n \n }\n}",
+"typescript": "class Solution {\n solve(nums1: number[], nums2: number[]): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[1, 3], [2]",
+"expectedOutput": "2.00000"
+},
+{
+"input": "[1, 2], [3, 4]",
+"expectedOutput": "2.50000"
+},
+{
+"input": "[], [1]",
+"expectedOutput": "1.00000"
+}
+],
+"hidden": [
+{
+"input": "[], [2, 3]",
+"expectedOutput": "2.50000"
+},
+{
+"input": "[2], []",
+"expectedOutput": "2.00000"
+},
+{
+"input": "[0, 0], [0, 0]",
+"expectedOutput": "0.00000"
+},
+{
+"input": "[-5, -3, -1], [-4, -2]",
+"expectedOutput": "-3.00000"
+},
+{
+"input": "[1, 2, 3, 4, 5], []",
+"expectedOutput": "3.00000"
+},
+{
+"input": "[5, 4, 3, 2, 1] does not apply, [1, 2, 3, 4, 5]",
+"expectedOutput": "3.00000"
+},
+{
+"input": "[1000000], [-1000000]",
+"expectedOutput": "0.00000"
+},
+{
+"input": "[1, 1, 1], [1, 1, 1]",
+"expectedOutput": "1.00000"
+},
+{
+"input": "[3], [-2, -1]",
+"expectedOutput": "-1.00000"
+}
+]
+}
+},
+{
+"id": "binarysearch_hard_002",
+"title": "Split Array Largest Sum",
+"topic": "Binary Search",
+"difficulty": "Hard",
+"description": "Given an integer array nums and an integer k, split nums into k non-empty contiguous subarrays such that the largest sum among these subarrays is minimized. Return the minimized largest sum.",
+"constraints": [
+"1 <= nums.length <= 1000",
+"0 <= nums[i] <= 10^6",
+"1 <= k <= min(50, nums.length)",
+"The subarrays must be contiguous and non-empty"
+],
+"examples": [
+{
+"input": "nums = [7, 2, 5, 10, 8], k = 2",
+"output": "18",
+"explanation": "Splitting into [7,2,5] and [10,8] gives sums 14 and 18. The largest sum is minimized at 18."
+},
+{
+"input": "nums = [1, 2, 3, 4, 5], k = 2",
+"output": "9",
+"explanation": "Splitting into [1,2,3] and [4,5] gives sums 6 and 9. The largest sum is minimized at 9."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<int>& nums, int k) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[] nums, int k) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, nums, k):\n pass",
+"javascript": "class Solution {\n solve(nums, k) {\n \n }\n}",
+"typescript": "class Solution {\n solve(nums: number[], k: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[7, 2, 5, 10, 8], 2",
+"expectedOutput": "18"
+},
+{
+"input": "[1, 2, 3, 4, 5], 2",
+"expectedOutput": "9"
+},
+{
+"input": "[1, 4, 4], 3",
+"expectedOutput": "4"
+}
+],
+"hidden": [
+{
+"input": "[1], 1",
+"expectedOutput": "1"
+},
+{
+"input": "[0, 0, 0], 1",
+"expectedOutput": "0"
+},
+{
+"input": "[1, 2, 3, 4, 5], 1",
+"expectedOutput": "15"
+},
+{
+"input": "[1, 2, 3, 4, 5], 5",
+"expectedOutput": "5"
+},
+{
+"input": "[5, 4, 3, 2, 1], 5",
+"expectedOutput": "5"
+},
+{
+"input": "[1000000, 1000000, 1000000], 3",
+"expectedOutput": "1000000"
+},
+{
+"input": "[1000000, 1000000, 1000000], 1",
+"expectedOutput": "3000000"
+},
+{
+"input": "[2, 3, 1, 1, 1, 1, 1], 4",
+"expectedOutput": "3"
+},
+{
+"input": "[10, 10, 10, 10, 10, 10], 3",
+"expectedOutput": "20"
+}
+]
+}
+},
+{
+"id": "binarysearch_hard_003",
+"title": "Kth Smallest Element in a Sorted Matrix",
+"topic": "Binary Search",
+"difficulty": "Hard",
+"description": "Given an n x n matrix where each row and column is sorted in ascending order, return the kth smallest element in the matrix, using binary search on value range for an efficient solution.",
+"constraints": [
+"n == matrix.length == matrix[i].length",
+"1 <= n <= 300",
+"-10^9 <= matrix[i][j] <= 10^9",
+"1 <= k <= n^2"
+],
+"examples": [
+{
+"input": "matrix = [[1,5,9],[10,11,13],[12,13,15]], k = 8",
+"output": "13",
+"explanation": "The sorted order of elements is 1,5,9,10,11,12,13,13,15, and the 8th smallest is 13."
+},
+{
+"input": "matrix = [[-5]], k = 1",
+"output": "-5",
+"explanation": "The only element in the matrix is -5, which is the 1st smallest."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<vector<int>>& matrix, int k) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[][] matrix, int k) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, matrix, k):\n pass",
+"javascript": "class Solution {\n solve(matrix, k) {\n \n }\n}",
+"typescript": "class Solution {\n solve(matrix: number[][], k: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[[1,5,9],[10,11,13],[12,13,15]], 8",
+"expectedOutput": "13"
+},
+{
+"input": "[[-5]], 1",
+"expectedOutput": "-5"
+},
+{
+"input": "[[1,2],[1,3]], 2",
+"expectedOutput": "1"
+}
+],
+"hidden": [
+{
+"input": "[[1]], 1",
+"expectedOutput": "1"
+},
+{
+"input": "[[1,2],[3,4]], 1",
+"expectedOutput": "1"
+},
+{
+"input": "[[1,2],[3,4]], 4",
+"expectedOutput": "4"
+},
+{
+"input": "[[-1000000000,-1000000000],[-1000000000,-1000000000]], 3",
+"expectedOutput": "-1000000000"
+},
+{
+"input": "[[1000000000,1000000000],[1000000000,1000000000]], 1",
+"expectedOutput": "1000000000"
+},
+{
+"input": "[[1,2,3],[4,5,6],[7,8,9]], 5",
+"expectedOutput": "5"
+},
+{
+"input": "[[1,2,3],[4,5,6],[7,8,9]], 9",
+"expectedOutput": "9"
+},
+{
+"input": "[[5,5,5],[5,5,5],[5,5,5]], 5",
+"expectedOutput": "5"
+},
+{
+"input": "[[1,3,5],[6,7,12],[11,14,14]], 6",
+"expectedOutput": "11"
+}
+]
+}
+},
+{
+"id": "binarysearch_hard_004",
+"title": "Minimum Number of Days to Make m Bouquets",
+"topic": "Binary Search",
+"difficulty": "Hard",
+"description": "Given an integer array bloomDay, an integer m, and an integer k, return the minimum number of days needed for us to make m bouquets from the garden. Each bouquet needs k adjacent flowers from the garden, and a flower can only be used once. A flower is available to use on day bloomDay[i] once it has bloomed. If it is impossible to make m bouquets, return -1.",
+"constraints": [
+"bloomDay.length == n",
+"1 <= n <= 10^5",
+"1 <= bloomDay[i] <= 10^9",
+"1 <= m <= 10^6, 1 <= k <= n"
+],
+"examples": [
+{
+"input": "bloomDay = [1, 10, 3, 10, 2], m = 3, k = 1",
+"output": "3",
+"explanation": "By day 3, three flowers have bloomed, allowing three bouquets of one flower each to be made."
+},
+{
+"input": "bloomDay = [1, 10, 3, 10, 2], m = 3, k = 2",
+"output": "-1",
+"explanation": "There aren't enough adjacent blooming flowers to make 3 bouquets of 2 flowers each, so it's impossible."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<int>& bloomDay, int m, int k) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[] bloomDay, int m, int k) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, bloomDay, m, k):\n pass",
+"javascript": "class Solution {\n solve(bloomDay, m, k) {\n \n }\n}",
+"typescript": "class Solution {\n solve(bloomDay: number[], m: number, k: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[1, 10, 3, 10, 2], 3, 1",
+"expectedOutput": "3"
+},
+{
+"input": "[1, 10, 3, 10, 2], 3, 2",
+"expectedOutput": "-1"
+},
+{
+"input": "[7, 7, 7, 7, 12, 7, 7], 2, 3",
+"expectedOutput": "12"
+}
+],
+"hidden": [
+{
+"input": "[1], 1, 1",
+"expectedOutput": "1"
+},
+{
+"input": "[1], 2, 1",
+"expectedOutput": "-1"
+},
+{
+"input": "[1000000000], 1, 1",
+"expectedOutput": "1000000000"
+},
+{
+"input": "[1, 1, 1, 1, 1], 1, 5",
+"expectedOutput": "1"
+},
+{
+"input": "[5, 4, 3, 2, 1], 5, 1",
+"expectedOutput": "5"
+},
+{
+"input": "[1, 2, 3, 4, 5], 5, 1",
+"expectedOutput": "5"
+},
+{
+"input": "[1, 1, 1, 1, 1, 1, 1], 2, 3",
+"expectedOutput": "1"
+},
+{
+"input": "[9, 9, 9], 3, 1",
+"expectedOutput": "9"
+},
+{
+"input": "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3, 3",
+"expectedOutput": "8"
+}
+]
+}
+},
+{
+"id": "binarysearch_hard_005",
+"title": "Maximum Number of Removable Characters",
+"topic": "Binary Search",
+"difficulty": "Hard",
+"description": "You are given two strings s and p represented as arrays of characters, where p is a subsequence of s. You are also given an array of distinct integers removable representing indices (0-indexed, into s) that are removed in the order given. Return the maximum k such that after removing the characters at the first k indices from removable, p is still a subsequence of s. Since the strings are given as arrays of characters, s and p are provided as strings, and removable as an array of integers.",
+"constraints": [
+"1 <= p.length <= s.length <= 10^5",
+"0 <= removable.length < s.length",
+"0 <= removable[i] < s.length",
+"p is a subsequence of s at the start"
+],
+"examples": [
+{
+"input": "s = \"abcacb\", p = \"ab\", removable = [3, 1, 0]",
+"output": "2",
+"explanation": "After removing the characters at indices 3 and 1, s becomes 'accb' and 'ab' is still a subsequence. Removing index 0 as well breaks it, so the answer is 2."
+},
+{
+"input": "s = \"abcbddddd\", p = \"abcd\", removable = [3, 2, 1, 4, 5, 6]",
+"output": "1",
+"explanation": "After removing the character at index 3, 'abcd' is still a subsequence of the resulting string, but removing more breaks it."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(string s, string p, vector<int>& removable) {\n \n }\n};",
+"java": "class Solution {\n public int solve(String s, String p, int[] removable) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, s, p, removable):\n pass",
+"javascript": "class Solution {\n solve(s, p, removable) {\n \n }\n}",
+"typescript": "class Solution {\n solve(s: string, p: string, removable: number[]): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "\"abcacb\", \"ab\", [3, 1, 0]",
+"expectedOutput": "2"
+},
+{
+"input": "\"abcbddddd\", \"abcd\", [3, 2, 1, 4, 5, 6]",
+"expectedOutput": "1"
+},
+{
+"input": "\"abcab\", \"abc\", [0, 1, 2, 3, 4]",
+"expectedOutput": "0"
+}
+],
+"hidden": [
+{
+"input": "\"a\", \"a\", []",
+"expectedOutput": "0"
+},
+{
+"input": "\"ab\", \"a\", [1]",
+"expectedOutput": "1"
+},
+{
+"input": "\"ab\", \"a\", [0]",
+"expectedOutput": "0"
+},
+{
+"input": "\"aaaa\", \"aa\", [0, 1, 2, 3]",
+"expectedOutput": "2"
+},
+{
+"input": "\"abcdefghij\", \"abcdefghij\", [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]",
+"expectedOutput": "0"
+},
+{
+"input": "\"zyx\", \"zyx\", [0, 1, 2]",
+"expectedOutput": "0"
+},
+{
+"input": "\"aabbcc\", \"abc\", [1, 3, 5]",
+"expectedOutput": "3"
+},
+{
+"input": "\"tqorpiemekbushuflqasnvxmxlxikagvvfnyjenutaltdpkfxrsvjrutodbtaewcvfsdmqxbtsjvyzuljvmuxnlacylsrpqfcvieckdirsxkypgjmqhgrfjrymgvfmedsxfnyoqfbfsroxplfrhcuxjrmpczvsplmhnhczxaikuxzxrepgtreuvhoteorpvfrolwadfphgzuciqzalspyowbvqewbimrmmpljqrjqxbchkyagcvswdpxexuzqgshsyghjonvxejgacxbtxgzahwptlmdiywjpqmzwbnmxsxmbrjubgpvyxvnhcsbmegdjkzlvhqbgtcbolyfdcfuoegzalwdedscxddtaywcsupnjuxbfnpqjzeqlivtoqhkycvbbpbdcvvkilcivgltybizxtozdqifxeghshvskxfktkkuurskaocgbfzfaeqxqchnlryphoqwlncsmmldezruvydtlheshhqbctdjazxrxqjjjwzurmzajxsnlyhabaqxqykgpurxzrqhoyeongwezhhdmluiplhydtwrpjfnfrtdlylcgzzupwwqnmfaifdxeasieqxjxdqiwzhqedmqrqgvcbwfgpqztzruovcinhoxxejjjqbbrgeflmumcneqlqhtabcpxwrn\", \"z\", [0]",
+"expectedOutput": "0"
+},
+{
+"input": "\"aXbXcXd\", \"abcd\", [1, 3, 5]",
+"expectedOutput": "3"
+}
+]
+}
+}
+]

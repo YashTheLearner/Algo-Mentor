@@ -1,0 +1,432 @@
+[
+{
+"id": "binarysearch_medium_001",
+"title": "Search in Rotated Sorted Array",
+"topic": "Binary Search",
+"difficulty": "Medium",
+"description": "There is an integer array nums sorted in ascending order with distinct values, which is then possibly rotated at an unknown pivot index. Given the rotated array nums and an integer target, return the index of target if it is in nums, or -1 if it is not in nums. You must write an algorithm with O(log n) runtime complexity.",
+"constraints": [
+"1 <= nums.length <= 5000",
+"-10^4 <= nums[i] <= 10^4",
+"All values of nums are unique",
+"nums is guaranteed to be rotated at some pivot"
+],
+"examples": [
+{
+"input": "nums = [4, 5, 6, 7, 0, 1, 2], target = 0",
+"output": "4",
+"explanation": "The target 0 is located at index 4 in the rotated array."
+},
+{
+"input": "nums = [4, 5, 6, 7, 0, 1, 2], target = 3",
+"output": "-1",
+"explanation": "The target 3 does not exist in the array."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<int>& nums, int target) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[] nums, int target) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, nums, target):\n pass",
+"javascript": "class Solution {\n solve(nums, target) {\n \n }\n}",
+"typescript": "class Solution {\n solve(nums: number[], target: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[4, 5, 6, 7, 0, 1, 2], 0",
+"expectedOutput": "4"
+},
+{
+"input": "[4, 5, 6, 7, 0, 1, 2], 3",
+"expectedOutput": "-1"
+},
+{
+"input": "[1], 0",
+"expectedOutput": "-1"
+}
+],
+"hidden": [
+{
+"input": "[1], 1",
+"expectedOutput": "0"
+},
+{
+"input": "[1, 2], 1",
+"expectedOutput": "0"
+},
+{
+"input": "[1, 2], 2",
+"expectedOutput": "1"
+},
+{
+"input": "[1, 2, 3, 4, 5], 1",
+"expectedOutput": "0"
+},
+{
+"input": "[5, 1, 2, 3, 4], 5",
+"expectedOutput": "0"
+},
+{
+"input": "[-9999, -5000, 0, 5000, 9999], -5000",
+"expectedOutput": "1"
+},
+{
+"input": "[5000, 9999, -9999, -5000, 0], -9999",
+"expectedOutput": "2"
+},
+{
+"input": "[3, 1], 1",
+"expectedOutput": "1"
+},
+{
+"input": "[6, 7, 8, 1, 2, 3, 4, 5], 8",
+"expectedOutput": "2"
+}
+]
+}
+},
+{
+"id": "binarysearch_medium_002",
+"title": "Find Minimum in Rotated Sorted Array",
+"topic": "Binary Search",
+"difficulty": "Medium",
+"description": "Suppose an array of length n sorted in ascending order is rotated between 1 and n times. Given the sorted rotated array nums of unique elements, return the minimum element of this array. You must write an algorithm that runs in O(log n) time.",
+"constraints": [
+"1 <= nums.length <= 5000",
+"-5000 <= nums[i] <= 5000",
+"All the integers of nums are unique",
+"nums is sorted and rotated between 1 and n times"
+],
+"examples": [
+{
+"input": "nums = [3, 4, 5, 1, 2]",
+"output": "1",
+"explanation": "The original array was [1,2,3,4,5] rotated 3 times, so the minimum is 1."
+},
+{
+"input": "nums = [4, 5, 6, 7, 0, 1, 2]",
+"output": "0",
+"explanation": "The original array was [0,1,2,4,5,6,7] rotated 4 times, so the minimum is 0."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<int>& nums) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[] nums) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, nums):\n pass",
+"javascript": "class Solution {\n solve(nums) {\n \n }\n}",
+"typescript": "class Solution {\n solve(nums: number[]): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[3, 4, 5, 1, 2]",
+"expectedOutput": "1"
+},
+{
+"input": "[4, 5, 6, 7, 0, 1, 2]",
+"expectedOutput": "0"
+},
+{
+"input": "[11, 13, 15, 17]",
+"expectedOutput": "11"
+}
+],
+"hidden": [
+{
+"input": "[1]",
+"expectedOutput": "1"
+},
+{
+"input": "[2, 1]",
+"expectedOutput": "1"
+},
+{
+"input": "[1, 2]",
+"expectedOutput": "1"
+},
+{
+"input": "[1, 2, 3, 4, 5]",
+"expectedOutput": "1"
+},
+{
+"input": "[5, 1, 2, 3, 4]",
+"expectedOutput": "1"
+},
+{
+"input": "[-5000, -4000, -3000, -5000], -5000",
+"expectedOutput": "-5000"
+},
+{
+"input": "[5000, -5000, 0, 1000, 2000, 3000, 4000]",
+"expectedOutput": "-5000"
+},
+{
+"input": "[2, 3, 4, 5, -5000]",
+"expectedOutput": "-5000"
+},
+{
+"input": "[7, 8, 9, 10, 1, 2, 3, 4, 5, 6]",
+"expectedOutput": "1"
+}
+]
+}
+},
+{
+"id": "binarysearch_medium_003",
+"title": "Koko Eating Bananas",
+"topic": "Binary Search",
+"difficulty": "Medium",
+"description": "Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours. Koko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, she eats all of them instead and won't eat any more bananas during this hour. Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return. Return the minimum integer k such that she can eat all the bananas within h hours.",
+"constraints": [
+"1 <= piles.length <= 10^4",
+"piles.length <= h <= 10^9",
+"1 <= piles[i] <= 10^9",
+"Koko must finish all bananas within h hours"
+],
+"examples": [
+{
+"input": "piles = [3, 6, 7, 11], h = 8",
+"output": "4",
+"explanation": "Eating at speed 4 allows Koko to finish all piles within 8 hours."
+},
+{
+"input": "piles = [30, 11, 23, 4, 20], h = 5",
+"output": "30",
+"explanation": "With only 5 hours and 5 piles, Koko must eat one pile per hour, so her speed must be at least the largest pile, 30."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<int>& piles, int h) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[] piles, int h) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, piles, h):\n pass",
+"javascript": "class Solution {\n solve(piles, h) {\n \n }\n}",
+"typescript": "class Solution {\n solve(piles: number[], h: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[3, 6, 7, 11], 8",
+"expectedOutput": "4"
+},
+{
+"input": "[30, 11, 23, 4, 20], 5",
+"expectedOutput": "30"
+},
+{
+"input": "[30, 11, 23, 4, 20], 6",
+"expectedOutput": "23"
+}
+],
+"hidden": [
+{
+"input": "[1], 1",
+"expectedOutput": "1"
+},
+{
+"input": "[1000000000], 1",
+"expectedOutput": "1000000000"
+},
+{
+"input": "[1000000000], 1000000000",
+"expectedOutput": "1"
+},
+{
+"input": "[1, 1, 1, 1], 4",
+"expectedOutput": "1"
+},
+{
+"input": "[5, 5, 5, 5], 4",
+"expectedOutput": "5"
+},
+{
+"input": "[1, 2, 3, 4, 5], 5",
+"expectedOutput": "5"
+},
+{
+"input": "[5, 4, 3, 2, 1], 5",
+"expectedOutput": "5"
+},
+{
+"input": "[312884470], 312884469",
+"expectedOutput": "2"
+},
+{
+"input": "[10, 10, 10, 10, 10], 50",
+"expectedOutput": "1"
+}
+]
+}
+},
+{
+"id": "binarysearch_medium_004",
+"title": "Capacity To Ship Packages Within D Days",
+"topic": "Binary Search",
+"difficulty": "Medium",
+"description": "A conveyor belt has packages that must be shipped from one port to another within days days. The ith package on the conveyor belt has a weight of weights[i]. Each day, we load the ship with packages on the conveyor belt (in the order given by weights). We may not load more weight than the maximum weight capacity of the ship. Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within days days.",
+"constraints": [
+"1 <= days <= weights.length <= 5 * 10^4",
+"1 <= weights[i] <= 500",
+"Packages must be shipped in the given order",
+"The ship capacity must be at least the maximum single package weight"
+],
+"examples": [
+{
+"input": "weights = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], days = 5",
+"output": "15",
+"explanation": "A ship capacity of 15 allows all packages to be shipped within 5 days by splitting them appropriately."
+},
+{
+"input": "weights = [3, 2, 2, 4, 1, 4], days = 3",
+"output": "6",
+"explanation": "A ship capacity of 6 allows all packages to be shipped within 3 days."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<int>& weights, int days) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[] weights, int days) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, weights, days):\n pass",
+"javascript": "class Solution {\n solve(weights, days) {\n \n }\n}",
+"typescript": "class Solution {\n solve(weights: number[], days: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5",
+"expectedOutput": "15"
+},
+{
+"input": "[3, 2, 2, 4, 1, 4], 3",
+"expectedOutput": "6"
+},
+{
+"input": "[1, 2, 3, 1, 1], 4",
+"expectedOutput": "3"
+}
+],
+"hidden": [
+{
+"input": "[1], 1",
+"expectedOutput": "1"
+},
+{
+"input": "[500], 1",
+"expectedOutput": "500"
+},
+{
+"input": "[1, 1, 1, 1, 1], 5",
+"expectedOutput": "1"
+},
+{
+"input": "[1, 1, 1, 1, 1], 1",
+"expectedOutput": "5"
+},
+{
+"input": "[500, 500, 500, 500], 4",
+"expectedOutput": "500"
+},
+{
+"input": "[500, 500, 500, 500], 2",
+"expectedOutput": "1000"
+},
+{
+"input": "[5, 4, 3, 2, 1], 5",
+"expectedOutput": "5"
+},
+{
+"input": "[1, 2, 3, 4, 5], 1",
+"expectedOutput": "15"
+},
+{
+"input": "[10, 10, 10, 10, 10, 10, 10, 10, 10, 10], 5",
+"expectedOutput": "20"
+}
+]
+}
+},
+{
+"id": "binarysearch_medium_005",
+"title": "Find K Closest Elements",
+"topic": "Binary Search",
+"difficulty": "Medium",
+"description": "Given a sorted integer array arr, two integers k and x, return the k closest integers to x in the array. The result should also be sorted in ascending order. An integer a is closer to x than an integer b if |a - x| < |b - x|, or |a - x| == |b - x| and a < b.",
+"constraints": [
+"1 <= k <= arr.length",
+"1 <= arr.length <= 10^4",
+"arr is sorted in ascending order",
+"-10^4 <= arr[i], x <= 10^4"
+],
+"examples": [
+{
+"input": "arr = [1, 2, 3, 4, 5], k = 4, x = 3",
+"output": "[1, 2, 3, 4]",
+"explanation": "The 4 closest integers to 3 in the array are 1, 2, 3, and 4."
+},
+{
+"input": "arr = [1, 2, 3, 4, 5], k = 4, x = -1",
+"output": "[1, 2, 3, 4]",
+"explanation": "The 4 closest integers to -1 in the array are 1, 2, 3, and 4, since these are the smallest available values."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n vector<int> solve(vector<int>& arr, int k, int x) {\n \n }\n};",
+"java": "class Solution {\n public int[] solve(int[] arr, int k, int x) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, arr, k, x):\n pass",
+"javascript": "class Solution {\n solve(arr, k, x) {\n \n }\n}",
+"typescript": "class Solution {\n solve(arr: number[], k: number, x: number): number[] {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[1, 2, 3, 4, 5], 4, 3",
+"expectedOutput": "[1, 2, 3, 4]"
+},
+{
+"input": "[1, 2, 3, 4, 5], 4, -1",
+"expectedOutput": "[1, 2, 3, 4]"
+},
+{
+"input": "[1, 1, 1, 10, 10, 10], 1, 9",
+"expectedOutput": "[10]"
+}
+],
+"hidden": [
+{
+"input": "[1], 1, 1",
+"expectedOutput": "[1]"
+},
+{
+"input": "[1], 1, 5",
+"expectedOutput": "[1]"
+},
+{
+"input": "[1, 2, 3, 4, 5], 5, 3",
+"expectedOutput": "[1, 2, 3, 4, 5]"
+},
+{
+"input": "[-10000, -5000, 0, 5000, 10000], 2, 0",
+"expectedOutput": "[-5000, 0]"
+},
+{
+"input": "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3, 100",
+"expectedOutput": "[8, 9, 10]"
+},
+{
+"input": "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3, -100",
+"expectedOutput": "[1, 2, 3]"
+},
+{
+"input": "[1, 3, 3, 3, 5], 2, 3",
+"expectedOutput": "[3, 3]"
+},
+{
+"input": "[1, 2, 2, 2, 2, 2, 2, 3], 3, 2",
+"expectedOutput": "[2, 2, 2]"
+},
+{
+"input": "[0, 0, 1, 1, 1, 2, 3, 6, 7, 8], 4, 5",
+"expectedOutput": "[2, 3, 6, 7]"
+}
+]
+}
+}
+]

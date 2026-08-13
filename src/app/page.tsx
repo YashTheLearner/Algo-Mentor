@@ -4,7 +4,10 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+import { redirect } from "next/navigation";
+
 export default function HomePage() {
+   redirect("/dashboard");
   return (
     <main className="min-h-screen bg-background text-foreground p-8">
       <div className="mx-auto max-w-6xl space-y-8">

@@ -1,0 +1,433 @@
+[
+    {
+"id": "binarysearch_easy_001",
+"title": "Find First and Last Position of Element",
+"topic": "Binary Search",
+"difficulty": "Easy",
+"description": "Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. If target is not found in the array, return [-1, -1]. You must write an algorithm with O(log n) runtime complexity.",
+"constraints": [
+"0 <= nums.length <= 10^5",
+"-10^9 <= nums[i] <= 10^9",
+"nums is sorted in non-decreasing order",
+"-10^9 <= target <= 10^9"
+],
+"examples": [
+{
+"input": "nums = [5, 7, 7, 8, 8, 10], target = 8",
+"output": "[3, 4]",
+"explanation": "The target 8 first appears at index 3 and last appears at index 4."
+},
+{
+"input": "nums = [5, 7, 7, 8, 8, 10], target = 6",
+"output": "[-1, -1]",
+"explanation": "Target 6 does not exist in the array."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n vector<int> solve(vector<int>& nums, int target) {\n \n }\n};",
+"java": "class Solution {\n public int[] solve(int[] nums, int target) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, nums, target):\n pass",
+"javascript": "class Solution {\n solve(nums, target) {\n \n }\n}",
+"typescript": "class Solution {\n solve(nums: number[], target: number): number[] {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[5, 7, 7, 8, 8, 10], 8",
+"expectedOutput": "[3, 4]"
+},
+{
+"input": "[5, 7, 7, 8, 8, 10], 6",
+"expectedOutput": "[-1, -1]"
+},
+{
+"input": "[], 0",
+"expectedOutput": "[-1, -1]"
+}
+],
+"hidden": [
+{
+"input": "[1], 1",
+"expectedOutput": "[0, 0]"
+},
+{
+"input": "[1], 2",
+"expectedOutput": "[-1, -1]"
+},
+{
+"input": "[2, 2, 2, 2, 2], 2",
+"expectedOutput": "[0, 4]"
+},
+{
+"input": "[-9, -7, -5, -3, -1], -5",
+"expectedOutput": "[2, 2]"
+},
+{
+"input": "[1, 2, 3, 4, 5], 5",
+"expectedOutput": "[4, 4]"
+},
+{
+"input": "[5, 4, 3, 2, 1], 3",
+"expectedOutput": "[-1, -1]"
+},
+{
+"input": "[1000000000, 1000000000], 1000000000",
+"expectedOutput": "[0, 1]"
+},
+{
+"input": "[-1000000000, -1000000000], -1000000000",
+"expectedOutput": "[0, 1]"
+},
+{
+"input": "[1, 1, 2, 2, 2, 3, 3, 3, 3], 3",
+"expectedOutput": "[5, 8]"
+}
+]
+}
+},
+{
+"id": "binarysearch_easy_002",
+"title": "Binary Search in Sorted Array",
+"topic": "Binary Search",
+"difficulty": "Easy",
+"description": "Given an array of integers nums sorted in ascending order and an integer target, write a function to search target in nums. If target exists, return its index. Otherwise, return -1. You must write an algorithm with O(log n) runtime complexity.",
+"constraints": [
+"1 <= nums.length <= 10^4",
+"-10^4 < nums[i], target < 10^4",
+"All the integers in nums are unique",
+"nums is sorted in ascending order"
+],
+"examples": [
+{
+"input": "nums = [-1, 0, 3, 5, 9, 12], target = 9",
+"output": "4",
+"explanation": "9 exists in nums and its index is 4."
+},
+{
+"input": "nums = [-1, 0, 3, 5, 9, 12], target = 2",
+"output": "-1",
+"explanation": "2 does not exist in nums, so return -1."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<int>& nums, int target) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[] nums, int target) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, nums, target):\n pass",
+"javascript": "class Solution {\n solve(nums, target) {\n \n }\n}",
+"typescript": "class Solution {\n solve(nums: number[], target: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[-1, 0, 3, 5, 9, 12], 9",
+"expectedOutput": "4"
+},
+{
+"input": "[-1, 0, 3, 5, 9, 12], 2",
+"expectedOutput": "-1"
+},
+{
+"input": "[5], 5",
+"expectedOutput": "0"
+}
+],
+"hidden": [
+{
+"input": "[5], -5",
+"expectedOutput": "-1"
+},
+{
+"input": "[1, 2, 3, 4, 5], 1",
+"expectedOutput": "0"
+},
+{
+"input": "[1, 2, 3, 4, 5], 5",
+"expectedOutput": "4"
+},
+{
+"input": "[-9999, -5000, 0, 5000, 9999], -9999",
+"expectedOutput": "0"
+},
+{
+"input": "[-9999, -5000, 0, 5000, 9999], 9999",
+"expectedOutput": "4"
+},
+{
+"input": "[-9999, -5000, 0, 5000, 9999], 10000",
+"expectedOutput": "-1"
+},
+{
+"input": "[1, 3, 5, 7, 9, 11, 13], 7",
+"expectedOutput": "3"
+},
+{
+"input": "[2, 4, 6, 8, 10], 5",
+"expectedOutput": "-1"
+},
+{
+"input": "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 10",
+"expectedOutput": "9"
+}
+]
+}
+},
+{
+"id": "binarysearch_easy_003",
+"title": "First Bad Version",
+"topic": "Binary Search",
+"difficulty": "Easy",
+"description": "You are given n versions numbered from 1 to n, and you want to find the first bad version, which causes all the following ones to be bad. You are given an integer badVersion representing the first version that is bad (all versions from badVersion to n are bad, all versions before it are good). Given n and badVersion, return the first bad version using a binary search approach (simulate isBadVersion(v) as v >= badVersion).",
+"constraints": [
+"1 <= badVersion <= n <= 2^31 - 1",
+"1 <= n <= 10^9",
+"There is exactly one first bad version",
+"The solution should minimize the number of calls to isBadVersion"
+],
+"examples": [
+{
+"input": "n = 5, badVersion = 4",
+"output": "4",
+"explanation": "Versions 4 and 5 are bad, versions 1-3 are good. The first bad version is 4."
+},
+{
+"input": "n = 1, badVersion = 1",
+"output": "1",
+"explanation": "The only version is bad, so it is the first bad version."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(int n, int badVersion) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int n, int badVersion) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, n, badVersion):\n pass",
+"javascript": "class Solution {\n solve(n, badVersion) {\n \n }\n}",
+"typescript": "class Solution {\n solve(n: number, badVersion: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "5, 4",
+"expectedOutput": "4"
+},
+{
+"input": "1, 1",
+"expectedOutput": "1"
+},
+{
+"input": "10, 1",
+"expectedOutput": "1"
+}
+],
+"hidden": [
+{
+"input": "1, 1",
+"expectedOutput": "1"
+},
+{
+"input": "2, 2",
+"expectedOutput": "2"
+},
+{
+"input": "2, 1",
+"expectedOutput": "1"
+},
+{
+"input": "100, 100",
+"expectedOutput": "100"
+},
+{
+"input": "100, 1",
+"expectedOutput": "1"
+},
+{
+"input": "1000000000, 500000000",
+"expectedOutput": "500000000"
+},
+{
+"input": "10, 5",
+"expectedOutput": "5"
+},
+{
+"input": "20, 20",
+"expectedOutput": "20"
+},
+{
+"input": "50, 25",
+"expectedOutput": "25"
+}
+]
+}
+},
+{
+"id": "binarysearch_easy_004",
+"title": "Square Root of a Number",
+"topic": "Binary Search",
+"difficulty": "Easy",
+"description": "Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well. You must not use any built-in exponent function or operator such as pow(x, 0.5) or x ** 0.5.",
+"constraints": [
+"0 <= x <= 2^31 - 1",
+"The result must be an integer (floored square root)",
+"Built-in power/sqrt functions are not allowed",
+"The solution should run in O(log x) time"
+],
+"examples": [
+{
+"input": "x = 4",
+"output": "2",
+"explanation": "The square root of 4 is 2, so the answer is 2."
+},
+{
+"input": "x = 8",
+"output": "2",
+"explanation": "The square root of 8 is approximately 2.828, and since we round it down, the answer is 2."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(int x) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int x) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, x):\n pass",
+"javascript": "class Solution {\n solve(x) {\n \n }\n}",
+"typescript": "class Solution {\n solve(x: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "4",
+"expectedOutput": "2"
+},
+{
+"input": "8",
+"expectedOutput": "2"
+},
+{
+"input": "0",
+"expectedOutput": "0"
+}
+],
+"hidden": [
+{
+"input": "1",
+"expectedOutput": "1"
+},
+{
+"input": "2",
+"expectedOutput": "1"
+},
+{
+"input": "2147483647",
+"expectedOutput": "46340"
+},
+{
+"input": "9",
+"expectedOutput": "3"
+},
+{
+"input": "16",
+"expectedOutput": "4"
+},
+{
+"input": "15",
+"expectedOutput": "3"
+},
+{
+"input": "100",
+"expectedOutput": "10"
+},
+{
+"input": "99",
+"expectedOutput": "9"
+},
+{
+"input": "1000000",
+"expectedOutput": "1000"
+}
+]
+}
+},
+{
+"id": "binarysearch_easy_005",
+"title": "Find Peak Element",
+"topic": "Binary Search",
+"difficulty": "Easy",
+"description": "A peak element is an element that is strictly greater than its neighbors. Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks. You may imagine that nums[-1] and nums[n] are negative infinity. You must write an algorithm that runs in O(log n) time.",
+"constraints": [
+"1 <= nums.length <= 1000",
+"-2^31 <= nums[i] <= 2^31 - 1",
+"nums[i] != nums[i + 1] for all valid i",
+"The solution should run in O(log n) time"
+],
+"examples": [
+{
+"input": "nums = [1, 2, 3, 1]",
+"output": "2",
+"explanation": "3 is a peak element since it is greater than both its neighbors, so its index 2 is returned."
+},
+{
+"input": "nums = [1, 2, 1, 3, 5, 6, 4]",
+"output": "5",
+"explanation": "The value 6 at index 5 is a peak element since it is greater than both its neighbors (5 and 4)."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<int>& nums) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[] nums) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, nums):\n pass",
+"javascript": "class Solution {\n solve(nums) {\n \n }\n}",
+"typescript": "class Solution {\n solve(nums: number[]): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[1, 2, 3, 1]",
+"expectedOutput": "2"
+},
+{
+"input": "[1, 2, 1, 3, 5, 6, 4]",
+"expectedOutput": "5"
+},
+{
+"input": "[1]",
+"expectedOutput": "0"
+}
+],
+"hidden": [
+{
+"input": "[1, 2]",
+"expectedOutput": "1"
+},
+{
+"input": "[2, 1]",
+"expectedOutput": "0"
+},
+{
+"input": "[1, 2, 3, 4, 5]",
+"expectedOutput": "4"
+},
+{
+"input": "[5, 4, 3, 2, 1]",
+"expectedOutput": "0"
+},
+{
+"input": "[-2147483648, 2147483647]",
+"expectedOutput": "1"
+},
+{
+"input": "[2147483647, -2147483648]",
+"expectedOutput": "0"
+},
+{
+"input": "[1, 3, 2, 4, 1]",
+"expectedOutput": "3"
+},
+{
+"input": "[10, 20, 15, 2, 23, 90, 67]",
+"expectedOutput": "5"
+},
+{
+"input": "[1, 2, 1, 2, 1, 2, 1]",
+"expectedOutput": "5"
+}
+]
+}
+}
+
+]

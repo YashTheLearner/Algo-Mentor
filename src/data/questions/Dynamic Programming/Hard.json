@@ -1,0 +1,432 @@
+[
+{
+"id": "dynamicprogramming_hard_001",
+"title": "Edit Distance",
+"topic": "Dynamic Programming",
+"difficulty": "Hard",
+"description": "Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2. You have the following three operations permitted on a word: insert a character, delete a character, or replace a character.",
+"constraints": [
+"0 <= word1.length, word2.length <= 500",
+"word1 and word2 consist of lowercase English letters",
+"Each operation counts as one edit",
+"The result must be the minimum number of edits"
+],
+"examples": [
+{
+"input": "word1 = \"horse\", word2 = \"ros\"",
+"output": "3",
+"explanation": "horse -> rorse (replace h with r), rorse -> rose (remove r), rose -> ros (remove e)."
+},
+{
+"input": "word1 = \"intention\", word2 = \"execution\"",
+"output": "5",
+"explanation": "Five operations are needed to convert intention to execution."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(string word1, string word2) {\n \n }\n};",
+"java": "class Solution {\n public int solve(String word1, String word2) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, word1, word2):\n pass",
+"javascript": "class Solution {\n solve(word1, word2) {\n \n }\n}",
+"typescript": "class Solution {\n solve(word1: string, word2: string): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "\"horse\", \"ros\"",
+"expectedOutput": "3"
+},
+{
+"input": "\"intention\", \"execution\"",
+"expectedOutput": "5"
+},
+{
+"input": "\"\", \"\"",
+"expectedOutput": "0"
+}
+],
+"hidden": [
+{
+"input": "\"\", \"abc\"",
+"expectedOutput": "3"
+},
+{
+"input": "\"abc\", \"\"",
+"expectedOutput": "3"
+},
+{
+"input": "\"a\", \"a\"",
+"expectedOutput": "0"
+},
+{
+"input": "\"a\", \"b\"",
+"expectedOutput": "1"
+},
+{
+"input": "\"abc\", \"abc\"",
+"expectedOutput": "0"
+},
+{
+"input": "\"abc\", \"cba\"",
+"expectedOutput": "2"
+},
+{
+"input": "\"aaaaaaaaaa\", \"aaaaaaaaaa\"",
+"expectedOutput": "0"
+},
+{
+"input": "\"aaaa\", \"bbbb\"",
+"expectedOutput": "4"
+},
+{
+"input": "\"kitten\", \"sitting\"",
+"expectedOutput": "3"
+}
+]
+}
+},
+{
+"id": "dynamicprogramming_hard_002",
+"title": "Regular Expression Matching",
+"topic": "Dynamic Programming",
+"difficulty": "Hard",
+"description": "Given an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where '.' matches any single character and '*' matches zero or more of the preceding element. The matching should cover the entire input string (not partial). Return true if s matches p, otherwise return false.",
+"constraints": [
+"1 <= s.length <= 20",
+"1 <= p.length <= 20",
+"s consists of lowercase English letters only",
+"p consists of lowercase English letters, '.', and '*', and it is guaranteed that every '*' is preceded by a valid character"
+],
+"examples": [
+{
+"input": "s = \"aa\", p = \"a\"",
+"output": "false",
+"explanation": "'a' does not match the entire string 'aa'."
+},
+{
+"input": "s = \"aa\", p = \"a*\"",
+"output": "true",
+"explanation": "'*' means zero or more of the preceding element 'a', so 'a*' can match 'aa'."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n bool solve(string s, string p) {\n \n }\n};",
+"java": "class Solution {\n public boolean solve(String s, String p) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, s, p):\n pass",
+"javascript": "class Solution {\n solve(s, p) {\n \n }\n}",
+"typescript": "class Solution {\n solve(s: string, p: string): boolean {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "\"aa\", \"a\"",
+"expectedOutput": "false"
+},
+{
+"input": "\"aa\", \"a*\"",
+"expectedOutput": "true"
+},
+{
+"input": "\"ab\", \".*\"",
+"expectedOutput": "true"
+}
+],
+"hidden": [
+{
+"input": "\"a\", \"a\"",
+"expectedOutput": "true"
+},
+{
+"input": "\"a\", \".\"",
+"expectedOutput": "true"
+},
+{
+"input": "\"mississippi\", \"mis*is*p*.\"",
+"expectedOutput": "false"
+},
+{
+"input": "\"mississippi\", \"mis*is*ip*.\"",
+"expectedOutput": "true"
+},
+{
+"input": "\"aaa\", \"a*a\"",
+"expectedOutput": "true"
+},
+{
+"input": "\"aaa\", \"ab*a*c*a\"",
+"expectedOutput": "true"
+},
+{
+"input": "\"\", \"a*\"",
+"expectedOutput": "true"
+},
+{
+"input": "\"\", \".*\"",
+"expectedOutput": "true"
+},
+{
+"input": "\"abcd\", \"d*\"",
+"expectedOutput": "false"
+}
+]
+}
+},
+{
+"id": "dynamicprogramming_hard_003",
+"title": "Burst Balloons",
+"topic": "Dynamic Programming",
+"difficulty": "Hard",
+"description": "You are given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by an array nums. You are asked to burst all the balloons. If you burst the ith balloon, you get nums[i-1] * nums[i] * nums[i+1] coins. If i-1 or i+1 goes out of bounds of the array, treat it as if there is a balloon with a value of 1. Return the maximum coins you can collect by bursting all the balloons.",
+"constraints": [
+"1 <= nums.length <= 300",
+"0 <= nums[i] <= 100",
+"All balloons must eventually be burst",
+"Boundary balloons out of range are treated as value 1"
+],
+"examples": [
+{
+"input": "nums = [3, 1, 5, 8]",
+"output": "167",
+"explanation": "Bursting balloons in the order 1, 5, 3, 8 yields a total of 167 coins."
+},
+{
+"input": "nums = [1, 5]",
+"output": "10",
+"explanation": "Bursting balloon 5 first (1*5*1=5), then balloon 1 (1*1*1=1), gives total 5+1=6; bursting 1 first (1*1*5=5) then 5 (1*5*1=5) gives 10, which is the maximum."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<int>& nums) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[] nums) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, nums):\n pass",
+"javascript": "class Solution {\n solve(nums) {\n \n }\n}",
+"typescript": "class Solution {\n solve(nums: number[]): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[3, 1, 5, 8]",
+"expectedOutput": "167"
+},
+{
+"input": "[1, 5]",
+"expectedOutput": "10"
+},
+{
+"input": "[1]",
+"expectedOutput": "1"
+}
+],
+"hidden": [
+{
+"input": "[0]",
+"expectedOutput": "0"
+},
+{
+"input": "[0, 0]",
+"expectedOutput": "0"
+},
+{
+"input": "[100]",
+"expectedOutput": "100"
+},
+{
+"input": "[100, 100]",
+"expectedOutput": "20000"
+},
+{
+"input": "[1, 1, 1, 1]",
+"expectedOutput": "4"
+},
+{
+"input": "[5, 4, 3, 2, 1]",
+"expectedOutput": "110"
+},
+{
+"input": "[1, 2, 3, 4, 5]",
+"expectedOutput": "110"
+},
+{
+"input": "[3, 3, 3]",
+"expectedOutput": "63"
+},
+{
+"input": "[9, 76, 64, 21, 97, 60, 6]",
+"expectedOutput": "4536360"
+}
+]
+}
+},
+{
+"id": "dynamicprogramming_hard_004",
+"title": "Distinct Subsequences",
+"topic": "Dynamic Programming",
+"difficulty": "Hard",
+"description": "Given two strings s and t, return the number of distinct subsequences of s which equal t. The answer may be large, so return it modulo 10^9 + 7.",
+"constraints": [
+"1 <= s.length, t.length <= 1000",
+"s and t consist of English letters",
+"Subsequence counting includes overlapping character positions distinctly",
+"Return the result modulo 1000000007"
+],
+"examples": [
+{
+"input": "s = \"rabbbit\", t = \"rabbit\"",
+"output": "3",
+"explanation": "There are 3 distinct ways to select characters from 'rabbbit' to form 'rabbit'."
+},
+{
+"input": "s = \"babgbag\", t = \"bag\"",
+"output": "5",
+"explanation": "There are 5 distinct ways to select characters from 'babgbag' to form 'bag'."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(string s, string t) {\n \n }\n};",
+"java": "class Solution {\n public int solve(String s, String t) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, s, t):\n pass",
+"javascript": "class Solution {\n solve(s, t) {\n \n }\n}",
+"typescript": "class Solution {\n solve(s: string, t: string): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "\"rabbbit\", \"rabbit\"",
+"expectedOutput": "3"
+},
+{
+"input": "\"babgbag\", \"bag\"",
+"expectedOutput": "5"
+},
+{
+"input": "\"a\", \"a\"",
+"expectedOutput": "1"
+}
+],
+"hidden": [
+{
+"input": "\"a\", \"b\"",
+"expectedOutput": "0"
+},
+{
+"input": "\"aa\", \"a\"",
+"expectedOutput": "2"
+},
+{
+"input": "\"aaa\", \"aa\"",
+"expectedOutput": "3"
+},
+{
+"input": "\"abc\", \"abc\"",
+"expectedOutput": "1"
+},
+{
+"input": "\"abc\", \"abcd\"",
+"expectedOutput": "0"
+},
+{
+"input": "\"aaaaaaaaaa\", \"a\"",
+"expectedOutput": "10"
+},
+{
+"input": "\"aaaaaaaaaa\", \"aaaaaaaaaa\"",
+"expectedOutput": "1"
+},
+{
+"input": "\"ddd\", \"d\"",
+"expectedOutput": "3"
+},
+{
+"input": "\"axbyacz\", \"ab\"",
+"expectedOutput": "2"
+}
+]
+}
+},
+{
+"id": "dynamicprogramming_hard_005",
+"title": "Palindrome Partitioning II",
+"topic": "Dynamic Programming",
+"difficulty": "Hard",
+"description": "Given a string s, partition s such that every substring of the partition is a palindrome. Return the minimum number of cuts needed for a palindrome partitioning of s.",
+"constraints": [
+"1 <= s.length <= 2000",
+"s consists of lowercase English letters only",
+"A cut separates the string into contiguous palindromic substrings",
+"If s is already a palindrome, 0 cuts are needed"
+],
+"examples": [
+{
+"input": "s = \"aab\"",
+"output": "1",
+"explanation": "The palindrome partitioning [\"aa\",\"b\"] could be produced using 1 cut."
+},
+{
+"input": "s = \"a\"",
+"output": "0",
+"explanation": "The string is already a palindrome, so 0 cuts are needed."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(string s) {\n \n }\n};",
+"java": "class Solution {\n public int solve(String s) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, s):\n pass",
+"javascript": "class Solution {\n solve(s) {\n \n }\n}",
+"typescript": "class Solution {\n solve(s: string): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "\"aab\"",
+"expectedOutput": "1"
+},
+{
+"input": "\"a\"",
+"expectedOutput": "0"
+},
+{
+"input": "\"ab\"",
+"expectedOutput": "1"
+}
+],
+"hidden": [
+{
+"input": "\"aa\"",
+"expectedOutput": "0"
+},
+{
+"input": "\"abcde\"",
+"expectedOutput": "4"
+},
+{
+"input": "\"aaaa\"",
+"expectedOutput": "0"
+},
+{
+"input": "\"racecar\"",
+"expectedOutput": "0"
+},
+{
+"input": "\"abcba\"",
+"expectedOutput": "0"
+},
+{
+"input": "\"abccba\"",
+"expectedOutput": "0"
+},
+{
+"input": "\"noonabbad\"",
+"expectedOutput": "2"
+},
+{
+"input": "\"aabaa\"",
+"expectedOutput": "0"
+},
+{
+"input": "\"abababab\"",
+"expectedOutput": "1"
+}
+]
+}
+}
+]

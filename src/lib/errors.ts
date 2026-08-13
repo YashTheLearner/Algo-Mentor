@@ -21,3 +21,14 @@ export enum ErrorCode {
 
   INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR",
 }
+
+export class AppError extends Error {
+  constructor(
+    message: string,
+    public code: ErrorCode,
+    public status: number = 500
+  ) {
+    super(message);
+    this.name = "AppError";
+  }
+}

@@ -1,0 +1,432 @@
+[
+{
+"id": "dynamicprogramming_easy_001",
+"title": "Climbing Stairs",
+"topic": "Dynamic Programming",
+"difficulty": "Easy",
+"description": "You are climbing a staircase with n steps. Each time you can either climb 1 or 2 steps. Return the number of distinct ways you can climb to the top.",
+"constraints": [
+"1 <= n <= 45",
+"Each move is either 1 step or 2 steps",
+"The order of steps matters (distinct sequences count separately)",
+"The result fits within a 32-bit integer"
+],
+"examples": [
+{
+"input": "n = 2",
+"output": "2",
+"explanation": "There are two ways: (1 step + 1 step) or (2 steps)."
+},
+{
+"input": "n = 3",
+"output": "3",
+"explanation": "There are three ways: (1+1+1), (1+2), (2+1)."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(int n) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int n) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, n):\n pass",
+"javascript": "class Solution {\n solve(n) {\n \n }\n}",
+"typescript": "class Solution {\n solve(n: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "2",
+"expectedOutput": "2"
+},
+{
+"input": "3",
+"expectedOutput": "3"
+},
+{
+"input": "1",
+"expectedOutput": "1"
+}
+],
+"hidden": [
+{
+"input": "1",
+"expectedOutput": "1"
+},
+{
+"input": "45",
+"expectedOutput": "1836311903"
+},
+{
+"input": "4",
+"expectedOutput": "5"
+},
+{
+"input": "5",
+"expectedOutput": "8"
+},
+{
+"input": "10",
+"expectedOutput": "89"
+},
+{
+"input": "20",
+"expectedOutput": "10946"
+},
+{
+"input": "30",
+"expectedOutput": "1346269"
+},
+{
+"input": "6",
+"expectedOutput": "13"
+},
+{
+"input": "7",
+"expectedOutput": "21"
+}
+]
+}
+},
+{
+"id": "dynamicprogramming_easy_002",
+"title": "Fibonacci Number",
+"topic": "Dynamic Programming",
+"difficulty": "Easy",
+"description": "The Fibonacci numbers form a sequence such that each number is the sum of the two preceding ones, starting from 0 and 1. Given n, calculate F(n), where F(0) = 0, F(1) = 1, and F(n) = F(n-1) + F(n-2) for n > 1.",
+"constraints": [
+"0 <= n <= 30",
+"F(0) = 0 and F(1) = 1",
+"The result fits within a 32-bit integer",
+"n is a non-negative integer"
+],
+"examples": [
+{
+"input": "n = 2",
+"output": "1",
+"explanation": "F(2) = F(1) + F(0) = 1 + 0 = 1."
+},
+{
+"input": "n = 4",
+"output": "3",
+"explanation": "F(4) = F(3) + F(2) = 2 + 1 = 3."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(int n) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int n) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, n):\n pass",
+"javascript": "class Solution {\n solve(n) {\n \n }\n}",
+"typescript": "class Solution {\n solve(n: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "2",
+"expectedOutput": "1"
+},
+{
+"input": "4",
+"expectedOutput": "3"
+},
+{
+"input": "0",
+"expectedOutput": "0"
+}
+],
+"hidden": [
+{
+"input": "0",
+"expectedOutput": "0"
+},
+{
+"input": "1",
+"expectedOutput": "1"
+},
+{
+"input": "30",
+"expectedOutput": "832040"
+},
+{
+"input": "10",
+"expectedOutput": "55"
+},
+{
+"input": "15",
+"expectedOutput": "610"
+},
+{
+"input": "20",
+"expectedOutput": "6765"
+},
+{
+"input": "5",
+"expectedOutput": "5"
+},
+{
+"input": "3",
+"expectedOutput": "2"
+},
+{
+"input": "25",
+"expectedOutput": "75025"
+}
+]
+}
+},
+{
+"id": "dynamicprogramming_easy_003",
+"title": "Minimum Cost Climbing Stairs",
+"topic": "Dynamic Programming",
+"difficulty": "Easy",
+"description": "You are given an integer array cost where cost[i] is the cost of the ith step on a staircase. Once you pay the cost, you can either climb one or two steps. You can either start from the step with index 0 or the step with index 1. Return the minimum cost to reach the top of the floor (one step past the last index of the array).",
+"constraints": [
+"2 <= cost.length <= 1000",
+"0 <= cost[i] <= 999",
+"You may start from index 0 or index 1",
+"You can climb 1 or 2 steps at a time"
+],
+"examples": [
+{
+"input": "cost = [10, 15, 20]",
+"output": "15",
+"explanation": "You start at index 1, pay 15, and climb two steps to reach the top."
+},
+{
+"input": "cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]",
+"output": "6",
+"explanation": "The cheapest path costs 6 by skipping the expensive steps."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<int>& cost) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[] cost) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, cost):\n pass",
+"javascript": "class Solution {\n solve(cost) {\n \n }\n}",
+"typescript": "class Solution {\n solve(cost: number[]): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[10, 15, 20]",
+"expectedOutput": "15"
+},
+{
+"input": "[1, 100, 1, 1, 1, 100, 1, 1, 100, 1]",
+"expectedOutput": "6"
+},
+{
+"input": "[0, 0, 0, 0]",
+"expectedOutput": "0"
+}
+],
+"hidden": [
+{
+"input": "[0, 0]",
+"expectedOutput": "0"
+},
+{
+"input": "[999, 999]",
+"expectedOutput": "999"
+},
+{
+"input": "[1, 2]",
+"expectedOutput": "1"
+},
+{
+"input": "[1, 2, 3, 4, 5]",
+"expectedOutput": "6"
+},
+{
+"input": "[5, 4, 3, 2, 1]",
+"expectedOutput": "6"
+},
+{
+"input": "[10, 10, 10, 10, 10, 10]",
+"expectedOutput": "20"
+},
+{
+"input": "[0, 1, 0, 1, 0, 1]",
+"expectedOutput": "0"
+},
+{
+"input": "[999, 0, 999, 0, 999]",
+"expectedOutput": "0"
+},
+{
+"input": "[2, 2, 2, 2, 2, 2, 2, 2, 2, 2]",
+"expectedOutput": "8"
+}
+]
+}
+},
+{
+"id": "dynamicprogramming_easy_004",
+"title": "Maximum Points from Line of Coins",
+"topic": "Dynamic Programming",
+"difficulty": "Easy",
+"description": "Given an array nums representing values placed in a line, you may pick any subset of elements such that no two picked elements are adjacent in the array. Return the maximum possible sum of the picked elements.",
+"constraints": [
+"1 <= nums.length <= 10^5",
+"0 <= nums[i] <= 10^4",
+"No two adjacent elements can both be picked",
+"An empty selection (sum 0) is allowed if all values are 0 or negative picks are avoided"
+],
+"examples": [
+{
+"input": "nums = [3, 2, 5, 10, 7]",
+"output": "15",
+"explanation": "Picking elements 3, 5, and 7 gives a sum of 15, and no two are adjacent."
+},
+{
+"input": "nums = [5, 5, 10, 100, 10, 5]",
+"output": "110",
+"explanation": "Picking elements 5, 100, and 5 gives a sum of 110."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<int>& nums) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[] nums) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, nums):\n pass",
+"javascript": "class Solution {\n solve(nums) {\n \n }\n}",
+"typescript": "class Solution {\n solve(nums: number[]): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[3, 2, 5, 10, 7]",
+"expectedOutput": "15"
+},
+{
+"input": "[5, 5, 10, 100, 10, 5]",
+"expectedOutput": "110"
+},
+{
+"input": "[1]",
+"expectedOutput": "1"
+}
+],
+"hidden": [
+{
+"input": "[0]",
+"expectedOutput": "0"
+},
+{
+"input": "[0, 0, 0, 0]",
+"expectedOutput": "0"
+},
+{
+"input": "[10000, 10000, 10000, 10000]",
+"expectedOutput": "20000"
+},
+{
+"input": "[1, 2, 3, 4, 5]",
+"expectedOutput": "9"
+},
+{
+"input": "[5, 4, 3, 2, 1]",
+"expectedOutput": "9"
+},
+{
+"input": "[2, 1]",
+"expectedOutput": "2"
+},
+{
+"input": "[1, 2]",
+"expectedOutput": "2"
+},
+{
+"input": "[3, 3, 3, 3, 3, 3, 3]",
+"expectedOutput": "12"
+},
+{
+"input": "[10, 20, 30, 40, 50, 60, 70]",
+"expectedOutput": "160"
+}
+]
+}
+},
+{
+"id": "dynamicprogramming_easy_005",
+"title": "Count Ways to Reach a Target Sum",
+"topic": "Dynamic Programming",
+"difficulty": "Easy",
+"description": "Given an integer n, count the number of distinct ways to reach exactly n using steps of size 1, 2, or 3 (order matters, so different sequences count separately). Return the total number of ways modulo 1000000007.",
+"constraints": [
+"1 <= n <= 10^5",
+"Steps allowed are 1, 2, or 3",
+"Order of steps matters (different sequences are counted separately)",
+"Return the answer modulo 1000000007"
+],
+"examples": [
+{
+"input": "n = 3",
+"output": "4",
+"explanation": "The ways are (1+1+1), (1+2), (2+1), and (3)."
+},
+{
+"input": "n = 4",
+"output": "7",
+"explanation": "The ways are (1+1+1+1), (1+1+2), (1+2+1), (2+1+1), (2+2), (1+3), (3+1)."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(int n) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int n) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, n):\n pass",
+"javascript": "class Solution {\n solve(n) {\n \n }\n}",
+"typescript": "class Solution {\n solve(n: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "3",
+"expectedOutput": "4"
+},
+{
+"input": "4",
+"expectedOutput": "7"
+},
+{
+"input": "1",
+"expectedOutput": "1"
+}
+],
+"hidden": [
+{
+"input": "1",
+"expectedOutput": "1"
+},
+{
+"input": "2",
+"expectedOutput": "2"
+},
+{
+"input": "5",
+"expectedOutput": "13"
+},
+{
+"input": "6",
+"expectedOutput": "24"
+},
+{
+"input": "10",
+"expectedOutput": "274"
+},
+{
+"input": "20",
+"expectedOutput": "121415"
+},
+{
+"input": "100000",
+"expectedOutput": "409245287"
+},
+{
+"input": "7",
+"expectedOutput": "44"
+},
+{
+"input": "8",
+"expectedOutput": "81"
+}
+]
+}
+}
+]

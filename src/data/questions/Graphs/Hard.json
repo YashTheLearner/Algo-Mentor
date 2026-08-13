@@ -1,0 +1,428 @@
+[
+{
+"id": "graphs_hard_001",
+"title": "Alien Dictionary Order",
+"topic": "Graphs",
+"difficulty": "Hard",
+"description": "There is a new alien language that uses the English alphabet, but the order among the letters is unknown. You are given a list of strings words from the alien language's dictionary, where the strings in words are sorted lexicographically according to the rules of this new language. Derive the order of letters in this language, and return a string of the unique letters in the correct order. If there is no valid order that satisfies the given constraints, return an empty string. If there are multiple valid orders, return any one of them.",
+"constraints": [
+"1 <= words.length <= 100",
+"1 <= words[i].length <= 100",
+"words[i] consists of only lowercase English letters",
+"If a word is a strict prefix of another and comes after it, the order is invalid"
+],
+"examples": [
+{
+"input": "words = [\"wrt\",\"wrf\",\"er\",\"ett\",\"rftt\"]",
+"output": "wertf",
+"explanation": "From the given words, comparing adjacent pairs gives the ordering constraints w<e, r<t, e<r, t<f, which together yield the order wertf."
+},
+{
+"input": "words = [\"z\",\"x\",\"z\"]",
+"output": "\"\"",
+"explanation": "The order z<x is derived first, but then x<z is implied from the last pair, creating a cycle, so no valid order exists."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n string solve(vector<string>& words) {\n \n }\n};",
+"java": "class Solution {\n public String solve(String[] words) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, words):\n pass",
+"javascript": "class Solution {\n solve(words) {\n \n }\n}",
+"typescript": "class Solution {\n solve(words: string[]): string {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[\"wrt\",\"wrf\",\"er\",\"ett\",\"rftt\"]",
+"expectedOutput": "wertf"
+},
+{
+"input": "[\"z\",\"x\",\"z\"]",
+"expectedOutput": ""
+},
+{
+"input": "[\"abc\",\"ab\"]",
+"expectedOutput": ""
+}
+],
+"hidden": [
+{
+"input": "[\"a\"]",
+"expectedOutput": "a"
+},
+{
+"input": "[\"ab\",\"ac\"]",
+"expectedOutput": "bac"
+},
+{
+"input": "[\"z\",\"x\"]",
+"expectedOutput": "zx"
+},
+{
+"input": "[\"z\",\"x\",\"a\"]",
+"expectedOutput": "zxa"
+},
+{
+"input": "[\"abc\",\"abd\"]",
+"expectedOutput": "abcd"
+},
+{
+"input": "[\"a\",\"a\"]",
+"expectedOutput": "a"
+},
+{
+"input": "[\"ab\",\"a\"]",
+"expectedOutput": ""
+},
+{
+"input": "[\"wrt\",\"wrtkj\"]",
+"expectedOutput": "wrtkj"
+},
+{
+"input": "[\"caa\",\"aaa\",\"aab\"]",
+"expectedOutput": "cab"
+}
+]
+}
+},
+{
+"id": "graphs_hard_002",
+"title": "Minimum Cost to Connect All Points",
+"topic": "Graphs",
+"difficulty": "Hard",
+"description": "You are given an array points representing integer coordinates of some points on a 2D plane, where points[i] = [xi, yi]. The cost of connecting two points [xi, yi] and [xj, yj] is the Manhattan distance between them: |xi - xj| + |yi - yj|. Return the minimum cost to make all points connected. All points are connected if there is exactly one simple path between any two points, forming a minimum spanning tree.",
+"constraints": [
+"1 <= points.length <= 1000",
+"-10^6 <= xi, yi <= 10^6",
+"All pairs (xi, yi) are distinct",
+"The graph is fully connected via Manhattan distance edges between all point pairs"
+],
+"examples": [
+{
+"input": "points = [[0,0],[2,2],[3,10],[5,2],[7,0]]",
+"output": "20",
+"explanation": "Using a minimum spanning tree approach, the minimum cost to connect all points is 20."
+},
+{
+"input": "points = [[3,12],[-2,5],[-4,1]]",
+"output": "18",
+"explanation": "The minimum spanning tree connecting all three points costs 18."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<vector<int>>& points) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[][] points) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, points):\n pass",
+"javascript": "class Solution {\n solve(points) {\n \n }\n}",
+"typescript": "class Solution {\n solve(points: number[][]): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[[0,0],[2,2],[3,10],[5,2],[7,0]]",
+"expectedOutput": "20"
+},
+{
+"input": "[[3,12],[-2,5],[-4,1]]",
+"expectedOutput": "18"
+},
+{
+"input": "[[0,0]]",
+"expectedOutput": "0"
+}
+],
+"hidden": [
+{
+"input": "[[0,0],[1,1]]",
+"expectedOutput": "2"
+},
+{
+"input": "[[0,0],[0,0]]",
+"expectedOutput": "0"
+},
+{
+"input": "[[-1000000,-1000000],[1000000,1000000]]",
+"expectedOutput": "4000000"
+},
+{
+"input": "[[0,0],[1,0],[2,0],[3,0],[4,0]]",
+"expectedOutput": "4"
+},
+{
+"input": "[[4,0],[3,0],[2,0],[1,0],[0,0]]",
+"expectedOutput": "4"
+},
+{
+"input": "[[0,0],[100,100],[200,200]]",
+"expectedOutput": "400"
+},
+{
+"input": "[[1,1],[2,2],[3,3],[4,4]]",
+"expectedOutput": "6"
+},
+{
+"input": "[[0,0],[1,1],[1,0],[0,1]]",
+"expectedOutput": "3"
+},
+{
+"input": "[[5,5],[6,6],[1,1],[2,2],[3,3]]",
+"expectedOutput": "8"
+}
+]
+}
+},
+{
+"id": "graphs_hard_003",
+"title": "Swim in Rising Water",
+"topic": "Graphs",
+"difficulty": "Hard",
+"description": "You are given an n x n integer matrix grid where each value grid[i][j] represents the elevation at that point (i, j). Rain starts to fall at time 0, and at time t, the depth of water everywhere is t. You can swim from a square to another 4-directionally adjacent square if and only if the elevation of both squares individually are at most t. You can swim infinite distances in zero time. Of course, you must stay within the boundaries of the grid during your swim. Return the minimum time until you can reach the bottom right square (n-1, n-1) if you start at the top left square (0, 0).",
+"constraints": [
+"n == grid.length == grid[i].length",
+"1 <= n <= 50",
+"0 <= grid[i][j] < n^2",
+"Each value in grid is unique"
+],
+"examples": [
+{
+"input": "grid = [[0,2],[1,3]]",
+"output": "3",
+"explanation": "At time 3, all elevations 0,1,2,3 are submerged, allowing a path from top-left to bottom-right."
+},
+{
+"input": "grid = [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]",
+"output": "16",
+"explanation": "The minimum time to reach the bottom-right corner following the optimal path is 16."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<vector<int>>& grid) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[][] grid) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, grid):\n pass",
+"javascript": "class Solution {\n solve(grid) {\n \n }\n}",
+"typescript": "class Solution {\n solve(grid: number[][]): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[[0,2],[1,3]]",
+"expectedOutput": "3"
+},
+{
+"input": "[[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]",
+"expectedOutput": "16"
+},
+{
+"input": "[[0]]",
+"expectedOutput": "0"
+}
+],
+"hidden": [
+{
+"input": "[[0,1],[2,3]]",
+"expectedOutput": "3"
+},
+{
+"input": "[[3,2],[1,0]]",
+"expectedOutput": "3"
+},
+{
+"input": "[[0,1,2],[3,4,5],[6,7,8]]",
+"expectedOutput": "8"
+},
+{
+"input": "[[8,7,6],[5,4,3],[2,1,0]]",
+"expectedOutput": "8"
+},
+{
+"input": "[[1,0],[0,1]]",
+"expectedOutput": "1"
+},
+{
+"input": "[[0,4,2],[1,3,8],[6,5,7]]",
+"expectedOutput": "6"
+},
+{
+"input": "[[0,2,1,3],[4,5,6,7],[8,9,10,11],[15,14,13,12]]",
+"expectedOutput": "12"
+},
+{
+"input": "[[0,1],[3,2]]",
+"expectedOutput": "3"
+},
+{
+"input": "[[15,0,3],[8,5,13],[12,14,9]]",
+"expectedOutput": "13"
+}
+]
+}
+},
+{
+"id": "graphs_hard_004",
+"title": "Bus Routes Minimum Transfers",
+"topic": "Graphs",
+"difficulty": "Hard",
+"description": "You are given an array routes representing bus routes where routes[i] is a list of bus stops that the ith bus route travels in a loop, meaning that the first stop connects to the last stop as well. You start at stop source and want to reach stop target. Return the least number of buses you must take to travel from source to target, or -1 if it is not possible.",
+"constraints": [
+"1 <= routes.length <= 500",
+"1 <= routes[i].length <= 10^5",
+"0 <= routes[i][j] < 10^6",
+"0 <= source, target < 10^6, and the sum of routes[i].length is at most 10^5"
+],
+"examples": [
+{
+"input": "routes = [[1,2,7],[3,6,7]], source = 1, target = 6",
+"output": "2",
+"explanation": "Take the first bus to stop 7, then transfer to the second bus to reach stop 6, requiring 2 buses total."
+},
+{
+"input": "routes = [[7,12],[4,5,15],[6],[15,19],[9,12,13]], source = 15, target = 12",
+"output": "-1",
+"explanation": "There is no valid combination of routes that connects stop 15 to stop 12."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<vector<int>>& routes, int source, int target) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[][] routes, int source, int target) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, routes, source, target):\n pass",
+"javascript": "class Solution {\n solve(routes, source, target) {\n \n }\n}",
+"typescript": "class Solution {\n solve(routes: number[][], source: number, target: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[[1,2,7],[3,6,7]], 1, 6",
+"expectedOutput": "2"
+},
+{
+"input": "[[7,12],[4,5,15],[6],[15,19],[9,12,13]], 15, 12",
+"expectedOutput": "-1"
+},
+{
+"input": "[[1,2,3]], 1, 1",
+"expectedOutput": "0"
+}
+],
+"hidden": [
+{
+"input": "[[1]], 1, 1",
+"expectedOutput": "0"
+},
+{
+"input": "[[1,2]], 1, 2",
+"expectedOutput": "1"
+},
+{
+"input": "[[1,2]], 1, 3",
+"expectedOutput": "-1"
+},
+{
+"input": "[[1,2,3],[3,4,5],[5,6,7]], 1, 7",
+"expectedOutput": "3"
+},
+{
+"input": "[[1,2,3],[2,4,5],[4,6,7]], 1, 7",
+"expectedOutput": "3"
+},
+{
+"input": "[[0,1,2,3,4,5,6,7,8,9]], 0, 9",
+"expectedOutput": "1"
+},
+{
+"input": "[[1,7],[3,7]], 1, 3",
+"expectedOutput": "2"
+},
+{
+"input": "[[1,2],[2,3],[3,4],[4,5]], 1, 5",
+"expectedOutput": "4"
+},
+{
+"input": "[[5,5,5],[5,5,5]], 5, 5",
+"expectedOutput": "0"
+}
+]
+}
+},
+{
+"id": "graphs_hard_005",
+"title": "Reconstruct Itinerary",
+"topic": "Graphs",
+"difficulty": "Hard",
+"description": "You are given a list of airline tickets where tickets[i] = [fromi, toi] represent the departure and arrival airports of one flight. Reconstruct the itinerary in order and return it. All the tickets belong to a man who departs from \"JFK\", so the itinerary must begin with \"JFK\". If there are multiple valid itineraries, return the itinerary that has the smallest lexical order when read as a single string. You must use all the tickets exactly once.",
+"constraints": [
+"1 <= tickets.length <= 300",
+"tickets[i].length == 2",
+"fromi and toi consist of uppercase English letters of length 3",
+"It is guaranteed that a valid itinerary exists using all tickets exactly once"
+],
+"examples": [
+{
+"input": "tickets = [[\"MUC\",\"LHR\"],[\"JFK\",\"MUC\"],[\"SFO\",\"SJC\"],[\"LHR\",\"SFO\"]]",
+"output": "[\"JFK\",\"MUC\",\"LHR\",\"SFO\",\"SJC\"]",
+"explanation": "This is the only itinerary that uses all tickets starting from JFK."
+},
+{
+"input": "tickets = [[\"JFK\",\"SFO\"],[\"JFK\",\"ATL\"],[\"SFO\",\"ATL\"],[\"ATL\",\"JFK\"],[\"ATL\",\"SFO\"]]",
+"output": "[\"JFK\",\"ATL\",\"JFK\",\"SFO\",\"ATL\",\"SFO\"]",
+"explanation": "This is the lexicographically smallest valid itinerary using all tickets."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n vector<string> solve(vector<vector<string>>& tickets) {\n \n }\n};",
+"java": "class Solution {\n public List<String> solve(List<List<String>> tickets) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, tickets):\n pass",
+"javascript": "class Solution {\n solve(tickets) {\n \n }\n}",
+"typescript": "class Solution {\n solve(tickets: string[][]): string[] {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[[\"MUC\",\"LHR\"],[\"JFK\",\"MUC\"],[\"SFO\",\"SJC\"],[\"LHR\",\"SFO\"]]",
+"expectedOutput": "[\"JFK\",\"MUC\",\"LHR\",\"SFO\",\"SJC\"]"
+},
+{
+"input": "[[\"JFK\",\"SFO\"],[\"JFK\",\"ATL\"],[\"SFO\",\"ATL\"],[\"ATL\",\"JFK\"],[\"ATL\",\"SFO\"]]",
+"expectedOutput": "[\"JFK\",\"ATL\",\"JFK\",\"SFO\",\"ATL\",\"SFO\"]"
+},
+{
+"input": "[[\"JFK\",\"A\"]]",
+"expectedOutput": "[\"JFK\",\"A\"]"
+}
+],
+"hidden": [
+{
+"input": "[[\"JFK\",\"AAA\"],[\"AAA\",\"JFK\"]]",
+"expectedOutput": "[\"JFK\",\"AAA\",\"JFK\"]"
+},
+{
+"input": "[[\"JFK\",\"KUL\"],[\"JFK\",\"NRT\"],[\"NRT\",\"JFK\"]]",
+"expectedOutput": "[\"JFK\",\"NRT\",\"JFK\",\"KUL\"]"
+},
+{
+"input": "[[\"JFK\",\"B\"],[\"JFK\",\"A\"],[\"B\",\"JFK\"],[\"A\",\"JFK\"]]",
+"expectedOutput": "[\"JFK\",\"A\",\"JFK\",\"B\",\"JFK\"]"
+},
+{
+"input": "[[\"JFK\",\"SFO\"],[\"SFO\",\"JFK\"]]",
+"expectedOutput": "[\"JFK\",\"SFO\",\"JFK\"]"
+},
+{
+"input": "[[\"JFK\",\"ZZZ\"],[\"JFK\",\"AAA\"],[\"AAA\",\"JFK\"],[\"ZZZ\",\"JFK\"]]",
+"expectedOutput": "[\"JFK\",\"AAA\",\"JFK\",\"ZZZ\",\"JFK\"]"
+},
+{
+"input": "[[\"JFK\",\"A\"],[\"A\",\"B\"],[\"B\",\"C\"],[\"C\",\"A\"],[\"A\",\"JFK\"]]",
+"expectedOutput": "[\"JFK\",\"A\",\"B\",\"C\",\"A\",\"JFK\"]"
+},
+{
+"input": "[[\"JFK\",\"XYZ\"],[\"XYZ\",\"XYZ\"]]",
+"expectedOutput": "[\"JFK\",\"XYZ\",\"XYZ\"]"
+},
+{
+"input": "[[\"JFK\",\"ABC\"],[\"ABC\",\"DEF\"],[\"DEF\",\"JFK\"],[\"JFK\",\"GHI\"],[\"GHI\",\"JFK\"]]",
+"expectedOutput": "[\"JFK\",\"ABC\",\"DEF\",\"JFK\",\"GHI\",\"JFK\"]"
+}
+]
+}
+}
+]

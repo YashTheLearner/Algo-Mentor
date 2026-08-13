@@ -1,0 +1,432 @@
+[
+{
+"id": "graphs_easy_001",
+"title": "Find Center of Star Graph",
+"topic": "Graphs",
+"difficulty": "Easy",
+"description": "There is an undirected star graph consisting of n nodes labeled from 1 to n. A star graph is a graph where there is one center node and exactly n-1 edges that connect the center node with every other node. You are given a 2D array edges where each edges[i] = [ui, vi] indicates that there is an edge between nodes ui and vi. Return the center of the given star graph.",
+"constraints": [
+"3 <= n <= 10^5",
+"edges.length == n - 1",
+"edges[i].length == 2",
+"1 <= ui, vi <= n"
+],
+"examples": [
+{
+"input": "edges = [[1,2],[2,3],[4,2]]",
+"output": "2",
+"explanation": "Node 2 is connected to every other node, so node 2 is the center."
+},
+{
+"input": "edges = [[1,2],[5,1],[1,3],[1,4]]",
+"output": "1",
+"explanation": "Node 1 is connected to every other node, so node 1 is the center."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<vector<int>>& edges) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[][] edges) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, edges):\n pass",
+"javascript": "class Solution {\n solve(edges) {\n \n }\n}",
+"typescript": "class Solution {\n solve(edges: number[][]): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[[1,2],[2,3],[4,2]]",
+"expectedOutput": "2"
+},
+{
+"input": "[[1,2],[5,1],[1,3],[1,4]]",
+"expectedOutput": "1"
+},
+{
+"input": "[[2,1],[2,3]]",
+"expectedOutput": "2"
+}
+],
+"hidden": [
+{
+"input": "[[1,2],[1,3]]",
+"expectedOutput": "1"
+},
+{
+"input": "[[3,1],[3,2]]",
+"expectedOutput": "3"
+},
+{
+"input": "[[1,5],[1,4],[1,3],[1,2]]",
+"expectedOutput": "1"
+},
+{
+"input": "[[5,1],[5,2],[5,3],[5,4]]",
+"expectedOutput": "5"
+},
+{
+"input": "[[2,3],[2,4],[2,5],[2,1]]",
+"expectedOutput": "2"
+},
+{
+"input": "[[100000,1],[100000,2]]",
+"expectedOutput": "100000"
+},
+{
+"input": "[[4,1],[4,2],[4,3]]",
+"expectedOutput": "4"
+},
+{
+"input": "[[1,2],[1,4],[1,5],[1,3],[1,6]]",
+"expectedOutput": "1"
+},
+{
+"input": "[[7,8],[7,9]]",
+"expectedOutput": "7"
+}
+]
+}
+},
+{
+"id": "graphs_easy_002",
+"title": "Find if Path Exists in Graph",
+"topic": "Graphs",
+"difficulty": "Easy",
+"description": "There is a bi-directional graph with n vertices, where each vertex is labeled from 0 to n-1. The edges in the graph are represented as a 2D integer array edges, where each edges[i] = [ui, vi] denotes a bi-directional edge between vertex ui and vertex vi. You want to determine if there is a valid path that exists from vertex source to vertex destination. Given edges, n, source, and destination, return true if there is a valid path from source to destination, or false otherwise.",
+"constraints": [
+"1 <= n <= 2 * 10^5",
+"0 <= edges.length <= 2 * 10^5",
+"edges[i].length == 2",
+"0 <= source, destination, ui, vi <= n - 1"
+],
+"examples": [
+{
+"input": "n = 3, edges = [[0,1],[1,2],[2,0]], source = 0, destination = 2",
+"output": "true",
+"explanation": "There is a path from 0 to 2 via node 1, or directly via the edge [2,0]."
+},
+{
+"input": "n = 6, edges = [[0,1],[0,2],[3,5],[5,4],[4,3]], source = 0, destination = 5",
+"output": "false",
+"explanation": "There is no path from vertex 0 to vertex 5, since they are in separate connected components."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n bool solve(int n, vector<vector<int>>& edges, int source, int destination) {\n \n }\n};",
+"java": "class Solution {\n public boolean solve(int n, int[][] edges, int source, int destination) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, n, edges, source, destination):\n pass",
+"javascript": "class Solution {\n solve(n, edges, source, destination) {\n \n }\n}",
+"typescript": "class Solution {\n solve(n: number, edges: number[][], source: number, destination: number): boolean {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "3, [[0,1],[1,2],[2,0]], 0, 2",
+"expectedOutput": "true"
+},
+{
+"input": "6, [[0,1],[0,2],[3,5],[5,4],[4,3]], 0, 5",
+"expectedOutput": "false"
+},
+{
+"input": "1, [], 0, 0",
+"expectedOutput": "true"
+}
+],
+"hidden": [
+{
+"input": "2, [], 0, 1",
+"expectedOutput": "false"
+},
+{
+"input": "2, [[0,1]], 0, 1",
+"expectedOutput": "true"
+},
+{
+"input": "5, [[0,1],[1,2],[2,3],[3,4]], 0, 4",
+"expectedOutput": "true"
+},
+{
+"input": "5, [[0,1],[1,2],[2,3],[3,4]], 4, 0",
+"expectedOutput": "true"
+},
+{
+"input": "5, [[4,3],[3,2],[2,1],[1,0]], 0, 4",
+"expectedOutput": "true"
+},
+{
+"input": "4, [[0,1],[2,3]], 0, 3",
+"expectedOutput": "false"
+},
+{
+"input": "10, [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9]], 0, 9",
+"expectedOutput": "true"
+},
+{
+"input": "3, [[0,1],[1,0],[1,2]], 0, 2",
+"expectedOutput": "true"
+},
+{
+"input": "100000, [], 0, 99999",
+"expectedOutput": "false"
+}
+]
+}
+},
+{
+"id": "graphs_easy_003",
+"title": "Number of Provinces",
+"topic": "Graphs",
+"difficulty": "Easy",
+"description": "There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c. A province is a group of directly or indirectly connected cities and no other cities outside of the group. You are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith city and the jth city are directly connected, and isConnected[i][j] = 0 otherwise. Return the total number of provinces.",
+"constraints": [
+"1 <= n <= 200",
+"n == isConnected.length == isConnected[i].length",
+"isConnected[i][j] is 1 or 0",
+"isConnected[i][i] == 1 and isConnected is symmetric"
+],
+"examples": [
+{
+"input": "isConnected = [[1,1,0],[1,1,0],[0,0,1]]",
+"output": "2",
+"explanation": "Cities 0 and 1 form one province, and city 2 forms a separate province."
+},
+{
+"input": "isConnected = [[1,0,0],[0,1,0],[0,0,1]]",
+"output": "3",
+"explanation": "None of the cities are connected, so each city forms its own province."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(vector<vector<int>>& isConnected) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int[][] isConnected) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, isConnected):\n pass",
+"javascript": "class Solution {\n solve(isConnected) {\n \n }\n}",
+"typescript": "class Solution {\n solve(isConnected: number[][]): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "[[1,1,0],[1,1,0],[0,0,1]]",
+"expectedOutput": "2"
+},
+{
+"input": "[[1,0,0],[0,1,0],[0,0,1]]",
+"expectedOutput": "3"
+},
+{
+"input": "[[1]]",
+"expectedOutput": "1"
+}
+],
+"hidden": [
+{
+"input": "[[1,1],[1,1]]",
+"expectedOutput": "1"
+},
+{
+"input": "[[1,0],[0,1]]",
+"expectedOutput": "2"
+},
+{
+"input": "[[1,1,1],[1,1,1],[1,1,1]]",
+"expectedOutput": "1"
+},
+{
+"input": "[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]",
+"expectedOutput": "4"
+},
+{
+"input": "[[1,1,0,0],[1,1,0,0],[0,0,1,1],[0,0,1,1]]",
+"expectedOutput": "2"
+},
+{
+"input": "[[1,1,0],[1,1,1],[0,1,1]]",
+"expectedOutput": "1"
+},
+{
+"input": "[[1,0,0],[0,1,1],[0,1,1]]",
+"expectedOutput": "2"
+},
+{
+"input": "[[1,1,1,0,0],[1,1,1,0,0],[1,1,1,0,0],[0,0,0,1,1],[0,0,0,1,1]]",
+"expectedOutput": "2"
+},
+{
+"input": "[[1,0,0,0,0],[0,1,0,0,0],[0,0,1,0,0],[0,0,0,1,0],[0,0,0,0,1]]",
+"expectedOutput": "5"
+}
+]
+}
+},
+{
+"id": "graphs_easy_004",
+"title": "Count Nodes with Given Degree",
+"topic": "Graphs",
+"difficulty": "Easy",
+"description": "Given an undirected graph with n nodes labeled from 0 to n-1 and a list of edges, and an integer k, return the number of nodes whose degree (number of edges connected to it) is exactly equal to k.",
+"constraints": [
+"1 <= n <= 10^5",
+"0 <= edges.length <= 10^5",
+"edges[i].length == 2",
+"0 <= edges[i][0], edges[i][1] <= n - 1, and 0 <= k <= n - 1"
+],
+"examples": [
+{
+"input": "n = 5, edges = [[0,1],[0,2],[1,2],[3,4]], k = 2",
+"output": "3",
+"explanation": "Nodes 0, 1, and 2 each have degree 2, so the count is 3."
+},
+{
+"input": "n = 4, edges = [[0,1],[1,2],[2,3]], k = 1",
+"output": "2",
+"explanation": "Nodes 0 and 3 have degree 1."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(int n, vector<vector<int>>& edges, int k) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int n, int[][] edges, int k) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, n, edges, k):\n pass",
+"javascript": "class Solution {\n solve(n, edges, k) {\n \n }\n}",
+"typescript": "class Solution {\n solve(n: number, edges: number[][], k: number): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "5, [[0,1],[0,2],[1,2],[3,4]], 2",
+"expectedOutput": "3"
+},
+{
+"input": "4, [[0,1],[1,2],[2,3]], 1",
+"expectedOutput": "2"
+},
+{
+"input": "1, [], 0",
+"expectedOutput": "1"
+}
+],
+"hidden": [
+{
+"input": "3, [], 0",
+"expectedOutput": "3"
+},
+{
+"input": "2, [[0,1]], 1",
+"expectedOutput": "2"
+},
+{
+"input": "5, [[0,1],[0,2],[0,3],[0,4]], 4",
+"expectedOutput": "1"
+},
+{
+"input": "5, [[0,1],[0,2],[0,3],[0,4]], 1",
+"expectedOutput": "4"
+},
+{
+"input": "6, [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0]], 2",
+"expectedOutput": "6"
+},
+{
+"input": "4, [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]], 3",
+"expectedOutput": "4"
+},
+{
+"input": "10, [], 5",
+"expectedOutput": "0"
+},
+{
+"input": "3, [[0,1],[1,2],[0,2]], 2",
+"expectedOutput": "3"
+},
+{
+"input": "7, [[0,1],[0,2],[0,3],[0,4],[0,5],[0,6]], 6",
+"expectedOutput": "1"
+}
+]
+}
+},
+{
+"id": "graphs_easy_005",
+"title": "Find Judge of the Town",
+"topic": "Graphs",
+"difficulty": "Easy",
+"description": "In a town of n people labeled from 1 to n, there is a rumor that one of these people is secretly the town judge. If the town judge exists, then everyone trusts the judge, and the judge trusts nobody, and there is exactly one person who satisfies these properties. You are given trust, an array of pairs trust[i] = [ai, bi] representing that person ai trusts person bi. Return the label of the town judge if it exists and can be identified, or return -1 otherwise.",
+"constraints": [
+"1 <= n <= 1000",
+"0 <= trust.length <= 10^4",
+"trust[i].length == 2",
+"1 <= ai, bi <= n, and ai != bi, and all pairs are unique"
+],
+"examples": [
+{
+"input": "n = 2, trust = [[1,2]]",
+"output": "2",
+"explanation": "Person 1 trusts person 2, and person 2 trusts nobody, so person 2 is the judge."
+},
+{
+"input": "n = 3, trust = [[1,3],[2,3],[3,1]]",
+"output": "-1",
+"explanation": "Person 3 trusts person 1, so person 3 cannot be the judge, and no valid judge exists."
+}
+],
+"boilerplate": {
+"cpp": "class Solution {\npublic:\n int solve(int n, vector<vector<int>>& trust) {\n \n }\n};",
+"java": "class Solution {\n public int solve(int n, int[][] trust) {\n \n }\n}",
+"python": "class Solution:\n def solve(self, n, trust):\n pass",
+"javascript": "class Solution {\n solve(n, trust) {\n \n }\n}",
+"typescript": "class Solution {\n solve(n: number, trust: number[][]): number {\n \n }\n}"
+},
+"testCases": {
+"public": [
+{
+"input": "2, [[1,2]]",
+"expectedOutput": "2"
+},
+{
+"input": "3, [[1,3],[2,3],[3,1]]",
+"expectedOutput": "-1"
+},
+{
+"input": "1, []",
+"expectedOutput": "1"
+}
+],
+"hidden": [
+{
+"input": "2, []",
+"expectedOutput": "-1"
+},
+{
+"input": "3, [[1,3],[2,3]]",
+"expectedOutput": "3"
+},
+{
+"input": "4, [[1,3],[1,4],[2,3],[2,4],[4,3]]",
+"expectedOutput": "3"
+},
+{
+"input": "1000, []",
+"expectedOutput": "-1"
+},
+{
+"input": "5, [[1,2],[2,3],[3,4],[4,5]]",
+"expectedOutput": "-1"
+},
+{
+"input": "3, [[1,2],[2,1]]",
+"expectedOutput": "-1"
+},
+{
+"input": "5, [[1,5],[2,5],[3,5],[4,5]]",
+"expectedOutput": "5"
+},
+{
+"input": "6, [[1,6],[2,6],[3,6],[4,6],[5,6]]",
+"expectedOutput": "6"
+},
+{
+"input": "4, [[1,2],[2,3],[3,1]]",
+"expectedOutput": "-1"
+}
+]
+}
+}
+]

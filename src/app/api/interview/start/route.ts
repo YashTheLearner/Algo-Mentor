@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { randomUUID } from "crypto";
+import { AppError } from "@/lib/errors";
 
 import { authOptions } from "@/lib/auth";
 import { startInterviewSchema } from "@/lib/validators/interview";
@@ -9,6 +10,7 @@ import type {
   StartInterviewRequest,
   StartInterviewResponse,
 } from "@/types/interview";
+import { startInterview } from "@/lib/interview/engine";
 
 export async function POST(request: Request) {
   try {
@@ -30,6 +32,7 @@ export async function POST(request: Request) {
     const body = (await request.json()) as StartInterviewRequest;
 
     const result = startInterviewSchema.safeParse(body);
+    // console.log("START_INTERVIEW_REQUEST", body, " ----------> ", result);
 
     if (!result.success) {
       return NextResponse.json(
@@ -47,6 +50,9 @@ export async function POST(request: Request) {
 
     const interviewId = randomUUID();
 
+    startInterview(body, interviewId);
+
+
     const response: StartInterviewResponse = {
       interviewId,
     };
@@ -60,17 +66,30 @@ export async function POST(request: Request) {
       { status: 201 }
     );
   } catch (error) {
-    console.error("START_INTERVIEW_ERROR", error);
+  console.error("START_INTERVIEW_ERROR", error);
 
+  if (error instanceof AppError) {
     return NextResponse.json(
       {
         success: false,
-        message: "Unable to start interview.",
+        message: error.message,
         error: {
-          code: ErrorCode.INTERNAL_SERVER_ERROR,
+          code: error.code,
         },
       },
-      { status: 500 }
+      { status: error.status }
     );
   }
+
+  return NextResponse.json(
+    {
+      success: false,
+      message: "Unable to start interview.",
+      error: {
+        code: ErrorCode.INTERNAL_SERVER_ERROR,
+      },
+    },
+    { status: 500 }
+  );
+}
 }
