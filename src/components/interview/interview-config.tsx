@@ -146,10 +146,10 @@ const handleStartInterview = async () => {
           </div>
 
           <Select
-  value={difficulty}
+  value={topic}
   onValueChange={(value) => {
     if (value !== null) {
-      setDifficulty(value);
+      setTopic(value);
     }
   }}
 >

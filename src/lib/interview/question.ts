@@ -8,7 +8,6 @@ export async function getQuestions(
   topic: string,
   difficulty: string
 ) {
-  console.log(process.cwd());
   try {
     const filePath = path.join(
       process.cwd(),
@@ -35,6 +34,7 @@ export async function getQuestionById(
   questionId: string
 ) {
   const questions = await getQuestions(topic, difficulty);
+
   return questions.find((q:Question) => q.id === questionId);
 }
 

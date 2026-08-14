@@ -13,6 +13,28 @@ export async function getInterviewById(interviewId: string) {
   if (!session?.user?.id) {
     return null;
   }
+//   const interview = await prisma.interview.findUnique({
+//   where: {
+//     id: interviewId,
+//   },
+//   include: {
+//     questions: {
+//       orderBy: {
+//         questionNo: "asc",
+//       },
+//     },
+//   },
+// });
+
+// const rows = await prisma.interview.findMany({
+//   take: 10,
+//   select: {
+//     id: true,
+//     userId: true,
+//     topic: true,
+//     status: true,
+//   },
+// });
 
   const interview = await prisma.interview.findFirst({
     where: {

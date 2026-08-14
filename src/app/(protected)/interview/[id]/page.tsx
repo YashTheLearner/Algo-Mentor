@@ -17,7 +17,6 @@ export default async function InterviewPage({
   const { id } = await params;
 
   const result = await getInterviewById(id);
-
   if (!result) {
     notFound();
   }
@@ -26,12 +25,13 @@ export default async function InterviewPage({
 
   return (
     <InterviewWorkspace
-      interviewId={id}
-      question={question}
-      initialCode={result.session.code}
-      language={result.session.language}
-      stage={result.session.stage}
-      hintsUsed={result.session.hintsUsed}
-    />
+  interviewId={id}
+  question={question}
+  initialCode={result.session.code}
+  language={result.session.language}
+  recentMessages={result.session.recentMessages}
+  stage={result.session.stage}
+  hintsUsed={result.session.hintsUsed}
+/>
   );
 }

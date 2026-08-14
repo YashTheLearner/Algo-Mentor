@@ -4,6 +4,7 @@ import { storeInterviewSession } from "./redis";
 import { createInterview } from "@/services/interview/create-interview";
 import type { Question } from "@/types/question";
 import { InterviewSession } from "@/types/interview-session";
+import { prisma } from "../prisma";
 
 interface CreateInterviewParams {
   userId: string;
@@ -13,6 +14,7 @@ interface CreateInterviewParams {
 
 export async function startInterview(data: StartInterviewRequest, interviewId: string, userId: string) {
 
+  console.log("START_INTERVIEW_REQUEST:", data, " ----------> ", interviewId, userId);
     const questionNo = Math.floor(Math.random() * (5));
 
     const questions:Question[] = await getQuestions("Arrays", "Easy");
@@ -51,9 +53,8 @@ export async function startInterview(data: StartInterviewRequest, interviewId: s
         "language": "cpp",
         
     }
-    console.log(interviewSession);
 
-    await storeInterviewSession(interviewId, interviewSession, data);
+    
     const interview = await createInterview({
       interviewId: interviewId,
   userId: userId,
@@ -61,6 +62,22 @@ export async function startInterview(data: StartInterviewRequest, interviewId: s
   questions: questions[questionNo].id ? [{ id: questions[questionNo].id }] : [],
 });
 
+try{
+  
+await storeInterviewSession(interviewId, interviewSession, data);
+
+}catch(error){
+await prisma.interview.update({
+    where: {
+      id: interviewId,
+    },
+    data: {
+      status: "ABANDONED",
+    },
+  });
+
+  throw error;
+}
 }
 
 // handleMessage()

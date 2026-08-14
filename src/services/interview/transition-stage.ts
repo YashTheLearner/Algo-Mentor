@@ -1,19 +1,14 @@
 import { redis } from "@/lib/redis";
-import {
-  canTransition,
-  getNextStage,
-} from "@/lib/interview/state-machine";
+import { getNextStage } from "@/lib/interview/state-machine";
 
 import type { InterviewSession } from "@/types/interview-session";
 
 interface TransitionStageParams {
   interviewId: string;
-  targetStage?: InterviewSession["stage"];
 }
 
 export async function transitionInterviewStage({
   interviewId,
-  targetStage,
 }: TransitionStageParams) {
   const key = `interview:${interviewId}`;
 
@@ -28,15 +23,10 @@ export async function transitionInterviewStage({
     throw new Error("INTERVIEW_NOT_ACTIVE");
   }
 
-  const nextStage =
-    targetStage ?? getNextStage(session.stage);
+  const nextStage = getNextStage(session.stage);
 
   if (!nextStage) {
     throw new Error("NO_NEXT_STAGE");
-  }
-
-  if (!canTransition(session.stage, nextStage)) {
-    throw new Error("INVALID_STAGE_TRANSITION");
   }
 
   const ttl = await redis.ttl(key);

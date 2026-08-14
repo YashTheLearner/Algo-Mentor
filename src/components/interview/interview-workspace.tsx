@@ -15,15 +15,26 @@ import { TestCasePanel } from "./test-case-panel";
 import { InterviewerPanel } from "./interviewer-panel";
 
 import { toast } from "sonner";
+import type { InterviewMessage } from "@/types/interview-message";
 
 interface InterviewWorkspaceProps {
   interviewId: string;
   question: PublicQuestion;
   initialCode: string;
   language: InterviewLanguage;
+  recentMessages: InterviewMessage[];
   stage?: string;
   hintsUsed?: number;
 }
+
+// interface InterviewWorkspaceProps {
+//   interviewId: string;
+//   question: PublicQuestion;
+//   initialCode: string;
+//   language: InterviewLanguage;
+//   stage?: string;
+//   hintsUsed?: number;
+// }
 
 export function InterviewWorkspace({
   interviewId,
@@ -32,6 +43,7 @@ export function InterviewWorkspace({
   language,
   stage = "INTRO",
   hintsUsed = 0,
+  recentMessages = [],
 }: InterviewWorkspaceProps) {
   const [code, setCode] = useState(initialCode);
   const [isSaving, setIsSaving] = useState(false);
@@ -130,8 +142,10 @@ export function InterviewWorkspace({
 
           <TestCasePanel question={question} />
         </section>
-
-        <InterviewerPanel />
+<InterviewerPanel
+  interviewId={interviewId}
+  initialMessages={recentMessages}
+/>
       </div>
     </div>
   );

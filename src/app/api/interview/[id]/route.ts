@@ -35,8 +35,6 @@ export async function GET(
     }
 
     const { id: interviewId } = await params;
-  // console.log("GET_INTERVIEW_SESSION", session);
-    // console.log(interviewId);
     if (!interviewId) {
       return NextResponse.json(
         {

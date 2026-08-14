@@ -3,6 +3,7 @@ import type {
   InterviewLanguage,
   InterviewMode,
 } from "@/types/interview";
+import type { InterviewMessage } from "@/types/interview-message";
 
 export type InterviewStatus = "ACTIVE" | "COMPLETED" | "ABANDONED";
 export type InterviewStage =
@@ -39,7 +40,7 @@ export interface InterviewSession {
 
   conversationSummary: string;
 
-  recentMessages: unknown[];
+  recentMessages: InterviewMessage[];
   code: string;
   language: InterviewLanguage;
 }

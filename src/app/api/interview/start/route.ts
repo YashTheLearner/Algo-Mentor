@@ -32,8 +32,6 @@ export async function POST(request: Request) {
     const body = (await request.json()) as StartInterviewRequest;
 
     const result = startInterviewSchema.safeParse(body);
-    // console.log("START_INTERVIEW_REQUEST", body, " ----------> ", result);
-
     if (!result.success) {
       return NextResponse.json(
         {
