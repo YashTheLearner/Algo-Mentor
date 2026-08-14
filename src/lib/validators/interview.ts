@@ -24,3 +24,14 @@ export const startInterviewSchema = z.object({
 
   mode: z.enum(["guided", "strict"]),
 });
+
+export const updateCodeSchema = z.object({
+  code: z.string(),
+  language: z.enum([
+    "typescript",
+    "javascript",
+    "python",
+    "java",
+    "cpp",
+  ]),
+});

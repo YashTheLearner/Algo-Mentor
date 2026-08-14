@@ -29,3 +29,10 @@ export interface StartInterviewRequest {
 export interface StartInterviewResponse {
   interviewId: string;
 }
+
+export type InterviewLanguage =
+  | "typescript"
+  | "javascript"
+  | "python"
+  | "java"
+  | "cpp";

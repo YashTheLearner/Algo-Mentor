@@ -3,6 +3,7 @@ import { getQuestions } from "./question";
 import { storeInterviewSession } from "./redis";
 import { createInterview } from "@/services/interview/create-interview";
 import type { Question } from "@/types/question";
+import { InterviewSession } from "@/types/interview-session";
 
 interface CreateInterviewParams {
   userId: string;
@@ -14,9 +15,9 @@ export async function startInterview(data: StartInterviewRequest, interviewId: s
 
     const questionNo = Math.floor(Math.random() * (5));
 
-    const questions = await getQuestions("Arrays", "Easy");
+    const questions:Question[] = await getQuestions("Arrays", "Easy");
 
-    const interviewSession = {
+    const interviewSession: InterviewSession = {
         "sessionId": interviewId,
 
         "status": "ACTIVE",
@@ -45,7 +46,10 @@ export async function startInterview(data: StartInterviewRequest, interviewId: s
 
         "conversationSummary": "",
 
-        "recentMessages": []
+        "recentMessages": [],
+        "code": questions[questionNo].boilerplate.cpp,
+        "language": "cpp",
+        
     }
     console.log(interviewSession);
 

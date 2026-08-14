@@ -26,7 +26,10 @@ export default async function InterviewPage({
 
   return (
     <InterviewWorkspace
+      interviewId={id}
       question={question}
+      initialCode={result.session.code}
+      language={result.session.language}
       stage={result.session.stage}
       hintsUsed={result.session.hintsUsed}
     />

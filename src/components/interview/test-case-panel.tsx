@@ -13,7 +13,7 @@ export function TestCasePanel({
   question,
 }: TestCasePanelProps) {
   return (
-    <div className="flex h-64 flex-col border-t bg-[#0d1117] text-white">
+    <div className="flex min-h-0 flex-col border-t bg-[#0d1117] text-white">
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
         <div>
           <h3 className="text-sm font-medium">Test Cases</h3>

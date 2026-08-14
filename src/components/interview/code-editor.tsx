@@ -3,21 +3,27 @@
 import Editor from "@monaco-editor/react";
 
 interface CodeEditorProps {
-  initialCode: string;
+  code: string;
   language?: string;
+  onChange: (value: string) => void;
 }
 
 export function CodeEditor({
-  initialCode,
+  code,
   language = "typescript",
+  onChange,
 }: CodeEditorProps) {
   return (
-    <div className="min-h-0 flex-1 overflow-hidden">
+    <div className="h-full min-h-0 w-full overflow-hidden">
       <Editor
         height="100%"
+        width="100%"
         language={language}
         theme="vs-dark"
-        defaultValue={initialCode}
+        value={code}
+        onChange={(value) => {
+          onChange(value ?? "");
+        }}
         options={{
           minimap: {
             enabled: false,
@@ -30,6 +36,8 @@ export function CodeEditor({
             top: 14,
             bottom: 14,
           },
+          wordWrap: "on",
+          tabSize: 2,
         }}
       />
     </div>

@@ -1,5 +1,6 @@
 import type {
   InterviewDifficulty,
+  InterviewLanguage,
   InterviewMode,
 } from "@/types/interview";
 
@@ -24,7 +25,6 @@ export interface InterviewSession {
   sessionId: string;
   status: InterviewStatus;
   stage: InterviewStage;
-
   topic: string;
   difficulty: InterviewDifficulty;
 
@@ -40,4 +40,6 @@ export interface InterviewSession {
   conversationSummary: string;
 
   recentMessages: unknown[];
+  code: string;
+  language: InterviewLanguage;
 }
