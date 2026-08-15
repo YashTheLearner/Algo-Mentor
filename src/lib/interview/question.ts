@@ -58,9 +58,17 @@ export function toPublicQuestion(
     topic: question.topic,
     difficulty: question.difficulty,
     description: question.description,
+
     constraints: question.constraints,
     examples: question.examples,
+
+    tags: question.tags,
+    complexity: question.complexity,
+    signature: question.signature,
+    interview: question.interview,
+
     boilerplate: question.boilerplate,
+
     testCases: {
       public: question.testCases.public,
     },

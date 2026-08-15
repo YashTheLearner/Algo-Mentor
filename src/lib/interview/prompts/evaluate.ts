@@ -37,7 +37,7 @@ ${session.code}
 INTERVIEW CHAT
 -------------------------
 
-${session.messages
+${session.recentMessages
   .map(
     (message) =>
       `${message.role.toUpperCase()}: ${message.content}`
