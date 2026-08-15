@@ -17,7 +17,7 @@ export async function startInterview(data: StartInterviewRequest, interviewId: s
   console.log("START_INTERVIEW_REQUEST:", data, " ----------> ", interviewId, userId);
     const questionNo = Math.floor(Math.random() * (5));
 
-    const questions:Question[] = await getQuestions("Arrays", "Easy");
+    const questions:Question[] = await getQuestions(data.topic, data.difficulty);
 
     const interviewSession: InterviewSession = {
         "sessionId": interviewId,
