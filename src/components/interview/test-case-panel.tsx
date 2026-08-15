@@ -78,18 +78,22 @@ export function TestCasePanel({
 
                   <div className="mt-2 space-y-2 font-mono text-xs">
                     <div>
-                      <span className="text-white/50">
-                        Input:
-                      </span>{" "}
-                      {testCase.input}
-                    </div>
+  <span className="text-white/50">
+    Arguments:
+  </span>{" "}
+  <pre className="mt-1 whitespace-pre-wrap">
+    {JSON.stringify(testCase.arguments)}
+  </pre>
+</div>
 
-                    <div>
-                      <span className="text-white/50">
-                        Expected:
-                      </span>{" "}
-                      {testCase.expectedOutput}
-                    </div>
+<div>
+  <span className="text-white/50">
+    Expected:
+  </span>{" "}
+  <pre className="mt-1 whitespace-pre-wrap">
+    {JSON.stringify(testCase.expectedOutput)}
+  </pre>
+</div>
                   </div>
                 </div>
               )
