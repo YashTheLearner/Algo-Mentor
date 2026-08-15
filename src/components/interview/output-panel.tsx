@@ -14,108 +14,133 @@ export function OutputPanel({
   if (!result) {
     return (
       <div className="flex h-full items-center justify-center text-sm text-white/50">
-        Click <span className="mx-1 font-medium">Run</span>
-        to execute your code.
+        Run your code to see the output.
       </div>
     );
   }
 
   return (
-    <div className="h-full overflow-y-auto p-4">
-      <div className="mb-5 rounded-lg border border-white/10 bg-white/[0.03] p-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold">
-            Execution Result
-          </h3>
+    <div className="space-y-4 p-4">
+      {/* Verdict */}
+      <div
+        className={`rounded-lg border p-4 ${
+          result.accepted
+            ? "border-green-500/30 bg-green-500/10"
+            : "border-red-500/30 bg-red-500/10"
+        }`}
+      >
+        <div className="flex items-center gap-2">
+          {result.accepted ? (
+            <CheckCircle2 className="size-5 text-green-400" />
+          ) : (
+            <XCircle className="size-5 text-red-400" />
+          )}
 
           <span
-            className={`rounded-full px-3 py-1 text-sm font-medium ${
+            className={`font-semibold ${
               result.accepted
-                ? "bg-green-500/15 text-green-400"
-                : "bg-red-500/15 text-red-400"
+                ? "text-green-400"
+                : "text-red-400"
             }`}
           >
-            {result.passed}/{result.total} Passed
+            {result.accepted
+              ? "Accepted"
+              : "Wrong Answer"}
           </span>
         </div>
+
+        <p className="mt-2 text-sm text-white/70">
+          Passed {result.passed} / {result.total} Test
+          Cases
+        </p>
       </div>
 
-      <div className="space-y-4">
+      {/* Individual Test Cases */}
+      <div className="space-y-3">
         {result.testCases.map((testCase, index) => (
           <div
             key={index}
-            className="rounded-lg border border-white/10 bg-white/[0.03] p-4"
+            className="rounded-lg border border-white/10 bg-white/[0.03] p-3"
           >
-            <div className="mb-3 flex items-center gap-2">
-              {testCase.passed ? (
-                <CheckCircle2 className="size-5 text-green-400" />
-              ) : (
-                <XCircle className="size-5 text-red-400" />
-              )}
-
-              <span className="font-medium">
+            <div className="mb-3 flex items-center justify-between">
+              <span className="text-sm font-medium">
                 Test Case {index + 1}
+              </span>
+
+              <span
+                className={
+                  testCase.passed
+                    ? "text-green-400"
+                    : "text-red-400"
+                }
+              >
+                {testCase.passed
+                  ? "Passed"
+                  : "Failed"}
               </span>
             </div>
 
-            <div className="space-y-3 text-sm">
-              <div>
-                <p className="mb-1 text-white/50">
+            {testCase.input && (
+              <div className="mb-2">
+                <p className="mb-1 text-xs text-white/50">
                   Input
                 </p>
 
-                <pre className="overflow-x-auto rounded bg-black/30 p-2 font-mono text-xs">
+                <pre className="overflow-x-auto rounded bg-black/30 p-2 text-xs">
                   {testCase.input}
                 </pre>
               </div>
+            )}
 
-              <div>
-                <p className="mb-1 text-white/50">
-                  Expected Output
+            {testCase.expectedOutput && (
+              <div className="mb-2">
+                <p className="mb-1 text-xs text-white/50">
+                  Expected
                 </p>
 
-                <pre className="overflow-x-auto rounded bg-black/30 p-2 font-mono text-xs">
+                <pre className="overflow-x-auto rounded bg-black/30 p-2 text-xs">
                   {testCase.expectedOutput}
                 </pre>
               </div>
+            )}
 
-              <div>
-                <p className="mb-1 text-white/50">
-                  Your Output
+            {testCase.actualOutput && (
+              <div className="mb-2">
+                <p className="mb-1 text-xs text-white/50">
+                  Output
                 </p>
 
-                <pre className="overflow-x-auto rounded bg-black/30 p-2 font-mono text-xs">
-                  {testCase.actualOutput ??
-                    "(no output)"}
+                <pre className="overflow-x-auto rounded bg-black/30 p-2 text-xs">
+                  {testCase.actualOutput}
                 </pre>
               </div>
+            )}
 
-              {testCase.error && (
-                <div>
-                  <p className="mb-1 text-red-400">
-                    Error
-                  </p>
+            {testCase.error && (
+              <div>
+                <p className="mb-1 text-xs text-red-400">
+                  Error
+                </p>
 
-                  <pre className="overflow-x-auto rounded bg-red-950/30 p-2 font-mono text-xs text-red-300">
-                    {testCase.error}
-                  </pre>
-                </div>
-              )}
+                <pre className="overflow-x-auto whitespace-pre-wrap rounded bg-red-500/10 p-2 text-xs text-red-300">
+                  {testCase.error}
+                </pre>
+              </div>
+            )}
 
-              <div className="flex gap-6 border-t border-white/10 pt-3 text-xs text-white/60">
+            {(testCase.executionTime ||
+              testCase.memory) && (
+              <div className="mt-3 flex gap-6 border-t border-white/10 pt-2 text-xs text-white/50">
                 <span>
                   Time:{" "}
-                  {testCase.executionTime ??
-                    "-"}{" "}
-                  s
+                  {testCase.executionTime ?? "-"} s
                 </span>
 
                 <span>
-                  Memory:{" "}
-                  {testCase.memory ?? "-"} KB
+                  Memory: {testCase.memory ?? "-"} KB
                 </span>
               </div>
-            </div>
+            )}
           </div>
         ))}
       </div>

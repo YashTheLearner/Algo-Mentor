@@ -68,7 +68,7 @@ export interface TestCaseResult {
  * Aggregated result returned by the Run API.
  */
 export interface RunResult {
-  mode: "run";
+  mode: "run"|"submit";
 
   passed: number;
   total: number;

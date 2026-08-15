@@ -11,6 +11,7 @@ import type { InterviewLanguage } from "@/types/interview";
 import type { InterviewMessage } from "@/types/interview-message";
 import type { PublicQuestion } from "@/types/question";
 import type { RunResult } from "@/types/executor";
+import { submitCode } from "@/lib/api/submit";
 
 import { InterviewHeader } from "./interview-header";
 import { ProblemPanel } from "./problem-panel";
@@ -129,8 +130,28 @@ export function InterviewWorkspace({
   }
 };
 
-  const handleSubmitCode = async () => {
-  toast.info("Submit coming soon.");
+ const handleSubmitCode = async () => {
+  try {
+    setIsRunning(true);
+
+    const result = await submitCode({
+      interviewId,
+      sourceCode: code,
+    });
+
+    setRunResult(result.data);
+    setActiveTab("output");
+  } catch (error) {
+    console.error(error);
+
+    toast.error(
+      error instanceof Error
+        ? error.message
+        : "Unable to submit code."
+    );
+  } finally {
+    setIsRunning(false);
+  }
 };
 
   return (
