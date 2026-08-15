@@ -1,21 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Save, Loader2 } from "lucide-react";
-
-import type { PublicQuestion } from "@/types/question";
-import type { InterviewLanguage } from "@/types/interview";
+import { Loader2, Save } from "lucide-react";
+import { toast } from "sonner";
 
 import { useDebounce } from "@/hooks/use-debounce";
+import { runCode } from "@/lib/api/run";
+
+import type { InterviewLanguage } from "@/types/interview";
+import type { InterviewMessage } from "@/types/interview-message";
+import type { PublicQuestion } from "@/types/question";
+import type { RunResult } from "@/types/executor";
 
 import { InterviewHeader } from "./interview-header";
 import { ProblemPanel } from "./problem-panel";
 import { CodeEditor } from "./code-editor";
 import { TestCasePanel } from "./test-case-panel";
 import { InterviewerPanel } from "./interviewer-panel";
-
-import { toast } from "sonner";
-import type { InterviewMessage } from "@/types/interview-message";
 
 interface InterviewWorkspaceProps {
   interviewId: string;
@@ -27,15 +28,6 @@ interface InterviewWorkspaceProps {
   hintsUsed?: number;
 }
 
-// interface InterviewWorkspaceProps {
-//   interviewId: string;
-//   question: PublicQuestion;
-//   initialCode: string;
-//   language: InterviewLanguage;
-//   stage?: string;
-//   hintsUsed?: number;
-// }
-
 export function InterviewWorkspace({
   interviewId,
   question,
@@ -46,9 +38,23 @@ export function InterviewWorkspace({
   recentMessages = [],
 }: InterviewWorkspaceProps) {
   const [code, setCode] = useState(initialCode);
-  const [isSaving, setIsSaving] = useState(false);
 
-  const debouncedCode = useDebounce(code, 800);
+  const [isSaving, setIsSaving] =
+    useState(false);
+
+  const [isRunning, setIsRunning] =
+    useState(false);
+
+  const [activeTab, setActiveTab] =
+    useState<"tests" | "output">("tests");
+
+  const [runResult, setRunResult] =
+    useState<RunResult | null>(null);
+
+  const debouncedCode = useDebounce(
+    code,
+    800
+  );
 
   useEffect(() => {
     if (debouncedCode === initialCode) {
@@ -77,20 +83,55 @@ export function InterviewWorkspace({
 
         if (!response.ok || !result.success) {
           throw new Error(
-            result.message ?? "Unable to save code."
+            result.message ??
+              "Unable to save code."
           );
         }
       } catch (error) {
-        console.error("SAVE_CODE_ERROR", error);
+        console.error(
+          "SAVE_CODE_ERROR",
+          error
+        );
 
-        toast.error("Unable to save your code.");
+        toast.error(
+          "Unable to save your code."
+        );
       } finally {
         setIsSaving(false);
       }
     };
 
     void saveCode();
-  }, [debouncedCode, initialCode, interviewId, language]);
+  }, [
+    debouncedCode,
+    initialCode,
+    interviewId,
+    language,
+  ]);
+
+  const handleRunCode = async () => {
+  try {
+    setIsRunning(true);
+
+    const response = await runCode({
+      interviewId,
+      sourceCode: code,
+    });
+
+    setRunResult(response.data);
+
+    setActiveTab("output");
+  } catch (error) {
+    console.error(error);
+    toast.error("Unable to run code.");
+  } finally {
+    setIsRunning(false);
+  }
+};
+
+  const handleSubmitCode = async () => {
+  toast.info("Submit coming soon.");
+};
 
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-background">
@@ -140,12 +181,21 @@ export function InterviewWorkspace({
             />
           </div>
 
-          <TestCasePanel question={question} />
-        </section>
-<InterviewerPanel
-  interviewId={interviewId}
-  initialMessages={recentMessages}
+          <TestCasePanel
+  question={question}
+  activeTab={activeTab}
+  onTabChange={setActiveTab}
+  runResult={runResult}
+  isRunning={isRunning}
+  onRun={handleRunCode}
+  onSubmit={handleSubmitCode}
 />
+        </section>
+
+        <InterviewerPanel
+          interviewId={interviewId}
+          initialMessages={recentMessages}
+        />
       </div>
     </div>
   );
