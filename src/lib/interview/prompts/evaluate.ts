@@ -1,109 +1,70 @@
-import type { PublicQuestion } from "@/types/question";
-import type { InterviewSession } from "@/types/interview-session";
+import type {
+  InterviewSession,
+} from "@/types/interview-session";
 
-interface BuildEvaluationPromptParams {
-  session: InterviewSession;
-  question: PublicQuestion;
-}
+import type {
+  Question,
+} from "@/types/question";
 
-export function buildEvaluationPrompt({
-  session,
-  question,
-}: BuildEvaluationPromptParams) {
+export function buildEvaluationPrompt(
+  session: InterviewSession,
+  question: Question
+) {
   return `
-You are an expert senior software engineer evaluating a completed technical interview.
+Question
 
-Evaluate the candidate fairly based ONLY on the interview conversation, candidate responses, and submitted code.
-
-Do not invent information.
-
--------------------------
-QUESTION
--------------------------
-
-Title:
 ${question.title}
 
-Description:
+Difficulty
+
+${question.difficulty}
+
+Description
+
 ${question.description}
 
--------------------------
-CANDIDATE CODE
--------------------------
+Candidate Code
 
 ${session.code}
 
--------------------------
-INTERVIEW CHAT
--------------------------
+Hints Used
+
+${session.hintsUsed}
+
+Stage Reached
+
+${session.stage}
+
+Conversation
 
 ${session.recentMessages
   .map(
-    (message) =>
-      `${message.role.toUpperCase()}: ${message.content}`
+    (m) =>
+      `${m.role}: ${m.content}`
   )
-  .join("\n\n")}
+  .join("\n")}
 
--------------------------
-INTERVIEW INFORMATION
--------------------------
+Evaluate the interview.
 
-Current Stage:
-${session.stage}
-
-Hints Used:
-${session.hintsUsed}
-
-Language:
-${session.language}
-
--------------------------
-Return ONLY valid JSON.
+Return JSON with this shape:
 
 {
-  "overallScore": number,
-
-  "communicationScore": number,
-
-  "problemUnderstandingScore": number,
-
-  "algorithmChoiceScore": number,
-
-  "codingScore": number,
-
-  "debuggingScore": number,
-
-  "strengths": [
-    "..."
-  ],
-
-  "weaknesses": [
-    "..."
-  ],
-
-  "recommendations": [
-    "..."
-  ],
-
-  "summary": "..."
+summary:"",
+strengths:[],
+weaknesses:[],
+recommendations:[],
+score:{
+communication:0,
+understanding:0,
+algorithm:0,
+coding:0,
+debugging:0,
+overall:0
+},
+solved:true,
+timeComplexity:"",
+spaceComplexity:"",
+feedback:""
 }
-
-Rules:
-
-- Every score must be between 0 and 100.
-
-- strengths:
-1-5 concise bullet points.
-
-- weaknesses:
-1-5 concise bullet points.
-
-- recommendations:
-1-5 actionable improvements.
-
-- summary:
-A professional paragraph explaining the candidate's overall performance.
-
-Return ONLY JSON.
 `;
 }

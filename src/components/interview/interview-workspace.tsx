@@ -1,5 +1,8 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { finishInterview } from "@/lib/api/finish";
+
 import { useEffect, useState } from "react";
 import { Loader2, Save } from "lucide-react";
 import { toast } from "sonner";
@@ -27,6 +30,8 @@ interface InterviewWorkspaceProps {
   recentMessages: InterviewMessage[];
   stage?: string;
   hintsUsed?: number;
+   startedAt: number;
+  duration: number;
 }
 
 export function InterviewWorkspace({
@@ -37,6 +42,8 @@ export function InterviewWorkspace({
   stage = "INTRO",
   hintsUsed = 0,
   recentMessages = [],
+  startedAt,
+  duration,
 }: InterviewWorkspaceProps) {
   const [code, setCode] = useState(initialCode);
 
@@ -56,6 +63,42 @@ export function InterviewWorkspace({
     code,
     800
   );
+
+  const [isFinishing, setIsFinishing] = useState(false);
+
+  const router = useRouter();
+
+const handleInterviewExpired = async () => {
+  if (isFinishing) {
+    return;
+  }
+
+  try {
+    setIsFinishing(true);
+
+    const result = await finishInterview(
+      interviewId
+    );
+
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+
+    toast.success("Interview completed.");
+
+    router.replace(
+      `/interview/${interviewId}/report`
+    );
+  } catch (error) {
+    console.error(error);
+
+    toast.error(
+      "Unable to finish interview."
+    );
+
+    setIsFinishing(false);
+  }
+};
 
   useEffect(() => {
     if (debouncedCode === initialCode) {
@@ -157,12 +200,16 @@ export function InterviewWorkspace({
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-background">
       <InterviewHeader
-        title={question.title}
-        topic={question.topic}
-        difficulty={question.difficulty}
-        stage={stage}
-        hintsUsed={hintsUsed}
-      />
+  title={question.title}
+  topic={question.topic}
+  difficulty={question.difficulty}
+  stage={stage}
+  hintsUsed={hintsUsed}
+  startedAt={startedAt}
+  duration={duration}
+  handleInterviewExpired={handleInterviewExpired}
+  isFinishing={isFinishing}
+/>
 
       <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 p-3 lg:grid-cols-[30%_45%_25%]">
         <ProblemPanel question={question} />

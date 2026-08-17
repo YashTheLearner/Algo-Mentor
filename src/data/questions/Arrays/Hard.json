@@ -1,444 +1,502 @@
 [
-{
-"id": "arrays_hard_001",
-"title": "Trapping Rain Water",
-"topic": "Arrays",
-"difficulty": "Hard",
-"description": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
-"constraints": [
-"1 <= height.length <= 2 * 10^5",
-"0 <= height[i] <= 10^5",
-"The solution should run in O(n) time",
-"O(1) extra space is preferred but not enforced"
-],
-"examples": [
-{
-"input": "height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]",
-"output": "6",
-"explanation": "The elevation map traps 6 units of water between the bars."
-},
-{
-"input": "height = [4, 2, 0, 3, 2, 5]",
-"output": "9",
-"explanation": "The elevation map traps 9 units of water between the bars."
-}
-],
-"boilerplate": {
-"cpp": "class Solution {\npublic:\n int solve(vector<int>& height) {\n \n }\n};",
-"java": "class Solution {\n public int solve(int[] height) {\n \n }\n}",
-"python": "class Solution:\n def solve(self, height):\n pass",
-"javascript": "class Solution {\n solve(height) {\n \n }\n}",
-"typescript": "class Solution {\n solve(height: number[]): number {\n \n }\n}"
-},
-"testCases": {
-"public": [
-{
-"input": "[0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]",
-"expectedOutput": "6"
-},
-{
-"input": "[4, 2, 0, 3, 2, 5]",
-"expectedOutput": "9"
-},
-{
-"input": "[1, 1, 1, 1]",
-"expectedOutput": "0"
-}
-],
-"hidden": [
-{
-"input": "[1]",
-"expectedOutput": "0"
-},
-{
-"input": "[0, 0, 0, 0]",
-"expectedOutput": "0"
-},
-{
-"input": "[5, 4, 3, 2, 1]",
-"expectedOutput": "0"
-},
-{
-"input": "[1, 2, 3, 4, 5]",
-"expectedOutput": "0"
-},
-{
-"input": "[100000, 0, 100000]",
-"expectedOutput": "100000"
-},
-{
-"input": "[3, 0, 0, 0, 3]",
-"expectedOutput": "9"
-},
-{
-"input": "[5, 5, 5, 5, 5]",
-"expectedOutput": "0"
-},
-{
-"input": "[0, 5, 0, 5, 0]",
-"expectedOutput": "5"
-},
-{
-"input": "[2, 0, 2, 0, 2, 0, 2]",
-"expectedOutput": "6"
-},
-{
-"input": "[6, 4, 2, 0, 3, 2, 0, 5]",
-"expectedOutput": "9"
-}
-]
-}
-},
-{
-"id": "arrays_hard_002",
-"title": "Median of Two Sorted Arrays",
-"topic": "Arrays",
-"difficulty": "Hard",
-"description": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays combined. The overall run time complexity should be O(log(m+n)). The result should be returned as a string representing a floating point number rounded to 5 decimal places.",
-"constraints": [
-"0 <= m, n <= 10^5",
-"1 <= m + n <= 2 * 10^5",
-"-10^6 <= nums1[i], nums2[i] <= 10^6",
-"The combined array is not guaranteed to have distinct elements"
-],
-"examples": [
-{
-"input": "nums1 = [1, 3], nums2 = [2]",
-"output": "2.00000",
-"explanation": "The merged array is [1,2,3], and its median is 2."
-},
-{
-"input": "nums1 = [1, 2], nums2 = [3, 4]",
-"output": "2.50000",
-"explanation": "The merged array is [1,2,3,4], and its median is (2+3)/2 = 2.5."
-}
-],
-"boilerplate": {
-"cpp": "class Solution {\npublic:\n double solve(vector<int>& nums1, vector<int>& nums2) {\n \n }\n};",
-"java": "class Solution {\n public double solve(int[] nums1, int[] nums2) {\n \n }\n}",
-"python": "class Solution:\n def solve(self, nums1, nums2):\n pass",
-"javascript": "class Solution {\n solve(nums1, nums2) {\n \n }\n}",
-"typescript": "class Solution {\n solve(nums1: number[], nums2: number[]): number {\n \n }\n}"
-},
-"testCases": {
-"public": [
-{
-"input": "[1, 3], [2]",
-"expectedOutput": "2.00000"
-},
-{
-"input": "[1, 2], [3, 4]",
-"expectedOutput": "2.50000"
-},
-{
-"input": "[], [1]",
-"expectedOutput": "1.00000"
-}
-],
-"hidden": [
-{
-"input": "[0, 0], [0, 0]",
-"expectedOutput": "0.00000"
-},
-{
-"input": "[2], []",
-"expectedOutput": "2.00000"
-},
-{
-"input": "[-5, -3, -1], [-4, -2]",
-"expectedOutput": "-3.00000"
-},
-{
-"input": "[1, 2, 3, 4, 5], []",
-"expectedOutput": "3.00000"
-},
-{
-"input": "[5, 4, 3, 2, 1], []",
-"expectedOutput": "3.00000"
-},
-{
-"input": "[1000000], [-1000000]",
-"expectedOutput": "0.00000"
-},
-{
-"input": "[1, 1, 1], [1, 1, 1]",
-"expectedOutput": "1.00000"
-},
-{
-"input": "[1, 2], [1, 2]",
-"expectedOutput": "1.50000"
-},
-{
-"input": "[3], [-2, -1]",
-"expectedOutput": "-1.00000"
-}
-]
-}
-},
-{
-"id": "arrays_hard_003",
-"title": "Sliding Window Maximum",
-"topic": "Arrays",
-"difficulty": "Hard",
-"description": "Given an array of integers nums and a sliding window of size k which moves from the very left of the array to the very right, return an array of the maximum value in each window as it slides.",
-"constraints": [
-"1 <= nums.length <= 10^5",
-"-10^4 <= nums[i] <= 10^4",
-"1 <= k <= nums.length",
-"The solution should run in O(n) time using a deque-based approach"
-],
-"examples": [
-{
-"input": "nums = [1, 3, -1, -3, 5, 3, 6, 7], k = 3",
-"output": "[3, 3, 5, 5, 6, 7]",
-"explanation": "The maximum values in each sliding window of size 3 are shown in order."
-},
-{
-"input": "nums = [1], k = 1",
-"output": "[1]",
-"explanation": "There is only one window containing a single element."
-}
-],
-"boilerplate": {
-"cpp": "class Solution {\npublic:\n vector<int> solve(vector<int>& nums, int k) {\n \n }\n};",
-"java": "class Solution {\n public int[] solve(int[] nums, int k) {\n \n }\n}",
-"python": "class Solution:\n def solve(self, nums, k):\n pass",
-"javascript": "class Solution {\n solve(nums, k) {\n \n }\n}",
-"typescript": "class Solution {\n solve(nums: number[], k: number): number[] {\n \n }\n}"
-},
-"testCases": {
-"public": [
-{
-"input": "[1, 3, -1, -3, 5, 3, 6, 7], 3",
-"expectedOutput": "[3, 3, 5, 5, 6, 7]"
-},
-{
-"input": "[1], 1",
-"expectedOutput": "[1]"
-},
-{
-"input": "[1, -1], 1",
-"expectedOutput": "[1, -1]"
-}
-],
-"hidden": [
-{
-"input": "[9, 11], 2",
-"expectedOutput": "[11]"
-},
-{
-"input": "[4, -2], 2",
-"expectedOutput": "[4]"
-},
-{
-"input": "[1, 2, 3, 4, 5], 5",
-"expectedOutput": "[5]"
-},
-{
-"input": "[5, 4, 3, 2, 1], 1",
-"expectedOutput": "[5, 4, 3, 2, 1]"
-},
-{
-"input": "[-1, -2, -3, -4], 2",
-"expectedOutput": "[-1, -2, -3]"
-},
-{
-"input": "[10000, -10000, 10000, -10000], 2",
-"expectedOutput": "[10000, 10000, 10000]"
-},
-{
-"input": "[3, 3, 3, 3, 3], 2",
-"expectedOutput": "[3, 3, 3, 3]"
-},
-{
-"input": "[7, 2, 4], 2",
-"expectedOutput": "[7, 4]"
-},
-{
-"input": "[1, 3, 1, 2, 0, 5], 3",
-"expectedOutput": "[3, 3, 2, 5]"
-}
-]
-}
-},
-{
-"id": "arrays_hard_004",
-"title": "First Missing Positive",
-"topic": "Arrays",
-"difficulty": "Hard",
-"description": "Given an unsorted integer array nums, return the smallest missing positive integer. You must implement an algorithm that runs in O(n) time and uses O(1) auxiliary space.",
-"constraints": [
-"1 <= nums.length <= 10^5",
-"-2^31 <= nums[i] <= 2^31 - 1",
-"The algorithm must run in O(n) time",
-"O(1) extra space must be used (in-place modification allowed)"
-],
-"examples": [
-{
-"input": "nums = [1, 2, 0]",
-"output": "3",
-"explanation": "The numbers 1 and 2 are present, so the smallest missing positive integer is 3."
-},
-{
-"input": "nums = [3, 4, -1, 1]",
-"output": "2",
-"explanation": "The number 1 is present but 2 is missing, so the answer is 2."
-}
-],
-"boilerplate": {
-"cpp": "class Solution {\npublic:\n int solve(vector<int>& nums) {\n \n }\n};",
-"java": "class Solution {\n public int solve(int[] nums) {\n \n }\n}",
-"python": "class Solution:\n def solve(self, nums):\n pass",
-"javascript": "class Solution {\n solve(nums) {\n \n }\n}",
-"typescript": "class Solution {\n solve(nums: number[]): number {\n \n }\n}"
-},
-"testCases": {
-"public": [
-{
-"input": "[1, 2, 0]",
-"expectedOutput": "3"
-},
-{
-"input": "[3, 4, -1, 1]",
-"expectedOutput": "2"
-},
-{
-"input": "[7, 8, 9, 11, 12]",
-"expectedOutput": "1"
-}
-],
-"hidden": [
-{
-"input": "[1]",
-"expectedOutput": "2"
-},
-{
-"input": "[-1]",
-"expectedOutput": "1"
-},
-{
-"input": "[0, 0, 0]",
-"expectedOutput": "1"
-},
-{
-"input": "[1, 2, 3, 4, 5]",
-"expectedOutput": "6"
-},
-{
-"input": "[5, 4, 3, 2, 1]",
-"expectedOutput": "6"
-},
-{
-"input": "[2147483647, -2147483648]",
-"expectedOutput": "1"
-},
-{
-"input": "[1, 1, 1, 1]",
-"expectedOutput": "2"
-},
-{
-"input": "[2, 2, 2, 2]",
-"expectedOutput": "1"
-},
-{
-"input": "[1, 2, 6, 3, 4, 5, 8]",
-"expectedOutput": "7"
-},
-{
-"input": "[100, 200, 300]",
-"expectedOutput": "1"
-}
-]
-}
-},
-{
-"id": "arrays_hard_005",
-"title": "Maximum Sum of Two Non-Overlapping Subarrays",
-"topic": "Arrays",
-"difficulty": "Hard",
-"description": "Given an integer array nums and two integers firstLen and secondLen, return the maximum sum of elements in two non-overlapping subarrays with lengths firstLen and secondLen. The subarrays can appear in either order relative to each other, but must not overlap.",
-"constraints": [
-"1 <= firstLen, secondLen <= 1000",
-"firstLen + secondLen <= nums.length <= 1000",
-"0 <= nums[i] <= 1000",
-"The two subarrays must not overlap in index"
-],
-"examples": [
-{
-"input": "nums = [0, 6, 5, 2, 2, 5, 1, 9, 4], firstLen = 1, secondLen = 2",
-"output": "20",
-"explanation": "One optimal choice is subarrays [9] (length 1) and [6,5] (length 2), or similar combinations, summing to 20."
-},
-{
-"input": "nums = [3, 8, 1, 3, 2, 1, 8, 9, 0], firstLen = 3, secondLen = 2",
-"output": "29",
-"explanation": "The optimal choice sums subarrays of length 3 and 2 that together total 29."
-}
-],
-"boilerplate": {
-"cpp": "class Solution {\npublic:\n int solve(vector<int>& nums, int firstLen, int secondLen) {\n \n }\n};",
-"java": "class Solution {\n public int solve(int[] nums, int firstLen, int secondLen) {\n \n }\n}",
-"python": "class Solution:\n def solve(self, nums, firstLen, secondLen):\n pass",
-"javascript": "class Solution {\n solve(nums, firstLen, secondLen) {\n \n }\n}",
-"typescript": "class Solution {\n solve(nums: number[], firstLen: number, secondLen: number): number {\n \n }\n}"
-},
-"testCases": {
-"public": [
-{
-"input": "[0, 6, 5, 2, 2, 5, 1, 9, 4], 1, 2",
-"expectedOutput": "20"
-},
-{
-"input": "[3, 8, 1, 3, 2, 1, 8, 9, 0], 3, 2",
-"expectedOutput": "29"
-},
-{
-"input": "[2, 1, 5, 6, 0, 9, 5, 0, 3, 8], 4, 3",
-"expectedOutput": "31"
-}
-],
-"hidden": [
-{
-"input": "[1, 1], 1, 1",
-"expectedOutput": "2"
-},
-{
-"input": "[0, 0, 0], 1, 1",
-"expectedOutput": "0"
-},
-{
-"input": "[1000, 1000, 1000, 1000], 2, 2",
-"expectedOutput": "4000"
-},
-{
-"input": "[1, 2, 3, 4, 5], 1, 1",
-"expectedOutput": "9"
-},
-{
-"input": "[5, 4, 3, 2, 1], 1, 1",
-"expectedOutput": "9"
-},
-{
-"input": "[5, 5, 5, 5, 5, 5], 2, 2",
-"expectedOutput": "20"
-},
-{
-"input": "[0, 0, 0, 0, 0], 2, 2",
-"expectedOutput": "0"
-},
-{
-"input": "[1, 0, 1, 0, 1, 0, 1], 1, 1",
-"expectedOutput": "2"
-},
-{
-"input": "[10, 20, 30, 40, 50, 60], 2, 3",
-"expectedOutput": "200"
-},
-{
-"input": "[1000, 0, 0, 0, 1000], 1, 1",
-"expectedOutput": "2000"
-}
-]
-}
-}
+  {
+    "id": "arrays_hard_001",
+    "title": "Trapping Rain Water",
+    "topic": "arrays",
+    "difficulty": "hard",
+    "description": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
+    "constraints": [
+      "1 <= height.length <= 2 * 10^4",
+      "0 <= height[i] <= 10^5"
+    ],
+    "examples": [
+      {
+        "input": "height = [0,1,0,2,1,0,1,3,2,1,2,1]",
+        "output": "6",
+        "explanation": "The elevation map traps 6 units of water in total."
+      },
+      {
+        "input": "height = [4,2,0,3,2,5]",
+        "output": "9",
+        "explanation": "The elevation map traps 9 units of water in total."
+      }
+    ],
+    "tags": ["Array", "Two Pointers", "Dynamic Programming", "Stack"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "signature": {
+      "functionName": "solve",
+      "returnType": {
+        "cpp": "int",
+        "java": "int",
+        "python": "int",
+        "javascript": "number",
+        "typescript": "number"
+      },
+      "parameters": [
+        {
+          "name": "height",
+          "type": {
+            "cpp": "vector<int>&",
+            "java": "int[]",
+            "python": "List[int]",
+            "javascript": "number[]",
+            "typescript": "number[]"
+          }
+        }
+      ]
+    },
+    "boilerplate": {
+      "cpp": "class Solution {\npublic:\n    int solve(vector<int>& height) {\n        \n    }\n};",
+      "java": "class Solution {\n    public int solve(int[] height) {\n        \n    }\n}",
+      "python": "class Solution:\n    def solve(self, height: List[int]) -> int:\n        ",
+      "javascript": "class Solution {\n    solve(height) {\n        \n    }\n}",
+      "typescript": "class Solution {\n    solve(height: number[]): number {\n        \n    }\n}"
+    },
+    "testCases": {
+      "public": [
+        { "arguments": [[0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]], "expectedOutput": 6 },
+        { "arguments": [[4, 2, 0, 3, 2, 5]], "expectedOutput": 9 },
+        { "arguments": [[1, 1, 1]], "expectedOutput": 0 }
+      ],
+      "hidden": [
+        { "arguments": [[5]], "expectedOutput": 0 },
+        { "arguments": [[5, 4, 1, 2]], "expectedOutput": 1 },
+        { "arguments": [[3, 0, 0, 2, 0, 4]], "expectedOutput": 10 },
+        { "arguments": [[1, 2, 3, 4, 5]], "expectedOutput": 0 },
+        { "arguments": [[5, 4, 3, 2, 1]], "expectedOutput": 0 },
+        { "arguments": [[3, 3, 3, 3]], "expectedOutput": 0 },
+        { "arguments": [[5, 0, 0, 0, 5]], "expectedOutput": 15 },
+        { "arguments": [[100000, 0, 100000]], "expectedOutput": 100000 }
+      ]
+    },
+    "interview": {
+      "concepts": ["Two Pointers", "Dynamic Programming", "Monotonic Stack", "Prefix/Suffix Max"],
+      "followUpQuestions": [
+        "Can you solve this using a monotonic stack instead of two pointers?",
+        "How would you reduce the space complexity from O(n) to O(1)?",
+        "How does this problem generalize to a 2D elevation map (Trapping Rain Water II)?",
+        "Can you solve it using dynamic programming with precomputed max arrays?"
+      ],
+      "commonMistakes": [
+        "Forgetting that water trapped at an index depends on the minimum of the max height to its left and right",
+        "Using O(n) extra space for left/right max arrays when O(1) space is achievable with two pointers",
+        "Not handling boundary bars correctly, which can never trap water"
+      ],
+      "hints": [
+        "Think about what limits how much water a given position can hold.",
+        "Consider the tallest wall to the left and the tallest wall to the right of each position.",
+        "The water level at any position is bounded by the shorter of those two walls.",
+        "You can track running maximums from both ends without precomputing full arrays.",
+        "Use two pointers left and right with leftMax and rightMax; move the pointer with the smaller height inward, adding (leftMax - height) or (rightMax - height) to the total whenever it's positive."
+      ]
+    }
+  },
+  {
+    "id": "arrays_hard_002",
+    "title": "Median of Two Sorted Arrays",
+    "topic": "arrays",
+    "difficulty": "hard",
+    "description": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays. The overall run time complexity should be O(log(m+n)).",
+    "constraints": [
+      "nums1.length == m",
+      "nums2.length == n",
+      "0 <= m <= 1000",
+      "0 <= n <= 1000",
+      "1 <= m + n <= 2000",
+      "-10^6 <= nums1[i], nums2[i] <= 10^6"
+    ],
+    "examples": [
+      {
+        "input": "nums1 = [1,3], nums2 = [2]",
+        "output": "2.0",
+        "explanation": "The merged array is [1,2,3], so the median is 2."
+      },
+      {
+        "input": "nums1 = [1,2], nums2 = [3,4]",
+        "output": "2.5",
+        "explanation": "The merged array is [1,2,3,4], so the median is (2+3)/2 = 2.5."
+      }
+    ],
+    "tags": ["Array", "Binary Search", "Divide and Conquer"],
+    "complexity": {
+      "time": "O(log(min(m,n)))",
+      "space": "O(1)"
+    },
+    "signature": {
+      "functionName": "solve",
+      "returnType": {
+        "cpp": "double",
+        "java": "double",
+        "python": "float",
+        "javascript": "number",
+        "typescript": "number"
+      },
+      "parameters": [
+        {
+          "name": "nums1",
+          "type": {
+            "cpp": "vector<int>&",
+            "java": "int[]",
+            "python": "List[int]",
+            "javascript": "number[]",
+            "typescript": "number[]"
+          }
+        },
+        {
+          "name": "nums2",
+          "type": {
+            "cpp": "vector<int>&",
+            "java": "int[]",
+            "python": "List[int]",
+            "javascript": "number[]",
+            "typescript": "number[]"
+          }
+        }
+      ]
+    },
+    "boilerplate": {
+      "cpp": "class Solution {\npublic:\n    double solve(vector<int>& nums1, vector<int>& nums2) {\n        \n    }\n};",
+      "java": "class Solution {\n    public double solve(int[] nums1, int[] nums2) {\n        \n    }\n}",
+      "python": "class Solution:\n    def solve(self, nums1: List[int], nums2: List[int]) -> float:\n        ",
+      "javascript": "class Solution {\n    solve(nums1, nums2) {\n        \n    }\n}",
+      "typescript": "class Solution {\n    solve(nums1: number[], nums2: number[]): number {\n        \n    }\n}"
+    },
+    "testCases": {
+      "public": [
+        { "arguments": [[1, 3], [2]], "expectedOutput": 2.0 },
+        { "arguments": [[1, 2], [3, 4]], "expectedOutput": 2.5 },
+        { "arguments": [[], [1]], "expectedOutput": 1.0 }
+      ],
+      "hidden": [
+        { "arguments": [[0, 0], [0, 0]], "expectedOutput": 0.0 },
+        { "arguments": [[2], []], "expectedOutput": 2.0 },
+        { "arguments": [[1, 3], [2, 7]], "expectedOutput": 2.5 },
+        { "arguments": [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]], "expectedOutput": 5.5 },
+        { "arguments": [[-5, -3, -1], [0, 2, 4]], "expectedOutput": -0.5 },
+        { "arguments": [[100], [100]], "expectedOutput": 100.0 },
+        { "arguments": [[1, 1, 1], [1, 1, 1]], "expectedOutput": 1.0 },
+        { "arguments": [[-1000000], [1000000]], "expectedOutput": 0.0 }
+      ]
+    },
+    "interview": {
+      "concepts": ["Binary Search", "Divide and Conquer", "Partitioning"],
+      "followUpQuestions": [
+        "Can you achieve O(log(min(m,n))) instead of O(log(m+n))?",
+        "How would you solve this if you weren't allowed to merge the arrays at all?",
+        "What changes if you needed the k-th smallest element instead of the median?",
+        "How do you handle edge cases where one array is empty?"
+      ],
+      "commonMistakes": [
+        "Merging both arrays and sorting, giving O((m+n) log(m+n)) instead of the required logarithmic time",
+        "Incorrectly handling partitions when one array is much smaller than the other",
+        "Off-by-one errors when computing the partition index or handling even vs. odd total length"
+      ],
+      "hints": [
+        "Think about what property the median has in terms of splitting all elements into two equal halves.",
+        "Consider binary searching over a partition point in the smaller array instead of merging.",
+        "For a given partition of the smaller array, the partition of the larger array is fully determined.",
+        "A valid partition is one where every element on the left side is less than or equal to every element on the right side.",
+        "Binary search on the smaller array for a partition index i; compute j = (m+n+1)/2 - i for the other array, and adjust i until maxLeft1 <= minRight2 and maxLeft2 <= minRight1, then compute the median from the four boundary values."
+      ]
+    }
+  },
+  {
+    "id": "arrays_hard_003",
+    "title": "First Missing Positive",
+    "topic": "arrays",
+    "difficulty": "hard",
+    "description": "Given an unsorted integer array nums, return the smallest missing positive integer. The algorithm must run in O(n) time and use O(1) auxiliary space.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "-2^31 <= nums[i] <= 2^31 - 1"
+    ],
+    "examples": [
+      {
+        "input": "nums = [1,2,0]",
+        "output": "3",
+        "explanation": "1 and 2 are present, so the smallest missing positive integer is 3."
+      },
+      {
+        "input": "nums = [3,4,-1,1]",
+        "output": "2",
+        "explanation": "1 is present but 2 is missing, so the answer is 2."
+      }
+    ],
+    "tags": ["Array", "Hashing", "In-place"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "signature": {
+      "functionName": "solve",
+      "returnType": {
+        "cpp": "int",
+        "java": "int",
+        "python": "int",
+        "javascript": "number",
+        "typescript": "number"
+      },
+      "parameters": [
+        {
+          "name": "nums",
+          "type": {
+            "cpp": "vector<int>&",
+            "java": "int[]",
+            "python": "List[int]",
+            "javascript": "number[]",
+            "typescript": "number[]"
+          }
+        }
+      ]
+    },
+    "boilerplate": {
+      "cpp": "class Solution {\npublic:\n    int solve(vector<int>& nums) {\n        \n    }\n};",
+      "java": "class Solution {\n    public int solve(int[] nums) {\n        \n    }\n}",
+      "python": "class Solution:\n    def solve(self, nums: List[int]) -> int:\n        ",
+      "javascript": "class Solution {\n    solve(nums) {\n        \n    }\n}",
+      "typescript": "class Solution {\n    solve(nums: number[]): number {\n        \n    }\n}"
+    },
+    "testCases": {
+      "public": [
+        { "arguments": [[1, 2, 0]], "expectedOutput": 3 },
+        { "arguments": [[3, 4, -1, 1]], "expectedOutput": 2 },
+        { "arguments": [[7, 8, 9, 11, 12]], "expectedOutput": 1 }
+      ],
+      "hidden": [
+        { "arguments": [[1]], "expectedOutput": 2 },
+        { "arguments": [[2]], "expectedOutput": 1 },
+        { "arguments": [[-1, -2, -3]], "expectedOutput": 1 },
+        { "arguments": [[1, 2, 3, 4, 5]], "expectedOutput": 6 },
+        { "arguments": [[2, 2, 2, 2]], "expectedOutput": 1 },
+        { "arguments": [[1, 1000000000]], "expectedOutput": 2 },
+        { "arguments": [[5, 4, 3, 2, 1]], "expectedOutput": 6 },
+        { "arguments": [[0, 0, 0]], "expectedOutput": 1 }
+      ]
+    },
+    "interview": {
+      "concepts": ["Cyclic Sort", "In-place Index Mapping", "Array as Hash Set"],
+      "followUpQuestions": [
+        "How would you solve this if negative numbers were disallowed entirely from the input?",
+        "Can you solve it without modifying the input array?",
+        "What is the intuition behind placing each number at its 'correct' index?",
+        "How would this change if you needed the k smallest missing positive integers?"
+      ],
+      "commonMistakes": [
+        "Using a hash set, which violates the O(1) space requirement",
+        "Sorting the array first, which violates the O(n) time requirement",
+        "Forgetting to handle duplicate values, causing infinite swap loops"
+      ],
+      "hints": [
+        "Think about the range of possible answers relative to the size of the array.",
+        "Consider using the array itself as a hash table by placing each value at the index matching its value.",
+        "For each number in range [1, n], try to place it at index number-1 using swaps.",
+        "Ignore numbers that are out of the valid range [1, n] since they can never be the answer.",
+        "Cyclic sort: for each i, while nums[i] is in [1,n] and nums[nums[i]-1] != nums[i], swap nums[i] with nums[nums[i]-1]; then scan for the first index i where nums[i] != i+1 and return i+1, or n+1 if none found."
+      ]
+    }
+  },
+  {
+    "id": "arrays_hard_004",
+    "title": "Sliding Window Maximum",
+    "topic": "arrays",
+    "difficulty": "hard",
+    "description": "Given an integer array nums and an integer k, there is a sliding window of size k which moves from the very left of the array to the very right. Return an array of the maximum value in each window as it slides.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "-10^4 <= nums[i] <= 10^4",
+      "1 <= k <= nums.length"
+    ],
+    "examples": [
+      {
+        "input": "nums = [1,3,-1,-3,5,3,6,7], k = 3",
+        "output": "[3,3,5,5,6,7]",
+        "explanation": "The maximum value in each sliding window of size 3 as it moves across the array."
+      },
+      {
+        "input": "nums = [1], k = 1",
+        "output": "[1]",
+        "explanation": "There is only one window, containing the single element."
+      }
+    ],
+    "tags": ["Array", "Sliding Window", "Monotonic Deque"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(k)"
+    },
+    "signature": {
+      "functionName": "solve",
+      "returnType": {
+        "cpp": "vector<int>",
+        "java": "int[]",
+        "python": "List[int]",
+        "javascript": "number[]",
+        "typescript": "number[]"
+      },
+      "parameters": [
+        {
+          "name": "nums",
+          "type": {
+            "cpp": "vector<int>&",
+            "java": "int[]",
+            "python": "List[int]",
+            "javascript": "number[]",
+            "typescript": "number[]"
+          }
+        },
+        {
+          "name": "k",
+          "type": {
+            "cpp": "int",
+            "java": "int",
+            "python": "int",
+            "javascript": "number",
+            "typescript": "number"
+          }
+        }
+      ]
+    },
+    "boilerplate": {
+      "cpp": "class Solution {\npublic:\n    vector<int> solve(vector<int>& nums, int k) {\n        \n    }\n};",
+      "java": "class Solution {\n    public int[] solve(int[] nums, int k) {\n        \n    }\n}",
+      "python": "class Solution:\n    def solve(self, nums: List[int], k: int) -> List[int]:\n        ",
+      "javascript": "class Solution {\n    solve(nums, k) {\n        \n    }\n}",
+      "typescript": "class Solution {\n    solve(nums: number[], k: number): number[] {\n        \n    }\n}"
+    },
+    "testCases": {
+      "public": [
+        { "arguments": [[1, 3, -1, -3, 5, 3, 6, 7], 3], "expectedOutput": [3, 3, 5, 5, 6, 7] },
+        { "arguments": [[1], 1], "expectedOutput": [1] },
+        { "arguments": [[9, 11], 2], "expectedOutput": [11] }
+      ],
+      "hidden": [
+        { "arguments": [[4, -2], 2], "expectedOutput": [4] },
+        { "arguments": [[1, 2, 3, 4, 5], 1], "expectedOutput": [1, 2, 3, 4, 5] },
+        { "arguments": [[5, 4, 3, 2, 1], 5], "expectedOutput": [5] },
+        { "arguments": [[1, -1], 1], "expectedOutput": [1, -1] },
+        { "arguments": [[7, 2, 4], 2], "expectedOutput": [7, 4] },
+        { "arguments": [[-4, -2], 1], "expectedOutput": [-4, -2] },
+        { "arguments": [[10000, -10000, 10000, -10000], 2], "expectedOutput": [10000, 10000, 10000] },
+        { "arguments": [[3, 3, 3, 3], 2], "expectedOutput": [3, 3, 3] }
+      ]
+    },
+    "interview": {
+      "concepts": ["Monotonic Deque", "Sliding Window", "Amortized Analysis"],
+      "followUpQuestions": [
+        "Why is a monotonic deque more efficient than recomputing the max for every window?",
+        "Can you solve this using a max-heap instead, and what would the complexity be?",
+        "How would you handle the sliding minimum instead of the maximum?",
+        "What is the amortized time complexity of the deque-based approach and why?"
+      ],
+      "commonMistakes": [
+        "Recomputing the maximum from scratch for every window, leading to O(n*k) time",
+        "Forgetting to remove indices that have fallen out of the current window from the front of the deque",
+        "Not popping smaller elements from the back of the deque before pushing a new element, breaking the monotonic property"
+      ],
+      "hints": [
+        "Think about what information about previous elements is still useful once a new, larger element arrives.",
+        "Consider maintaining a data structure that always has the maximum for the current window easily accessible.",
+        "A deque storing indices can help you discard elements that can never be the maximum again.",
+        "Keep the deque values in decreasing order, removing smaller trailing elements whenever a bigger one arrives.",
+        "Maintain a deque of indices in decreasing order of value; for each new index, pop smaller values from the back, push the new index, remove the front if it's outside the window, and record nums[deque.front()] once the window reaches size k."
+      ]
+    }
+  },
+  {
+    "id": "arrays_hard_005",
+    "title": "Largest Rectangle in Histogram",
+    "topic": "arrays",
+    "difficulty": "hard",
+    "description": "Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle that can be formed within the histogram.",
+    "constraints": [
+      "1 <= heights.length <= 10^5",
+      "0 <= heights[i] <= 10^4"
+    ],
+    "examples": [
+      {
+        "input": "heights = [2,1,5,6,2,3]",
+        "output": "10",
+        "explanation": "The largest rectangle has area 10, formed by the bars of height 5 and 6 at indices 2-3."
+      },
+      {
+        "input": "heights = [2,4]",
+        "output": "4",
+        "explanation": "The largest rectangle is a single bar of height 4 and width 1."
+      }
+    ],
+    "tags": ["Array", "Stack", "Monotonic Stack"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(n)"
+    },
+    "signature": {
+      "functionName": "solve",
+      "returnType": {
+        "cpp": "int",
+        "java": "int",
+        "python": "int",
+        "javascript": "number",
+        "typescript": "number"
+      },
+      "parameters": [
+        {
+          "name": "heights",
+          "type": {
+            "cpp": "vector<int>&",
+            "java": "int[]",
+            "python": "List[int]",
+            "javascript": "number[]",
+            "typescript": "number[]"
+          }
+        }
+      ]
+    },
+    "boilerplate": {
+      "cpp": "class Solution {\npublic:\n    int solve(vector<int>& heights) {\n        \n    }\n};",
+      "java": "class Solution {\n    public int solve(int[] heights) {\n        \n    }\n}",
+      "python": "class Solution:\n    def solve(self, heights: List[int]) -> int:\n        ",
+      "javascript": "class Solution {\n    solve(heights) {\n        \n    }\n}",
+      "typescript": "class Solution {\n    solve(heights: number[]): number {\n        \n    }\n}"
+    },
+    "testCases": {
+      "public": [
+        { "arguments": [[2, 1, 5, 6, 2, 3]], "expectedOutput": 10 },
+        { "arguments": [[2, 4]], "expectedOutput": 4 },
+        { "arguments": [[1, 1]], "expectedOutput": 2 }
+      ],
+      "hidden": [
+        { "arguments": [[0]], "expectedOutput": 0 },
+        { "arguments": [[5]], "expectedOutput": 5 },
+        { "arguments": [[1, 2, 3, 4, 5]], "expectedOutput": 9 },
+        { "arguments": [[5, 4, 3, 2, 1]], "expectedOutput": 9 },
+        { "arguments": [[0, 0, 0, 0]], "expectedOutput": 0 },
+        { "arguments": [[6, 2, 5, 4, 5, 1, 6]], "expectedOutput": 12 },
+        { "arguments": [[10000, 10000, 10000]], "expectedOutput": 30000 },
+        { "arguments": [[2, 1, 2]], "expectedOutput": 3 }
+      ]
+    },
+    "interview": {
+      "concepts": ["Monotonic Stack", "Divide and Conquer", "Amortized Analysis"],
+      "followUpQuestions": [
+        "Can you solve this using divide and conquer instead of a stack?",
+        "How does the monotonic stack approach achieve O(n) time despite nested-looking logic?",
+        "How would you extend this to find the largest rectangle in a 2D binary matrix?",
+        "What is stored on the stack and why does popping compute the area correctly?"
+      ],
+      "commonMistakes": [
+        "Using brute-force O(n^2) by checking every pair of bars instead of a stack-based approach",
+        "Forgetting to push a sentinel value of 0 at the end to flush the remaining stack",
+        "Miscalculating width when popping from the stack, especially at the boundaries"
+      ],
+      "hints": [
+        "Think about, for each bar, how far it could extend to the left and right while remaining the limiting height.",
+        "Consider using a stack to keep track of bars in increasing order of height.",
+        "When you encounter a bar shorter than the one on top of the stack, that's a signal the top bar's rectangle is complete.",
+        "The width of the rectangle for a popped bar is determined by the current index and the new top of the stack after popping.",
+        "Maintain a stack of indices with increasing heights; when heights[i] < heights[stack.top()], pop and compute area = heights[popped] * (i - stack.top() - 1, or i if the stack is empty), tracking the maximum, then push i; append a trailing 0 height to flush the stack at the end."
+      ]
+    }
+  }
 ]

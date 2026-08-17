@@ -1,440 +1,500 @@
 [
-{
-"id": "arrays_medium_001",
-"title": "Product of Array Except Self",
-"topic": "Arrays",
-"difficulty": "Medium",
-"description": "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. You must write an algorithm that runs in O(n) time and without using the division operation.",
-"constraints": [
-"2 <= nums.length <= 10^5",
-"-30 <= nums[i] <= 30",
-"The product of any prefix or suffix of nums fits in a 32-bit integer",
-"Division operation is not allowed"
-],
-"examples": [
-{
-"input": "nums = [1, 2, 3, 4]",
-"output": "[24, 12, 8, 6]",
-"explanation": "answer[0] = 2*3*4 = 24, answer[1] = 1*3*4 = 12, answer[2] = 1*2*4 = 8, answer[3] = 1*2*3 = 6."
-},
-{
-"input": "nums = [-1, 1, 0, -3, 3]",
-"output": "[0, 0, 9, 0, 0]",
-"explanation": "Since there is a 0 in the array, all products except the one at the index of 0 become 0."
-}
-],
-"boilerplate": {
-"cpp": "class Solution {\npublic:\n vector<int> solve(vector<int>& nums) {\n \n }\n};",
-"java": "class Solution {\n public int[] solve(int[] nums) {\n \n }\n}",
-"python": "class Solution:\n def solve(self, nums):\n pass",
-"javascript": "class Solution {\n solve(nums) {\n \n }\n}",
-"typescript": "class Solution {\n solve(nums: number[]): number[] {\n \n }\n}"
-},
-"testCases": {
-"public": [
-{
-"input": "[1, 2, 3, 4]",
-"expectedOutput": "[24, 12, 8, 6]"
-},
-{
-"input": "[-1, 1, 0, -3, 3]",
-"expectedOutput": "[0, 0, 9, 0, 0]"
-},
-{
-"input": "[2, 3]",
-"expectedOutput": "[3, 2]"
-}
-],
-"hidden": [
-{
-"input": "[1, 1]",
-"expectedOutput": "[1, 1]"
-},
-{
-"input": "[0, 0]",
-"expectedOutput": "[0, 0]"
-},
-{
-"input": "[-1, -1, -1, -1]",
-"expectedOutput": "[-1, -1, -1, -1]"
-},
-{
-"input": "[1, 2, 3, 4, 5]",
-"expectedOutput": "[120, 60, 40, 30, 24]"
-},
-{
-"input": "[5, 4, 3, 2, 1]",
-"expectedOutput": "[24, 30, 40, 60, 120]"
-},
-{
-"input": "[30, 30, 30]",
-"expectedOutput": "[900, 900, 900]"
-},
-{
-"input": "[-30, -30, -30]",
-"expectedOutput": "[900, 900, 900]"
-},
-{
-"input": "[0, 1, 2, 3]",
-"expectedOutput": "[6, 0, 0, 0]"
-},
-{
-"input": "[1, 0]",
-"expectedOutput": "[0, 1]"
-},
-{
-"input": "[2, 2, 2, 2, 2]",
-"expectedOutput": "[16, 16, 16, 16, 16]"
-}
-]
-}
-},
-{
-"id": "arrays_medium_002",
-"title": "3Sum",
-"topic": "Arrays",
-"difficulty": "Medium",
-"description": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0. The result must not contain duplicate triplets. Each triplet should be sorted in ascending order, and the list of triplets should be sorted lexicographically.",
-"constraints": [
-"3 <= nums.length <= 3000",
-"-10^5 <= nums[i] <= 10^5",
-"The result must not contain duplicate triplets",
-"Each triplet must be sorted in ascending order internally"
-],
-"examples": [
-{
-"input": "nums = [-1, 0, 1, 2, -1, -4]",
-"output": "[[-1, -1, 2], [-1, 0, 1]]",
-"explanation": "These are the only two unique triplets that sum to zero."
-},
-{
-"input": "nums = [0, 1, 1]",
-"output": "[]",
-"explanation": "No triplet sums to zero."
-}
-],
-"boilerplate": {
-"cpp": "class Solution {\npublic:\n vector<vector<int>> solve(vector<int>& nums) {\n \n }\n};",
-"java": "class Solution {\n public List<List<Integer>> solve(int[] nums) {\n \n }\n}",
-"python": "class Solution:\n def solve(self, nums):\n pass",
-"javascript": "class Solution {\n solve(nums) {\n \n }\n}",
-"typescript": "class Solution {\n solve(nums: number[]): number[][] {\n \n }\n}"
-},
-"testCases": {
-"public": [
-{
-"input": "[-1, 0, 1, 2, -1, -4]",
-"expectedOutput": "[[-1, -1, 2], [-1, 0, 1]]"
-},
-{
-"input": "[0, 1, 1]",
-"expectedOutput": "[]"
-},
-{
-"input": "[0, 0, 0]",
-"expectedOutput": "[[0, 0, 0]]"
-}
-],
-"hidden": [
-{
-"input": "[0, 0, 0, 0]",
-"expectedOutput": "[[0, 0, 0]]"
-},
-{
-"input": "[1, 2, -2, -1]",
-"expectedOutput": "[]"
-},
-{
-"input": "[-2, 0, 1, 1, 2]",
-"expectedOutput": "[[-2, 0, 2], [-2, 1, 1]]"
-},
-{
-"input": "[3, 0, -2, -1, 1, 2]",
-"expectedOutput": "[[-2, -1, 3], [-2, 0, 2], [-1, 0, 1]]"
-},
-{
-"input": "[-4, -3, -2, -1, 0]",
-"expectedOutput": "[]"
-},
-{
-"input": "[100000, -100000, 0]",
-"expectedOutput": "[[-100000, 0, 100000]]"
-},
-{
-"input": "[1, 1, -2]",
-"expectedOutput": "[[-2, 1, 1]]"
-},
-{
-"input": "[-1, -1, 2, 2, 0, 0]",
-"expectedOutput": "[[-1, -1, 2], [-1, 0, 1]]"
-},
-{
-"input": "[5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5]",
-"expectedOutput": "[[-5, 1, 4], [-5, 2, 3], [-4, 0, 4], [-4, 1, 3], [-3, -1, 4], [-3, 0, 3], [-3, 1, 2], [-2, -1, 3], [-2, 0, 2], [-1, 0, 1]]"
-}
-]
-}
-},
-{
-"id": "arrays_medium_003",
-"title": "Container With Most Water",
-"topic": "Arrays",
-"difficulty": "Medium",
-"description": "Given an integer array height representing n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]), find two lines that together with the x-axis form a container that holds the most water. Return the maximum amount of water a container can store.",
-"constraints": [
-"2 <= height.length <= 10^5",
-"0 <= height[i] <= 10^4",
-"The container is formed by any two lines and the x-axis between them",
-"The solution should run in O(n) time"
-],
-"examples": [
-{
-"input": "height = [1, 8, 6, 2, 5, 4, 8, 3, 7]",
-"output": "49",
-"explanation": "The lines at index 1 (height 8) and index 8 (height 7) form the container with the most water, area = min(8,7) * (8-1) = 49."
-},
-{
-"input": "height = [1, 1]",
-"output": "1",
-"explanation": "The only container possible has area = min(1,1) * (1-0) = 1."
-}
-],
-"boilerplate": {
-"cpp": "class Solution {\npublic:\n int solve(vector<int>& height) {\n \n }\n};",
-"java": "class Solution {\n public int solve(int[] height) {\n \n }\n}",
-"python": "class Solution:\n def solve(self, height):\n pass",
-"javascript": "class Solution {\n solve(height) {\n \n }\n}",
-"typescript": "class Solution {\n solve(height: number[]): number {\n \n }\n}"
-},
-"testCases": {
-"public": [
-{
-"input": "[1, 8, 6, 2, 5, 4, 8, 3, 7]",
-"expectedOutput": "49"
-},
-{
-"input": "[1, 1]",
-"expectedOutput": "1"
-},
-{
-"input": "[4, 3, 2, 1, 4]",
-"expectedOutput": "16"
-}
-],
-"hidden": [
-{
-"input": "[0, 0]",
-"expectedOutput": "0"
-},
-{
-"input": "[1, 2, 1]",
-"expectedOutput": "2"
-},
-{
-"input": "[1, 2, 3, 4, 5]",
-"expectedOutput": "6"
-},
-{
-"input": "[5, 4, 3, 2, 1]",
-"expectedOutput": "6"
-},
-{
-"input": "[10000, 10000]",
-"expectedOutput": "10000"
-},
-{
-"input": "[0, 10000, 0, 10000]",
-"expectedOutput": "10000"
-},
-{
-"input": "[3, 3, 3, 3, 3]",
-"expectedOutput": "12"
-},
-{
-"input": "[2, 3, 4, 5, 18, 17, 6]",
-"expectedOutput": "17"
-},
-{
-"input": "[1, 3, 2, 5, 25, 24, 5]",
-"expectedOutput": "24"
-},
-{
-"input": "[6, 1, 2, 3, 4, 5]",
-"expectedOutput": "12"
-}
-]
-}
-},
-{
-"id": "arrays_medium_004",
-"title": "Longest Consecutive Sequence",
-"topic": "Arrays",
-"difficulty": "Medium",
-"description": "Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence. Your algorithm must run in O(n) time.",
-"constraints": [
-"0 <= nums.length <= 10^5",
-"-10^9 <= nums[i] <= 10^9",
-"The array may contain duplicates",
-"The solution must run in O(n) time complexity"
-],
-"examples": [
-{
-"input": "nums = [100, 4, 200, 1, 3, 2]",
-"output": "4",
-"explanation": "The longest consecutive sequence is [1, 2, 3, 4], which has length 4."
-},
-{
-"input": "nums = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1]",
-"output": "9",
-"explanation": "The longest consecutive sequence is [0, 1, 2, 3, 4, 5, 6, 7, 8], which has length 9."
-}
-],
-"boilerplate": {
-"cpp": "class Solution {\npublic:\n int solve(vector<int>& nums) {\n \n }\n};",
-"java": "class Solution {\n public int solve(int[] nums) {\n \n }\n}",
-"python": "class Solution:\n def solve(self, nums):\n pass",
-"javascript": "class Solution {\n solve(nums) {\n \n }\n}",
-"typescript": "class Solution {\n solve(nums: number[]): number {\n \n }\n}"
-},
-"testCases": {
-"public": [
-{
-"input": "[100, 4, 200, 1, 3, 2]",
-"expectedOutput": "4"
-},
-{
-"input": "[0, 3, 7, 2, 5, 8, 4, 6, 0, 1]",
-"expectedOutput": "9"
-},
-{
-"input": "[]",
-"expectedOutput": "0"
-}
-],
-"hidden": [
-{
-"input": "[1]",
-"expectedOutput": "1"
-},
-{
-"input": "[1, 1, 1, 1]",
-"expectedOutput": "1"
-},
-{
-"input": "[-1, -2, -3, -4]",
-"expectedOutput": "4"
-},
-{
-"input": "[5, 4, 3, 2, 1]",
-"expectedOutput": "5"
-},
-{
-"input": "[1, 2, 3, 4, 5]",
-"expectedOutput": "5"
-},
-{
-"input": "[1000000000, -1000000000]",
-"expectedOutput": "1"
-},
-{
-"input": "[9, 1, 4, 7, 3, -1, 0, 5, 8, -1, 6]",
-"expectedOutput": "7"
-},
-{
-"input": "[1, 3, 5, 7, 9]",
-"expectedOutput": "1"
-},
-{
-"input": "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]",
-"expectedOutput": "10"
-}
-]
-}
-},
-{
-"id": "arrays_medium_005",
-"title": "Subarray Sum Equals K",
-"topic": "Arrays",
-"difficulty": "Medium",
-"description": "Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k. A subarray is a contiguous non-empty sequence of elements within an array.",
-"constraints": [
-"1 <= nums.length <= 2 * 10^4",
-"-1000 <= nums[i] <= 1000",
-"-10^7 <= k <= 10^7",
-"The subarray must be contiguous"
-],
-"examples": [
-{
-"input": "nums = [1, 1, 1], k = 2",
-"output": "2",
-"explanation": "The subarrays [1,1] (indices 0-1) and [1,1] (indices 1-2) both sum to 2."
-},
-{
-"input": "nums = [1, 2, 3], k = 3",
-"output": "2",
-"explanation": "The subarrays [1,2] and [3] both sum to 3."
-}
-],
-"boilerplate": {
-"cpp": "class Solution {\npublic:\n int solve(vector<int>& nums, int k) {\n \n }\n};",
-"java": "class Solution {\n public int solve(int[] nums, int k) {\n \n }\n}",
-"python": "class Solution:\n def solve(self, nums, k):\n pass",
-"javascript": "class Solution {\n solve(nums, k) {\n \n }\n}",
-"typescript": "class Solution {\n solve(nums: number[], k: number): number {\n \n }\n}"
-},
-"testCases": {
-"public": [
-{
-"input": "[1, 1, 1], 2",
-"expectedOutput": "2"
-},
-{
-"input": "[1, 2, 3], 3",
-"expectedOutput": "2"
-},
-{
-"input": "[1], 1",
-"expectedOutput": "1"
-}
-],
-"hidden": [
-{
-"input": "[1], 0",
-"expectedOutput": "0"
-},
-{
-"input": "[0, 0, 0], 0",
-"expectedOutput": "6"
-},
-{
-"input": "[-1, -1, 1], 0",
-"expectedOutput": "1"
-},
-{
-"input": "[1, 2, 3, 4, 5], 9",
-"expectedOutput": "2"
-},
-{
-"input": "[5, 4, 3, 2, 1], 5",
-"expectedOutput": "2"
-},
-{
-"input": "[1000, -1000, 1000, -1000], 0",
-"expectedOutput": "4"
-},
-{
-"input": "[3, 4, 7, 2, -3, 1, 4, 2], 7",
-"expectedOutput": "4"
-},
-{
-"input": "[-1, -1, -1, -1], -2",
-"expectedOutput": "3"
-},
-{
-"input": "[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 5",
-"expectedOutput": "6"
-}
-]
-}
-}
+  {
+    "id": "arrays_medium_001",
+    "title": "Product of Array Except Self",
+    "topic": "arrays",
+    "difficulty": "medium",
+    "description": "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. The algorithm must run in O(n) time and must not use the division operation.",
+    "constraints": [
+      "2 <= nums.length <= 10^5",
+      "-30 <= nums[i] <= 30",
+      "The product of any prefix or suffix of nums fits in a 32-bit integer."
+    ],
+    "examples": [
+      {
+        "input": "nums = [1,2,3,4]",
+        "output": "[24,12,8,6]",
+        "explanation": "answer[0] = 2*3*4 = 24, answer[1] = 1*3*4 = 12, answer[2] = 1*2*4 = 8, answer[3] = 1*2*3 = 6."
+      },
+      {
+        "input": "nums = [-1,1,0,-3,3]",
+        "output": "[0,0,9,0,0]",
+        "explanation": "The presence of a zero makes every product except the one at the zero's index equal to zero."
+      }
+    ],
+    "tags": ["Array", "Prefix Sum", "Product"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1) extra space excluding the output array"
+    },
+    "signature": {
+      "functionName": "solve",
+      "returnType": {
+        "cpp": "vector<int>",
+        "java": "int[]",
+        "python": "List[int]",
+        "javascript": "number[]",
+        "typescript": "number[]"
+      },
+      "parameters": [
+        {
+          "name": "nums",
+          "type": {
+            "cpp": "vector<int>&",
+            "java": "int[]",
+            "python": "List[int]",
+            "javascript": "number[]",
+            "typescript": "number[]"
+          }
+        }
+      ]
+    },
+    "boilerplate": {
+      "cpp": "class Solution {\npublic:\n    vector<int> solve(vector<int>& nums) {\n        \n    }\n};",
+      "java": "class Solution {\n    public int[] solve(int[] nums) {\n        \n    }\n}",
+      "python": "class Solution:\n    def solve(self, nums: List[int]) -> List[int]:\n        ",
+      "javascript": "class Solution {\n    solve(nums) {\n        \n    }\n}",
+      "typescript": "class Solution {\n    solve(nums: number[]): number[] {\n        \n    }\n}"
+    },
+    "testCases": {
+      "public": [
+        { "arguments": [[1, 2, 3, 4]], "expectedOutput": [24, 12, 8, 6] },
+        { "arguments": [[-1, 1, 0, -3, 3]], "expectedOutput": [0, 0, 9, 0, 0] },
+        { "arguments": [[2, 3]], "expectedOutput": [3, 2] }
+      ],
+      "hidden": [
+        { "arguments": [[1, 1]], "expectedOutput": [1, 1] },
+        { "arguments": [[0, 0]], "expectedOutput": [0, 0] },
+        { "arguments": [[4, 3, 2, 1]], "expectedOutput": [6, 8, 12, 24] },
+        { "arguments": [[-1, -2, -3, -4]], "expectedOutput": [-24, -12, -8, -6] },
+        { "arguments": [[1, 0]], "expectedOutput": [0, 1] },
+        { "arguments": [[5, 5]], "expectedOutput": [5, 5] },
+        { "arguments": [[30, 30, 30]], "expectedOutput": [900, 900, 900] },
+        { "arguments": [[-30, 30, -30, 30]], "expectedOutput": [-27000, 27000, -27000, 27000] }
+      ]
+    },
+    "interview": {
+      "concepts": ["Prefix Product", "Suffix Product", "Space Optimization"],
+      "followUpQuestions": [
+        "Can you solve it without using division?",
+        "Can you achieve O(1) extra space excluding the output array?",
+        "How would you handle multiple zeros in the array?",
+        "What if you needed to support updates to individual elements efficiently?"
+      ],
+      "commonMistakes": [
+        "Using division and failing on arrays containing zero",
+        "Allocating extra arrays for prefix and suffix products instead of reusing the output array",
+        "Not handling more than one zero correctly"
+      ],
+      "hints": [
+        "Think about what you'd need to know from the left and right of each index.",
+        "Consider precomputing running products from one direction first.",
+        "A prefix product array tells you the product of everything before index i.",
+        "Combine it with a running suffix product computed while iterating backward.",
+        "Build the output array with prefix products first (output[i] = product of nums[0..i-1]), then traverse from the right multiplying a running suffix product into output[i]."
+      ]
+    }
+  },
+  {
+    "id": "arrays_medium_002",
+    "title": "3Sum",
+    "topic": "arrays",
+    "difficulty": "medium",
+    "description": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, j != k, and nums[i] + nums[j] + nums[k] == 0. The solution set must not contain duplicate triplets. Return the triplets sorted ascending within each triplet, and the list of triplets in the order produced by scanning a sorted copy of nums with two pointers.",
+    "constraints": [
+      "3 <= nums.length <= 3000",
+      "-10^5 <= nums[i] <= 10^5"
+    ],
+    "examples": [
+      {
+        "input": "nums = [-1,0,1,2,-1,-4]",
+        "output": "[[-1,-1,2],[-1,0,1]]",
+        "explanation": "These are the only unique triplets whose elements sum to zero."
+      },
+      {
+        "input": "nums = [0,1,1]",
+        "output": "[]",
+        "explanation": "No triplet in this array sums to 0."
+      }
+    ],
+    "tags": ["Array", "Two Pointers", "Sorting"],
+    "complexity": {
+      "time": "O(n^2)",
+      "space": "O(1) extra space excluding the output (sorting done in place)"
+    },
+    "signature": {
+      "functionName": "solve",
+      "returnType": {
+        "cpp": "vector<vector<int>>",
+        "java": "int[][]",
+        "python": "List[List[int]]",
+        "javascript": "number[][]",
+        "typescript": "number[][]"
+      },
+      "parameters": [
+        {
+          "name": "nums",
+          "type": {
+            "cpp": "vector<int>&",
+            "java": "int[]",
+            "python": "List[int]",
+            "javascript": "number[]",
+            "typescript": "number[]"
+          }
+        }
+      ]
+    },
+    "boilerplate": {
+      "cpp": "class Solution {\npublic:\n    vector<vector<int>> solve(vector<int>& nums) {\n        \n    }\n};",
+      "java": "class Solution {\n    public int[][] solve(int[] nums) {\n        \n    }\n}",
+      "python": "class Solution:\n    def solve(self, nums: List[int]) -> List[List[int]]:\n        ",
+      "javascript": "class Solution {\n    solve(nums) {\n        \n    }\n}",
+      "typescript": "class Solution {\n    solve(nums: number[]): number[][] {\n        \n    }\n}"
+    },
+    "testCases": {
+      "public": [
+        { "arguments": [[-1, 0, 1, 2, -1, -4]], "expectedOutput": [[-1, -1, 2], [-1, 0, 1]] },
+        { "arguments": [[0, 1, 1]], "expectedOutput": [] },
+        { "arguments": [[0, 0, 0]], "expectedOutput": [[0, 0, 0]] }
+      ],
+      "hidden": [
+        { "arguments": [[0, 0, 0, 0]], "expectedOutput": [[0, 0, 0]] },
+        { "arguments": [[-2, 0, 1, 1, 2]], "expectedOutput": [[-2, 0, 2], [-2, 1, 1]] },
+        { "arguments": [[1, 2, -2, -1]], "expectedOutput": [] },
+        { "arguments": [[-1, -1, -1, 0, 1, 2]], "expectedOutput": [[-1, -1, 2], [-1, 0, 1]] },
+        { "arguments": [[3, 0, -2, -1, 1, 2]], "expectedOutput": [[-2, -1, 3], [-2, 0, 2], [-1, 0, 1]] },
+        { "arguments": [[1, 2, 3]], "expectedOutput": [] },
+        { "arguments": [[5, 5, 5]], "expectedOutput": [] },
+        { "arguments": [[-100000, 0, 100000]], "expectedOutput": [[-100000, 0, 100000]] }
+      ]
+    },
+    "interview": {
+      "concepts": ["Two Pointers", "Sorting", "Duplicate Handling"],
+      "followUpQuestions": [
+        "How would you extend this to find all unique quadruplets that sum to a target (4Sum)?",
+        "Can you solve this without sorting the array first?",
+        "How do you avoid duplicate triplets in the output efficiently?",
+        "What is the time complexity if you used a hash-set-based approach instead of two pointers?"
+      ],
+      "commonMistakes": [
+        "Producing duplicate triplets due to not skipping repeated values",
+        "Using nested loops with O(n^3) complexity instead of sorting plus two pointers",
+        "Incorrectly comparing nums[i] with nums[i+1] instead of nums[i-1] when skipping duplicates"
+      ],
+      "hints": [
+        "Think about how sorting the array might make it easier to avoid duplicate results.",
+        "Consider fixing one number and searching for a pair that completes the sum.",
+        "For the remaining two numbers, a two-pointer scan on a sorted subarray can find pairs efficiently.",
+        "After finding a valid triplet, think about how to skip over duplicate values to avoid repeats.",
+        "Sort the array; for each index i, use two pointers (left = i+1, right = n-1) to find pairs where nums[i] + nums[left] + nums[right] == 0, moving pointers inward and skipping duplicates at i, left, and right."
+      ]
+    }
+  },
+  {
+    "id": "arrays_medium_003",
+    "title": "Container With Most Water",
+    "topic": "arrays",
+    "difficulty": "medium",
+    "description": "You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the i-th line are (i, 0) and (i, height[i]). Find two lines that together with the x-axis form a container that holds the most water, and return the maximum amount of water the container can store. Note that you may not slant the container.",
+    "constraints": [
+      "2 <= height.length <= 10^5",
+      "0 <= height[i] <= 10^4"
+    ],
+    "examples": [
+      {
+        "input": "height = [1,8,6,2,5,4,8,3,7]",
+        "output": "49",
+        "explanation": "The lines at index 1 (height 8) and index 8 (height 7) form a container of area min(8,7) * (8-1) = 49."
+      },
+      {
+        "input": "height = [1,1]",
+        "output": "1",
+        "explanation": "The only container is formed by both lines: min(1,1) * (1-0) = 1."
+      }
+    ],
+    "tags": ["Array", "Two Pointers", "Greedy"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "signature": {
+      "functionName": "solve",
+      "returnType": {
+        "cpp": "int",
+        "java": "int",
+        "python": "int",
+        "javascript": "number",
+        "typescript": "number"
+      },
+      "parameters": [
+        {
+          "name": "height",
+          "type": {
+            "cpp": "vector<int>&",
+            "java": "int[]",
+            "python": "List[int]",
+            "javascript": "number[]",
+            "typescript": "number[]"
+          }
+        }
+      ]
+    },
+    "boilerplate": {
+      "cpp": "class Solution {\npublic:\n    int solve(vector<int>& height) {\n        \n    }\n};",
+      "java": "class Solution {\n    public int solve(int[] height) {\n        \n    }\n}",
+      "python": "class Solution:\n    def solve(self, height: List[int]) -> int:\n        ",
+      "javascript": "class Solution {\n    solve(height) {\n        \n    }\n}",
+      "typescript": "class Solution {\n    solve(height: number[]): number {\n        \n    }\n}"
+    },
+    "testCases": {
+      "public": [
+        { "arguments": [[1, 8, 6, 2, 5, 4, 8, 3, 7]], "expectedOutput": 49 },
+        { "arguments": [[1, 1]], "expectedOutput": 1 },
+        { "arguments": [[4, 3, 2, 1, 4]], "expectedOutput": 16 }
+      ],
+      "hidden": [
+        { "arguments": [[1, 2, 1]], "expectedOutput": 2 },
+        { "arguments": [[1, 2, 4, 3]], "expectedOutput": 4 },
+        { "arguments": [[0, 0, 0, 0]], "expectedOutput": 0 },
+        { "arguments": [[10000, 1, 10000]], "expectedOutput": 20000 },
+        { "arguments": [[1, 2, 3, 4, 5, 6]], "expectedOutput": 9 },
+        { "arguments": [[6, 5, 4, 3, 2, 1]], "expectedOutput": 9 },
+        { "arguments": [[0, 5]], "expectedOutput": 0 },
+        { "arguments": [[5, 5, 5, 5, 5]], "expectedOutput": 20 }
+      ]
+    },
+    "interview": {
+      "concepts": ["Two Pointers", "Greedy Elimination"],
+      "followUpQuestions": [
+        "Why does moving the pointer with the smaller height always work?",
+        "Can you prove that this greedy two-pointer strategy never misses the optimal answer?",
+        "How would the problem change if you needed the actual indices of the best container, not just the area?",
+        "What is the brute-force complexity and why is it too slow for large inputs?"
+      ],
+      "commonMistakes": [
+        "Using brute-force O(n^2) checking every pair instead of two pointers",
+        "Moving the pointer with the larger height instead of the smaller one",
+        "Forgetting that the width shrinks by exactly 1 each time a pointer moves"
+      ],
+      "hints": [
+        "Think about starting with the widest possible container and narrowing it down.",
+        "Consider two pointers starting at both ends of the array.",
+        "The area is limited by the shorter of the two lines, so moving the taller pointer inward can never help.",
+        "Always move the pointer pointing to the shorter line inward, since that's the only way to potentially find a taller line.",
+        "Use two pointers left=0 and right=n-1; compute area = min(height[left], height[right]) * (right-left), track the max, then move the pointer with the smaller height inward until left meets right."
+      ]
+    }
+  },
+  {
+    "id": "arrays_medium_004",
+    "title": "Rotate Array",
+    "topic": "arrays",
+    "difficulty": "medium",
+    "description": "Given an integer array nums, rotate the array to the right by k steps, where k is non-negative. This must be done in-place using O(1) extra space. Return the resulting array after rotation.",
+    "constraints": [
+      "1 <= nums.length <= 10^5",
+      "-2^31 <= nums[i] <= 2^31 - 1",
+      "0 <= k <= 10^5"
+    ],
+    "examples": [
+      {
+        "input": "nums = [1,2,3,4,5,6,7], k = 3",
+        "output": "[5,6,7,1,2,3,4]",
+        "explanation": "Rotating right by 3 moves the last 3 elements to the front."
+      },
+      {
+        "input": "nums = [-1,-100,3,99], k = 2",
+        "output": "[3,99,-1,-100]",
+        "explanation": "Rotating right by 2 moves the last 2 elements to the front."
+      }
+    ],
+    "tags": ["Array", "Two Pointers", "In-place", "Reversal"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1) extra space"
+    },
+    "signature": {
+      "functionName": "solve",
+      "returnType": {
+        "cpp": "vector<int>",
+        "java": "int[]",
+        "python": "List[int]",
+        "javascript": "number[]",
+        "typescript": "number[]"
+      },
+      "parameters": [
+        {
+          "name": "nums",
+          "type": {
+            "cpp": "vector<int>&",
+            "java": "int[]",
+            "python": "List[int]",
+            "javascript": "number[]",
+            "typescript": "number[]"
+          }
+        },
+        {
+          "name": "k",
+          "type": {
+            "cpp": "int",
+            "java": "int",
+            "python": "int",
+            "javascript": "number",
+            "typescript": "number"
+          }
+        }
+      ]
+    },
+    "boilerplate": {
+      "cpp": "class Solution {\npublic:\n    vector<int> solve(vector<int>& nums, int k) {\n        \n    }\n};",
+      "java": "class Solution {\n    public int[] solve(int[] nums, int k) {\n        \n    }\n}",
+      "python": "class Solution:\n    def solve(self, nums: List[int], k: int) -> List[int]:\n        ",
+      "javascript": "class Solution {\n    solve(nums, k) {\n        \n    }\n}",
+      "typescript": "class Solution {\n    solve(nums: number[], k: number): number[] {\n        \n    }\n}"
+    },
+    "testCases": {
+      "public": [
+        { "arguments": [[1, 2, 3, 4, 5, 6, 7], 3], "expectedOutput": [5, 6, 7, 1, 2, 3, 4] },
+        { "arguments": [[-1, -100, 3, 99], 2], "expectedOutput": [3, 99, -1, -100] },
+        { "arguments": [[1, 2], 1], "expectedOutput": [2, 1] }
+      ],
+      "hidden": [
+        { "arguments": [[1], 5], "expectedOutput": [1] },
+        { "arguments": [[1, 2, 3], 0], "expectedOutput": [1, 2, 3] },
+        { "arguments": [[1, 2, 3, 4, 5], 5], "expectedOutput": [1, 2, 3, 4, 5] },
+        { "arguments": [[1, 2, 3, 4, 5], 7], "expectedOutput": [4, 5, 1, 2, 3] },
+        { "arguments": [[5, 5, 5, 5], 2], "expectedOutput": [5, 5, 5, 5] },
+        { "arguments": [[-5, -4, -3, -2, -1], 3], "expectedOutput": [-3, -2, -1, -5, -4] },
+        { "arguments": [[2147483647, -2147483648, 1], 1], "expectedOutput": [1, 2147483647, -2147483648] },
+        { "arguments": [[1, 2, 3], 100], "expectedOutput": [3, 1, 2] }
+      ]
+    },
+    "interview": {
+      "concepts": ["Array Reversal Trick", "Cyclic Replacement", "Modulo Arithmetic"],
+      "followUpQuestions": [
+        "Can you solve this using only O(1) extra space?",
+        "What is the significance of taking k modulo the array length?",
+        "Can you solve it using cyclic replacement instead of reversal?",
+        "How would rotating left by k steps differ from this solution?"
+      ],
+      "commonMistakes": [
+        "Forgetting to take k modulo n, causing unnecessary or out-of-bounds rotations",
+        "Using O(n) extra space with a new array when O(1) space is expected",
+        "Reversing the wrong sub-ranges, producing an incorrectly rotated array"
+      ],
+      "hints": [
+        "Think about what happens to the positions of elements when a fixed block moves to the front.",
+        "Consider whether reversing parts of the array could help achieve rotation.",
+        "First reverse the entire array, then think about how that relates to the desired rotation.",
+        "Reversing the entire array puts the last k elements first but in the wrong internal order.",
+        "Reverse the whole array, then reverse the first k elements, then reverse the remaining n-k elements (after taking k %= n) to achieve an in-place right rotation."
+      ]
+    }
+  },
+  {
+    "id": "arrays_medium_005",
+    "title": "Subarray Sum Equals K",
+    "topic": "arrays",
+    "difficulty": "medium",
+    "description": "Given an array of integers nums and an integer k, return the total number of contiguous subarrays whose elements sum to exactly k.",
+    "constraints": [
+      "1 <= nums.length <= 2 * 10^4",
+      "-1000 <= nums[i] <= 1000",
+      "-10^7 <= k <= 10^7"
+    ],
+    "examples": [
+      {
+        "input": "nums = [1,1,1], k = 2",
+        "output": "2",
+        "explanation": "The subarrays [1,1] (indices 0-1) and [1,1] (indices 1-2) both sum to 2."
+      },
+      {
+        "input": "nums = [1,2,3], k = 3",
+        "output": "2",
+        "explanation": "The subarrays [1,2] and [3] both sum to 3."
+      }
+    ],
+    "tags": ["Array", "Hash Table", "Prefix Sum"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(n)"
+    },
+    "signature": {
+      "functionName": "solve",
+      "returnType": {
+        "cpp": "int",
+        "java": "int",
+        "python": "int",
+        "javascript": "number",
+        "typescript": "number"
+      },
+      "parameters": [
+        {
+          "name": "nums",
+          "type": {
+            "cpp": "vector<int>&",
+            "java": "int[]",
+            "python": "List[int]",
+            "javascript": "number[]",
+            "typescript": "number[]"
+          }
+        },
+        {
+          "name": "k",
+          "type": {
+            "cpp": "int",
+            "java": "int",
+            "python": "int",
+            "javascript": "number",
+            "typescript": "number"
+          }
+        }
+      ]
+    },
+    "boilerplate": {
+      "cpp": "class Solution {\npublic:\n    int solve(vector<int>& nums, int k) {\n        \n    }\n};",
+      "java": "class Solution {\n    public int solve(int[] nums, int k) {\n        \n    }\n}",
+      "python": "class Solution:\n    def solve(self, nums: List[int], k: int) -> int:\n        ",
+      "javascript": "class Solution {\n    solve(nums, k) {\n        \n    }\n}",
+      "typescript": "class Solution {\n    solve(nums: number[], k: number): number {\n        \n    }\n}"
+    },
+    "testCases": {
+      "public": [
+        { "arguments": [[1, 1, 1], 2], "expectedOutput": 2 },
+        { "arguments": [[1, 2, 3], 3], "expectedOutput": 2 },
+        { "arguments": [[1], 0], "expectedOutput": 0 }
+      ],
+      "hidden": [
+        { "arguments": [[1, -1, 0], 0], "expectedOutput": 3 },
+        { "arguments": [[-1, -1, 1], 0], "expectedOutput": 1 },
+        { "arguments": [[0, 0, 0], 0], "expectedOutput": 6 },
+        { "arguments": [[1, 2, 1, 2, 1], 3], "expectedOutput": 4 },
+        { "arguments": [[-1, -1, -1], -2], "expectedOutput": 2 },
+        { "arguments": [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 5], "expectedOutput": 6 },
+        { "arguments": [[1, -1, 1, -1], 0], "expectedOutput": 4 },
+        { "arguments": [[5], 5], "expectedOutput": 1 }
+      ]
+    },
+    "interview": {
+      "concepts": ["Prefix Sum", "Hash Map", "Cumulative Frequency"],
+      "followUpQuestions": [
+        "Can you solve this in a single pass using a hash map of prefix sums?",
+        "How would you handle the case where k is negative?",
+        "What changes if you needed the actual subarrays instead of just the count?",
+        "How would you extend this to find the longest subarray summing to k?"
+      ],
+      "commonMistakes": [
+        "Using brute-force O(n^2) or O(n^3) instead of prefix sums with a hash map",
+        "Forgetting to initialize the prefix sum map with {0: 1} to account for subarrays starting at index 0",
+        "Not handling negative numbers correctly in the running sum"
+      ],
+      "hints": [
+        "Think about representing each subarray sum as the difference between two cumulative sums.",
+        "Consider maintaining a running prefix sum as you iterate through the array.",
+        "For each prefix sum, check how many earlier prefix sums would make the difference equal to k.",
+        "A hash map storing the frequency of each prefix sum value seen so far can answer that in O(1).",
+        "Maintain a running sum and a hash map of prefix-sum frequencies initialized with {0: 1}; for each element, add it to the running sum, add map.get(sum - k, 0) to the answer, then increment map[sum]."
+      ]
+    }
+  }
 ]

@@ -112,7 +112,7 @@ export function TestCasePanel({
           className="flex-1 border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white"
         >
           <Play className="size-4" />
-          {isRunning ? "Running..." : "Run Y"}
+          {isRunning ? "Running..." : "Run"}
         </Button>
 
         <Button

@@ -32,6 +32,8 @@ export default async function InterviewPage({
   recentMessages={result.session.recentMessages}
   stage={result.session.stage}
   hintsUsed={result.session.hintsUsed}
+  startedAt={result.session.startedAt}
+  duration={result.session.duration}
 />
   );
 }

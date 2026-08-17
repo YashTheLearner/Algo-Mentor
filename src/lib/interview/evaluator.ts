@@ -1,16 +1,51 @@
-// Responsible for interpreting AI evaluation.
+// import {
+//   generateText,
+// } from "@/lib/gemini";
+import { gemini, GEMINI_MODEL } from "@/lib/gemini";
 
-// Example
+import {
+  EVALUATOR_SYSTEM_PROMPT,
+} from "./prompts/system";
 
-// AI returns
+import {
+  buildEvaluationPrompt,
+} from "./prompts/evaluate";
 
-// {
-//  "understanding":8,
-//  "coding":7
-// }
+import {
+  parseInterviewReport,
+} from "./parser";
 
-// This file updates
+import type {
+  InterviewSession,
+} from "@/types/interview-session";
 
-// Interview Performance
+import type {
+  Question,
+} from "@/types/question";
 
-// It doesn't call Gemini.
+export async function evaluateInterview(
+  session: InterviewSession,
+  question: Question
+) {
+  const response = await gemini.models.generateContent({
+    model: GEMINI_MODEL,
+
+    contents: buildEvaluationPrompt(
+      session,
+      question
+    ),
+
+    config: {
+      systemInstruction:
+        EVALUATOR_SYSTEM_PROMPT,
+
+      responseMimeType:
+        "application/json",
+    },
+  });
+
+  return parseInterviewReport(
+    response.text ?? ""
+  );
+
+}
