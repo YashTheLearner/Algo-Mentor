@@ -22,6 +22,7 @@ export async function getQuestions(
 
     return JSON.parse(file);
   } catch (error) {
+    console.log(error);
     throw new Error(
       `Questions not found for ${topic}/${difficulty}`
     );
