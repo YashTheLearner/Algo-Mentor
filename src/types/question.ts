@@ -43,10 +43,10 @@ export interface QuestionSignature {
 export interface QuestionBoilerplate
   extends LanguageMap<string> {}
 
-export interface QuestionTestCase {
-  arguments: unknown[];
-  expectedOutput: unknown;
-}
+// export interface QuestionTestCase {
+//   arguments: unknown[];
+//   expectedOutput: unknown;
+// }
 
 export interface QuestionTestCases {
   public: QuestionTestCase[];
@@ -92,6 +92,7 @@ export interface PublicQuestion
   };
 }
 export interface QuestionTestCase {
+  input?: string;
   arguments: unknown[];
 
   expectedOutput: unknown;

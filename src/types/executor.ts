@@ -52,7 +52,7 @@ export interface CodeExecutionResult {
  * Result of executing one public test case.
  */
 export interface TestCaseResult {
-  input: string;
+  input?: string;
   expectedOutput: string;
 
   actualOutput: string | null;

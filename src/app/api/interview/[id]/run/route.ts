@@ -214,7 +214,7 @@ const passed =
       }
 
       results.push({
-        input: testCase.input,
+        input: testCase.input ,
         expectedOutput: JSON.stringify(
     testCase.expectedOutput
 ),
