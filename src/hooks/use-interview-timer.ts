@@ -17,30 +17,26 @@ export function useInterviewTimer(
     return Math.max(duration - elapsed, 0);
   };
 
-  const [remaining, setRemaining] = useState(getRemaining);
+  const [remaining, setRemaining] = useState(duration);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const nextRemaining = getRemaining();
+ useEffect(() => {
+  const update = () => {
+    const nextRemaining = getRemaining();
 
-      setRemaining(nextRemaining);
+    setRemaining(nextRemaining);
 
-      if (
-        nextRemaining === 0 &&
-        !expiredRef.current
-      ) {
-        expiredRef.current = true;
+    if (nextRemaining === 0 && !expiredRef.current) {
+      expiredRef.current = true;
+      onExpired?.();
+    }
+  };
 
-        clearInterval(timer);
+  update(); // immediately after hydration
 
-        onExpired?.();
-      }
-    }, 1000);
+  const timer = setInterval(update, 1000);
 
-    return () => {
-      clearInterval(timer);
-    };
-  }, [startedAt, duration, onExpired]);
+  return () => clearInterval(timer);
+}, [startedAt, duration, onExpired]);
 
   return remaining;
 }
