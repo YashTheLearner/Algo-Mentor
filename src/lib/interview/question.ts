@@ -1,32 +1,28 @@
 // lib/questions.ts
-
-import { promises as fs } from "fs";
-import path from "path";
 import type { PublicQuestion, Question } from "@/types/question";
+import { questionBank } from "@/data/questions";
 
-export async function getQuestions(
+export function getQuestions(
   topic: string,
   difficulty: string
-) {
-  try {
-    const filePath = path.join(
-      process.cwd(),
-      "src",
-      "data",
-      "questions",
-      topic,
-      `${difficulty}.json`
-    );
+): Question[] {
+  const topicQuestions =
+    questionBank[topic as keyof typeof questionBank];
 
-    const file = await fs.readFile(filePath, "utf-8");
-
-    return JSON.parse(file);
-  } catch (error) {
-    console.log(error);
-    throw new Error(
-      `Questions not found for ${topic}/${difficulty}`
-    );
+  if (!topicQuestions) {
+    throw new Error(`Questions not found for ${topic}/${difficulty}`);
   }
+
+  const questions =
+    topicQuestions[
+      difficulty as keyof typeof topicQuestions
+    ];
+
+  if (!questions) {
+    throw new Error(`Questions not found for ${topic}/${difficulty}`);
+  }
+
+  return questions as Question[];
 }
 
 export async function getQuestionById(
