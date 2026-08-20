@@ -1,10 +1,10 @@
-import arraysEasy from "./Arrays/easy.json";
-import arraysMedium from "./Arrays/medium.json";
-import arraysHard from "./Arrays/hard.json";
+import arraysEasy from "./Arrays/Easy.json";
+import arraysMedium from "./Arrays/Medium.json";
+import arraysHard from "./Arrays/Hard.json";
 
-import stringsEasy from "./Strings/easy.json";
-import stringsMedium from "./Strings/medium.json";
-import stringsHard from "./Strings/hard.json";
+import stringsEasy from "./Strings/Easy.json";
+import stringsMedium from "./Strings/Medium.json";
+import stringsHard from "./Strings/Hard.json";
 
 export const questionBank = {
   Arrays: {
