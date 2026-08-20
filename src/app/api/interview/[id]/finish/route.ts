@@ -16,7 +16,7 @@ import { getQuestionById } from "@/lib/interview/question";
 import { evaluateInterview } from "@/lib/interview/evaluator";
 
 import type { InterviewSession } from "@/types/interview-session";
-import { Prisma } from "@/generated/prisma/client";
+import { Prisma } from "@prisma/client";
 
 interface RouteContext {
   params: Promise<{
