@@ -1,51 +1,55 @@
-// import { DashboardHeader } from "@/components/dashboard/dashboard-header";
-// import { StatsOverview } from "@/components/dashboard/stats-overview";
-// import { ContinueInterviewCard } from "@/components/dashboard/continue-interview-card";
-// import { AIInsightCard } from "@/components/dashboard/ai-insight-card";
-// import { ProgressCard } from "@/components/dashboard/progress-card";
-// import { TopicPerformance } from "@/components/dashboard/topic-performance";
-// import { RecentInterviews } from "@/components/dashboard/recent-interviews";
-// import { WeeklyActivity } from "@/components/dashboard/weekly-activity";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-// export default function DashboardPage() {
-//   return (
-//     <div className="space-y-8">
-//       <DashboardHeader />
+import { authOptions } from "@/lib/auth";
+import { getDashboardData } from "@/lib/dashboard";
 
-//       <StatsOverview />
-
-//       <ContinueInterviewCard />
-
-//       <div className="grid gap-6 xl:grid-cols-[1.7fr_1fr]">
-//         <ProgressCard />
-//         <AIInsightCard />
-//       </div>
-
-//       <div className="grid gap-6 xl:grid-cols-[1.3fr_1fr]">
-//         <RecentInterviews />
-//         <TopicPerformance />
-//       </div>
-
-//       <WeeklyActivity />
-//     </div>
-//   );
-// }
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
 import { QuickActions } from "@/components/dashboard/quick-actions";
 import { ProgressCard } from "@/components/dashboard/progress-card";
 import { RecentInterviews } from "@/components/dashboard/recent-interviews";
+import { PerformanceBreakdown } from "@/components/dashboard/performance-breakdown";
 
-export default function DashboardPage() {
-  return (
+export default async function DashboardPage() {
+  const session = await getServerSession(authOptions);
+
+  const email = session?.user?.email;
+
+  const name = session?.user?.name;
+
+  if (!email) {
+    redirect("/login");
+  }
+
+  const {
+  progress,
+  performance,
+  recentInterviews,
+} = await getDashboardData(email);
+
+// console.log("DASHBOARD DATA:", {
+//   progress,
+//   performance,
+//   recentInterviews,
+// });
+
+return (
     <div className="space-y-8">
-      <DashboardHeader />
+      <DashboardHeader name={name} />
 
       <QuickActions />
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <ProgressCard />
-        <RecentInterviews />
+        <ProgressCard progress={progress} />
+
+        <RecentInterviews
+          interviews={recentInterviews}
+        />
       </div>
+
+      <PerformanceBreakdown
+        performance={performance}
+      />
     </div>
   );
 }
